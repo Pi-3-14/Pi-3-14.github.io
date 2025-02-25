@@ -1,0 +1,25 @@
+The following license applies to the Eclipse of Eternity website, which is a part of my profile's website.
+
+
+This license applies to the internal code of this website:
+
+© Eclipse of Eternity, 2025. All Rights Reserved.  
+This website, including all non-user-created content, code (HTML, CSS, JavaScript, backend scripts), and assets, may not be copied, modified, or distributed without explicit permission.
+
+---
+
+This license applies to user-generated content on this website, including blog posts, images, and other contributions:
+
+Creative Commons Attribution 4.0 International (CC BY 4.0)  
+© Eclipse of Eternity, 2025. All Rights Reserved.  
+
+User-generated content remains the property of its creators but is licensed under a Creative Commons Attribution 4.0 International License.  
+You are free to share and redistribute this content for any purpose, including commercial use, as long as you provide attribution.
+
+Full license details: [https://creativecommons.org/licenses/by/4.0/](https://creativecommons.org/licenses/by/4.0/)
+
+---
+
+Asset Licensing Clarifications:
+Some assets used within this game may be subject to external licenses with restrictions. These assets are properly licensed for use within the game and its distribution. In such cases, the asset's individual license will apply and may override the proprietary license outlined above.
+Please consult the asset’s full license for more information on usage and restrictions on our legal page.
