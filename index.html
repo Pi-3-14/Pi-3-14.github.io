@@ -12,12 +12,10 @@
             font-size: 12px;
             display: inline;
         }
-
         aside {
             font-style: italic;
             font-size: 14px;
         }
-
         a {
             font-weight: bold;
         }
@@ -43,7 +41,6 @@
             box-sizing: border-box;
             transform: scale(0.95);
         }
-
         .nav-button:hover,
         .nav-button:focus {
             outline: none;
@@ -382,6 +379,15 @@
             const thumbOffset = trackWidth * percent;
             sliderThumb.style.left = `${thumbOffset}px`;
         });
+        window.addEventListener('resize', () => {
+            const value = slider.value;
+            animeImage.style.clipPath = `inset(0 ${100 - value}% 0 0)`;
+
+            const percent = value / 100;
+            const trackWidth = slider.offsetWidth;
+            const thumbOffset = trackWidth * percent;
+            sliderThumb.style.left = `${thumbOffset}px`;
+        })
         sliderThumb.style.left = `${slider.offsetWidth}px`;
     </script>
 
