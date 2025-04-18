@@ -28,6 +28,42 @@
             margin-left: 30%;
             margin-right: 30%;
         }
+        .nav-button {
+            display: inline-block;
+            color: white;
+            font-weight: bold;
+            padding: 0.75rem 1.25rem;
+            font-size: 1rem;
+            border-radius: 9999px;
+            min-width: 140px;
+            min-height: 44px;
+            text-align: center;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+            transform: scale(0.95);
+        }
+
+        .nav-button:hover,
+        .nav-button:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
+            transform: scale(1.0);
+        }
+        #custom-tooltip {
+            font-size: 14px;
+            background-color: black;
+            color: white;
+            border: 1px solid white;
+            border-radius: 4px;
+            padding: 4px 8px;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.15s ease;
+            white-space: nowrap;
+        }
     </style>
 </head>
 
@@ -37,27 +73,30 @@
     <nav class="bg-white shadow-md p-4 sticky top-0 z-50 hidden md:block">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <h1 class="text-2xl font-bold">Pi = 3.14...</h1>
-            <ul class="flex space-x-4">
+            <ul id="desktop-nav" class="flex space-x-4 overflow-auto">
                 <li><a href="idea/index.html"
-                        class="px-4 py-2 rounded-2xl bg-gradient-to-r from-blue-500 to-indigo-500 text-white">Idea
+                        class="nav-button px-4 py-2 rounded-2xl bg-gradient-to-r from-blue-500 to-indigo-500 text-white">Idea
                         to App</a></li>
                 <li><a href="https://eclipseofeternity.online"
-                        class="px-4 py-2 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 text-white">Eclipse of
+                        class="nav-button px-4 py-2 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 text-white">Eclipse of
                         Eternity</a></li>
                 <li><a href="tutoring/index.html"
-                        class="px-4 py-2 rounded-2xl bg-gradient-to-r from-green-500 to-teal-500 text-white">Coding
+                        class="nav-button px-4 py-2 rounded-2xl bg-gradient-to-r from-green-500 to-teal-500 text-white">Coding
                         Tutoring</a>
                 </li>
                 <li><a href="job/index.html"
-                        class="px-4 py-2 rounded-2xl bg-gradient-to-r from-yellow-500 to-orange-500 text-white">Get a
+                        class="nav-button px-4 py-2 rounded-2xl bg-gradient-to-r from-yellow-500 to-orange-500 text-white">Get a
                         Coding Job</a></li>
                 <li><a href="amazon/index.html"
-                        class="px-4 py-2 rounded-2xl bg-gradient-to-r from-red-500 to-pink-500 text-white">Amazon
+                        class="nav-button px-4 py-2 rounded-2xl bg-gradient-to-r from-red-500 to-pink-500 text-white">Amazon
                         Store</a></li>
             </ul>
         </div>
     </nav>
 
+    <div id="custom-tooltip" class="pointer-events-none fixed z-50 px-3 py-1 bg-black text-white border border-white rounded-md text-sm whitespace-nowrap opacity-0 transition-opacity duration-150">
+    </div>
+    
     <!-- About Section -->
     <section class="md:max-w-5xl md:mx-auto md:px-4 md:py-12 md:flex md:flex-col hidden md:flex-row md:items-center md:gap-10">
         <div class="md:w-1/2">
@@ -69,9 +108,9 @@
             I'm a multi-disciplinary developer, entrepreneur, and tutor. Whether you're looking to bring your app idea to life, level up your coding skills, or explore new game worlds—I've got something for you.
         </p>
         <div class="flex space-x-4">
-            <a href="https://github.com/Pi-3-14" class="text-blue-600 hover:text-blue-800"><i class="fab fa-github fa-2x"></i></a>
-            <a href="https://youtube.com/@Coding_Blink" class="text-pink-500 hover:text-pink-700"><i class="fab fa-youtube fa-2x"></i></a>
-            <a href="mailto:eclipseofeternityofficial@gmail.com" class="text-gray-600 hover:text-gray-800"><i class="fas fa-envelope fa-2x"></i></a>
+            <a href="https://github.com/Pi-3-14" class="text-blue-600 hover:text-blue-800"><i id="github-link" class="fab fa-github fa-2x"></i></a>
+            <a href="https://youtube.com/@Coding_Blink" class="text-pink-500 hover:text-pink-700"><i id="youtube-link" class="fab fa-youtube fa-2x"></i></a>
+            <a href="mailto:eclipseofeternityofficial@gmail.com" class="text-gray-600 hover:text-gray-800"><i id="mail-link" class="fas fa-envelope fa-2x"></i></a>
         </div>
         </div>
     </section>
@@ -108,6 +147,156 @@
     </section>
 
     <script>
+        const statNames = ["Attack", "Defense", "Power", "Speed", "Agility", "Intelligence", "Mana", "Luck", "Wisdom", "Charisma", "Stealth", "Durability", "Precision", "Energy", "Resilience", "Magic Resistance", "Critical Chance", "Focus", "Endurance", "Dexterity", "Creativity", "Willpower", "Range", "Cooldown Reduction", "Difficulty"];
+
+        const loreSnippets = [
+            "Forged in ancient servers.",
+            "Crafted by digital mages.",
+            "Legacy of forgotten coders.",
+            "Infused with AI spirit.",
+            "Once lost in a merge conflict.",
+            "Spoken of in 0s and 1s.",
+            "Only compiles under a blood moon.",
+            "Documented in cryptic Markdown.",
+            "Passed through countless Git clones.",
+            "Cursed by unresolved dependencies.",
+            "Whispered of in Stack Overflow legends.",
+            "Powered by caffeine and chaos.",
+            "Compiled from forbidden syntax.",
+            "Echoes of legacy systems remain.",
+            "Optimized by the ancients.",
+            "Guarded by unit tests of old.",
+            "Saved seconds before a crash.",
+            "Recovered from a corrupted commit.",
+            "Once part of a forgotten framework.",
+            "Blessed by the merge fairy.",
+            "Refactored under duress.",
+            "Deployed at midnight.",
+            "Once top-secret open source.",
+            "Encoded with quantum bits.",
+            "Discovered in ancient changelogs."
+        ];
+
+        function generateTooltip(baseLabel, valueHtml) {
+            function shuffle(array) {
+                const arr = array.slice();
+                for (let i = arr.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [arr[i], arr[j]] = [arr[j], arr[i]];
+                }
+                return arr;
+            }
+
+            const statsHtml = shuffle(statNames).slice(0, 1 + Math.floor(Math.random()*6)).map(name => {
+                const val = Math.floor(Math.random() * 101);
+                return `<div class="text-gray-300">${name}: ${val}</div>`;
+            }).join("");
+
+            const lore = loreSnippets[Math.floor(Math.random() * loreSnippets.length)];
+
+            return `
+                <div class="font-semibold text-white mb-1">${baseLabel}: ${valueHtml}</div>
+                ${statsHtml}
+                <div class="mt-1 italic text-gray-300">${lore}</div>
+            `;
+        }
+
+        const tooltipTextMap = {
+            "github-link": generateTooltip("GitHub", "<p class='text-blue-300' style='display: inline;'>@Pi-3-14</p>"),
+            "youtube-link": generateTooltip("YouTube", "<p class='text-blue-300' style='display: inline;'>@Coding_Blink</p>"),
+            "mail-link": generateTooltip("Email", "<p class='text-blue-300' style='display: inline;'>eclipseofeternityofficial@gmail.com</p>"),
+            "ideaToApp": generateTooltip("Idea to App", "<p class='text-blue-300' style='display: inline;'>On-demand app development is available to anyone. You get a free consultation before starting.</p>"),
+            "eclipseOfEternity": generateTooltip("Eclipse of Eternity", "<p class='text-blue-300' style='display: inline;'>What are you waiting for!? Reserve 1 year of free game time by entering your email at eclipseofeternity.online !!!</p>"),
+            "codingTutoring": generateTooltip("Coding Tutoring", "<p class='text-blue-300' style='display: inline;'>I'll teach you how to code, from the very basics to application development and beyond!</p>"),
+            "getACodingJob": generateTooltip("Get a Coding Job", "<p class='text-blue-300' style='display: inline;'>I've got 500 referral slots per month!</p>"),
+            "amazonStore": generateTooltip("Amazon Store", "<p class='text-blue-300' style='display: inline;'>Become a pro dev with these products!</p>"),
+        };
+
+
+        const tooltip = document.getElementById('custom-tooltip');
+
+        document.addEventListener('mousemove', (e) => {
+            const tooltip = document.getElementById('custom-tooltip');
+            const offsetX = 12;
+            const offsetY = 40;
+            tooltip.style.left = `${e.clientX + offsetX}px`;
+            tooltip.style.top = `${e.clientY - offsetY}px`;
+
+            const element = document.elementFromPoint(e.clientX, e.clientY);
+            if(!element) return;
+            const id = element.id;
+            console.log(id);
+            const tooltipText = tooltipTextMap[id];
+
+            if (tooltipText) {
+                tooltip.innerHTML = tooltipText;
+                tooltip.style.opacity = 1;
+            } else {
+                tooltip.style.opacity = 0;
+            }
+        });
+
+        document.addEventListener('mouseover', (e) => {
+            const element = document.elementFromPoint(e.clientX, e.clientY);
+            if(!element) return;
+            const id = element.id;
+            console.log(id);
+            const tooltipText = tooltipTextMap[id];
+
+            if (tooltipText) {
+                tooltip.innerHTML = tooltipText;
+                tooltip.style.opacity = 1;
+            } else {
+                tooltip.style.opacity = 0;
+            }
+        });
+
+        document.addEventListener('mouseout', (e) => {
+            const element = document.elementFromPoint(e.clientX, e.clientY);
+            if(element) return;
+            tooltip.style.opacity = 0;
+        });
+
+        const ZOOM_KEY = 'customZoomLevel';
+        const MIN_ZOOM = 0.3;
+        const ZOOM_STEP = 0.05;
+
+        function applyZoom(zoom) {
+            document.body.style.zoom = zoom;
+        }
+
+        function checkNavOverflow() {
+            const nav = document.getElementById('desktop-nav');
+            return nav.scrollWidth > nav.clientWidth;
+        }
+
+        function zoomOutUntilFits() {
+            let currentZoom = Number(document.body.style.zoom) || 1;
+
+            function tryZoomOut() {
+                if (!checkNavOverflow() || currentZoom <= MIN_ZOOM) {
+                    return;
+                }
+
+                currentZoom -= ZOOM_STEP;
+                currentZoom = Math.max(currentZoom, MIN_ZOOM);
+                applyZoom(currentZoom);
+
+                setTimeout(tryZoomOut, 100);
+            }
+
+            tryZoomOut();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Apply zoom only if there's overflow
+            if (checkNavOverflow()) {
+                zoomOutUntilFits();
+            }
+
+            window.addEventListener('resize', function() { document.body.style.zoom = 1; zoomOutUntilFits(); });
+        });
+        zoomOutUntilFits();
         const projects = [
             {
                 title: "Idea to App",
@@ -115,7 +304,8 @@
                 link: "idea/index.html",
                 image: "app-image.png",
                 icon: "fas fa-lightbulb",
-                color: "bg-gradient-to-r from-blue-500 to-indigo-500"
+                color: "bg-gradient-to-r from-blue-500 to-indigo-500",
+                id: "ideaToApp"
             },
             {
                 title: "Eclipse of Eternity",
@@ -123,7 +313,8 @@
                 link: "https://eclipseofeternity.online",
                 image: "eoe-image.png",
                 icon: "fas fa-gamepad",
-                color: "bg-gradient-to-r from-purple-500 to-pink-500"
+                color: "bg-gradient-to-r from-purple-500 to-pink-500",
+                id: "eclipseOfEternity"
             },
             {
                 title: "Coding Tutoring",
@@ -131,7 +322,8 @@
                 link: "tutoring/index.html",
                 image: "tutoring-image.png",
                 icon: "fas fa-chalkboard-teacher",
-                color: "bg-gradient-to-r from-green-500 to-teal-500"
+                color: "bg-gradient-to-r from-green-500 to-teal-500",
+                id: "codingTutoring"
             },
             {
                 title: "Get a Coding Job",
@@ -139,7 +331,8 @@
                 link: "job/index.html",
                 image: "job-image.png",
                 icon: "fas fa-briefcase",
-                color: "bg-gradient-to-r from-yellow-500 to-orange-500"
+                color: "bg-gradient-to-r from-yellow-500 to-orange-500",
+                id: "getACodingJob"
             },
             {
                 title: "Amazon Store",
@@ -147,7 +340,8 @@
                 link: "amazon/index.html",
                 image: "amazon-image.png",
                 icon: "fas fa-shopping-cart",
-                color: "bg-gradient-to-r from-red-500 to-pink-500"
+                color: "bg-gradient-to-r from-red-500 to-pink-500",
+                id: "amazonStore"
             }
         ];
 
@@ -158,7 +352,7 @@
             card.className = "bg-white shadow-lg rounded-2xl overflow-hidden flex flex-col md:flex-row hover:shadow-xl transition-shadow duration-300";
 
             card.innerHTML = `
-        <img src="${project.image}" alt="${project.title}" class="w-full md:w-2/5 h-60 object-cover">
+        <img src="${project.image}" alt="${project.title}" class="w-full md:w-2/5 h-60 object-cover" id="${project.id}">
         <div class="p-6 flex flex-col justify-between md:w-3/5">
           <div>
             <h3 class="text-2xl font-bold mb-2 flex items-center gap-2">
