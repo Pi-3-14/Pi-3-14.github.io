@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pi = 3.14... | Personal & Business Hub</title>
+    <title>Pi | Personal Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -21,6 +21,13 @@
         a {
             font-weight: bold;
         }
+        .mobile-link {
+            border-color: inherit;
+            border-radius: 3px;
+            border: 1px solid;
+            margin-left: 30%;
+            margin-right: 30%;
+        }
     </style>
 </head>
 
@@ -31,27 +38,27 @@
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <h1 class="text-2xl font-bold">Pi = 3.14...</h1>
             <ul class="flex space-x-4">
-                <li><a href="/idea"
+                <li><a href="idea/index.html"
                         class="px-4 py-2 rounded-2xl bg-gradient-to-r from-blue-500 to-indigo-500 text-white">Idea
                         to App</a></li>
                 <li><a href="https://eclipseofeternity.online"
                         class="px-4 py-2 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 text-white">Eclipse of
                         Eternity</a></li>
-                <li><a href="/tutoring"
+                <li><a href="tutoring/index.html"
                         class="px-4 py-2 rounded-2xl bg-gradient-to-r from-green-500 to-teal-500 text-white">Coding
                         Tutoring</a>
                 </li>
-                <li><a href="/job"
+                <li><a href="job/index.html"
                         class="px-4 py-2 rounded-2xl bg-gradient-to-r from-yellow-500 to-orange-500 text-white">Get a
                         Coding Job</a></li>
-                <li><a href="/amazon"
+                <li><a href="amazon/index.html"
                         class="px-4 py-2 rounded-2xl bg-gradient-to-r from-red-500 to-pink-500 text-white">Amazon
                         Store</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Hero / About Section -->
+    <!-- About Section -->
     <section class="md:max-w-5xl md:mx-auto md:px-4 md:py-12 md:flex md:flex-col hidden md:flex-row md:items-center md:gap-10">
         <div class="md:w-1/2">
         <img src="" alt="Profile" class="rounded-2xl shadow-md w-full">
@@ -81,16 +88,16 @@
                 <a href="mailto:eclipseofeternityofficial@gmail.com" class="text-gray-600 hover:text-gray-800"><i class="fas fa-envelope fa-2x"></i></a>
             </div>
             <div class="w-full space-y-4 text-lg font-semibold">
-                <a href="/idea" class="block text-blue-600">Idea to App</a>
-                <a href="https://eclipseofeternity.online" class="block text-purple-600">Eclipse of Eternity</a>
-                <a href="/tutoring" class="block text-green-600">Coding Tutoring</a>
-                <a href="/job" class="block text-yellow-600">Get a Coding Job</a>
-                <a href="/amazon" class="block text-red-600">Amazon Store</a>
+                <a href="idea/index.html" class="mobile-link block text-blue-600">Idea to App</a>
+                <a href="https://eclipseofeternity.online" class="mobile-link block text-purple-600">Eclipse of Eternity</a>
+                <a href="tutoring/index.html" class="mobile-link block text-green-600">Coding Tutoring</a>
+                <a href="job/index.html" class="mobile-link block text-yellow-600">Get a Coding Job</a>
+                <a href="amazon/index.html" class="mobile-link block text-red-600">Amazon Store</a>
             </div>
         </div>
     </section>
 
-    <!-- === MODERN PROJECT CARDS === -->
+    <!-- === DESKTOP PROJECT CARDS === -->
     <section class="hidden md:block bg-gray-100 py-16 px-4 md:px-0">
         <div class="max-w-6xl mx-auto">
             <h2 class="text-4xl font-bold text-center mb-12">Projects & Ventures</h2>
@@ -105,7 +112,7 @@
             {
                 title: "Idea to App",
                 description: "Full-stack app development using modern frameworks (C++, Swift, Python, etc). I've helped many bring their ideas to life.",
-                link: "/idea",
+                link: "idea/index.html",
                 image: "app-image.png",
                 icon: "fas fa-lightbulb",
                 color: "bg-gradient-to-r from-blue-500 to-indigo-500"
@@ -121,7 +128,7 @@
             {
                 title: "Coding Tutoring",
                 description: "1-on-1 personalized CS tutoring with job referrals. Learn Python, C++, web dev, and more.",
-                link: "/tutoring",
+                link: "tutoring/index.html",
                 image: "tutoring-image.png",
                 icon: "fas fa-chalkboard-teacher",
                 color: "bg-gradient-to-r from-green-500 to-teal-500"
@@ -129,7 +136,7 @@
             {
                 title: "Get a Coding Job",
                 description: "Finish my course, build a portfolio, and get referred to AI companies & startups. I have 500 open referral slots per month.",
-                link: "/job",
+                link: "job/index.html",
                 image: "job-image.png",
                 icon: "fas fa-briefcase",
                 color: "bg-gradient-to-r from-yellow-500 to-orange-500"
@@ -137,7 +144,7 @@
             {
                 title: "Amazon Store",
                 description: "Handpicked developer gear, tech, and tools I use — all in one Amazon shop.",
-                link: "/amazon",
+                link: "amazon/index.html",
                 image: "amazon-image.png",
                 icon: "fas fa-shopping-cart",
                 color: "bg-gradient-to-r from-red-500 to-pink-500"
