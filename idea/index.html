@@ -7,9 +7,362 @@
     <title>Pi | Personal Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .smalltext {
+            font-size: 12px;
+            display: inline;
+        }
+        aside {
+            font-style: italic;
+            font-size: 14px;
+        }
+        a {
+            font-weight: bold;
+        }
+        .mobile-link {
+            border-color: inherit;
+            border-radius: 3px;
+            border: 1px solid;
+            margin-left: 30%;
+            margin-right: 30%;
+        }
+        .nav-button {
+            display: inline-block;
+            color: white;
+            font-weight: bold;
+            padding: 0.75rem 1.25rem;
+            font-size: 1rem;
+            border-radius: 9999px;
+            min-width: 140px;
+            min-height: 44px;
+            text-align: center;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+            transform: scale(0.95);
+        }
+        .nav-button:hover,
+        .nav-button:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
+            transform: scale(1.0);
+        }
+        .shake {
+            animation: shake-animation 0.2s ease-in-out;
+        }
+
+        @keyframes shake-animation {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-3px); }
+            50% { transform: translateX(3px); }
+            75% { transform: translateX(-3px); }
+            100% { transform: translateX(0); }
+        }
+
+        #popup-message {
+            pointer-events: none;
+        }
+    </style>
 </head>
+
 <body class="bg-gray-100 text-gray-800 font-sans">
-    <h1 class="p-3 text-3xl font-bold text-center">This is a test.</h1>
-    <p class="text-center">There is no functionality present on this page... yet</p>
+
+    <!-- Desktop Navigation (hidden on mobile) -->
+    <nav class="bg-white shadow-md p-4 sticky top-0 z-50 hidden md:block">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Pi = 3.14...</h1>
+            <ul id="desktop-nav" class="flex space-x-4 overflow-auto">
+                <!-- Button with click event -->
+                <li>
+                    <a href="" id="idea-button" class="nav-button px-4 py-2 rounded-2xl bg-gradient-to-r from-blue-500 to-indigo-500 text-white">
+                        Idea to App
+                    </a>
+                </li>
+
+                <!-- Popup Message below the button -->
+                <div id="popup-message" class="absolute hidden translate-y-8 text-center text-lg font-semibold text-red-800 mt-2 duration-300">
+                    Already there!
+                </div>
+                <li><a href="https://eclipseofeternity.online" class="nav-button px-4 py-2 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 text-white">Eclipse of Eternity</a></li>
+                <li><a href="tutoring/index.html" class="nav-button px-4 py-2 rounded-2xl bg-gradient-to-r from-green-500 to-teal-500 text-white">Coding Tutoring</a></li>
+                <li><a href="job/index.html" class="nav-button px-4 py-2 rounded-2xl bg-gradient-to-r from-yellow-500 to-orange-500 text-white">Get a Coding Job</a></li>
+                <li><a href="amazon/index.html" class="nav-button px-4 py-2 rounded-2xl bg-gradient-to-r from-red-500 to-pink-500 text-white">Amazon Store</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- === MOBILE VIEW === -->
+    <section class="block md:hidden max-w-xl mx-auto px-4 py-10">
+        <div class="text-center">
+            <a href="../index.html" class="inline-block px-6 py-3 rounded-2xl bg-gradient-to-r from-blue-500 to-indigo-500 text-white text-lg shadow-md">
+                Back to Main
+            </a>
+        </div>
+    </section>
+
+    <!-- Under Construction Banner -->
+    <div class="bg-yellow-100 border-b-4 border-yellow-400 text-yellow-800 px-4 py-2 flex items-center text-sm font-medium">
+        <!-- Construction Icon (emoji or use an SVG if preferred) -->
+        <span class="mr-2">🚧</span>
+        This webpage is under construction — data is subject to change.
+    </div>
+
+
+    <!-- === INTRODUCTION BOX === -->
+    <section class="bg-blue-100 py-12">
+        <div class="max-w-6xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-semibold text-gray-800 mb-4">
+                Turn your ideas into full-fledged applications — no experience required.
+            </h2>
+        </div>
+    </section>
+
+    <!-- === PLATFORM PRICING & DETAILS === -->
+    <section class="py-16 px-4 md:px-0">
+        <div class="max-w-6xl mx-auto">
+            
+            <!-- Flex header with centered title and right-aligned Buy button -->
+            <div class="flex items-center justify-between mb-12">
+                <div class="flex-1"></div> <!-- Left spacer -->
+                <h2 class="text-3xl font-semibold text-center flex-1">Platform Pricing & Details</h2>
+                <div class="flex-1 flex justify-end">
+                    <a href="buy.html" class="px-4 py-2 rounded-xl bg-gradient-to-r from-blue-500 to-indigo-500 text-white">
+                        Buy
+                    </a>
+                </div>
+            </div>
+
+            <!-- Flex container for table + detail box -->
+            <div class="flex flex-col md:flex-row gap-8">
+                <!-- Pricing Table -->
+                <div class="w-full md:w-2/3">
+                    <div class="overflow-x-auto bg-white shadow-md rounded-lg">
+                        <table class="min-w-full table-auto">
+                            <thead class="bg-gray-100">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-lg font-medium text-gray-600">Platform</th>
+                                    <th class="px-6 py-3 text-left text-lg font-medium text-gray-600">Expected Total Cost</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-t">
+                                    <td class="px-6 py-4 text-lg text-gray-700">Mobile App</td>
+                                    <td class="px-6 py-4 text-lg text-gray-700">$100 - $1,000</td>
+                                </tr>
+                                <tr class="border-t">
+                                    <td class="px-6 py-4 text-lg text-gray-700">Web App</td>
+                                    <td class="px-6 py-4 text-lg text-gray-700">$100 - $2,000</td>
+                                </tr>
+                                <tr class="border-t">
+                                    <td class="px-6 py-4 text-lg text-gray-700">SaaS</td>
+                                    <td class="px-6 py-4 text-lg text-gray-700">$1,000 - $5,000</td>
+                                </tr>
+                                <tr class="border-t">
+                                    <td class="px-6 py-4 text-lg text-gray-700">Full-Stack App + Backend</td>
+                                    <td class="px-6 py-4 text-lg text-gray-700">$2,500 - $10,000</td>
+                                </tr>
+                                <tr class="border-t">
+                                    <td class="px-6 py-4 text-lg text-gray-700">Choose what you need</td>
+                                    <td class="px-6 py-4 text-lg text-gray-700">$50+</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Detail Box -->
+                <div class="w-full md:w-1/3 bg-blue-50 rounded-lg shadow-md p-6 flex flex-col justify-center">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">What’s Included</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-700 text-lg">
+                        <li>Free 30-minute consultation</li>
+                        <li>Flexible schedule & pricing</li>
+                        <li>1 month maintenance & support (after completion)</li>
+                        <li>Custom design, style, and UX options</li>
+                        <li>Integration with other services (access required)</li>
+                        <li>Tutorial on how to use your final product</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === PROJECT CAROUSEL === -->
+    <section class="py-16 px-4 md:px-0 bg-gray-50">
+        <div class="max-w-6xl mx-auto text-center">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-8">Previous Projects</h2>
+            <div id="project-carousel" class="flex overflow-x-scroll space-x-4">
+                <!-- Sample Project Cards (these can be loaded dynamically via JS) -->
+                <div class="flex-shrink-0 w-full md:w-1/2 lg:w-1/4 bg-white shadow-lg rounded-lg overflow-hidden">
+                    <img src="project1.jpg" alt="Project 1" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold text-gray-800">Project 1</h3>
+                        <p class="text-gray-600 mt-2">A brief description of the project.</p>
+                    </div>
+                </div>
+                <div class="flex-shrink-0 w-full md:w-1/2 lg:w-1/4 bg-white shadow-lg rounded-lg overflow-hidden">
+                    <img src="project2.jpg" alt="Project 2" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold text-gray-800">Project 2</h3>
+                        <p class="text-gray-600 mt-2">A brief description of the project.</p>
+                    </div>
+                </div>
+                <div class="flex-shrink-0 w-full md:w-1/2 lg:w-1/4 bg-white shadow-lg rounded-lg overflow-hidden">
+                    <img src="project3.jpg" alt="Project 3" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold text-gray-800">Project 3</h3>
+                        <p class="text-gray-600 mt-2">A brief description of the project.</p>
+                    </div>
+                </div>
+                <div class="flex-shrink-0 w-full md:w-1/2 lg:w-1/4 bg-white shadow-lg rounded-lg overflow-hidden">
+                    <img src="project4.jpg" alt="Project 4" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold text-gray-800">Project 4</h3>
+                        <p class="text-gray-600 mt-2">A brief description of the project.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const statNames = ["Attack", "Defense", "Power", "Speed", "Agility", "Intelligence", "Mana", "Luck", "Wisdom", "Charisma", "Stealth", "Durability", "Precision", "Energy", "Resilience", "Magic Resistance", "Critical Chance", "Focus", "Endurance", "Dexterity", "Creativity", "Willpower", "Range", "Cooldown Reduction", "Difficulty"];
+
+        const loreSnippets = [
+            "Forged in ancient servers.",
+            "Crafted by digital mages.",
+            "Legacy of forgotten coders.",
+            "Infused with AI spirit.",
+            "Once lost in a merge conflict.",
+            "Spoken of in 0s and 1s.",
+            "Only compiles under a blood moon.",
+            "Documented in cryptic Markdown.",
+            "Passed through countless Git clones.",
+            "Cursed by unresolved dependencies.",
+            "Whispered of in Stack Overflow legends.",
+            "Powered by caffeine and chaos.",
+            "Compiled from forbidden syntax.",
+            "Echoes of legacy systems remain.",
+            "Optimized by the ancients.",
+            "Guarded by unit tests of old.",
+            "Saved seconds before a crash.",
+            "Recovered from a corrupted commit.",
+            "Once part of a forgotten framework.",
+            "Blessed by the merge fairy.",
+            "Refactored under duress.",
+            "Deployed at midnight.",
+            "Once top-secret open source.",
+            "Encoded with quantum bits.",
+            "Discovered in ancient changelogs."
+        ];
+
+        const MIN_ZOOM = 0.3;
+        const ZOOM_STEP = 0.05;
+
+        function applyZoom(zoom) {
+            document.body.style.zoom = zoom;
+        }
+
+        function checkNavOverflow() {
+            const nav = document.getElementById('desktop-nav');
+            return nav.scrollWidth > nav.clientWidth;
+        }
+
+        function zoomOutUntilFits() {
+            let currentZoom = Number(document.body.style.zoom) || 1;
+
+            function tryZoomOut() {
+                if (!checkNavOverflow() || currentZoom <= MIN_ZOOM) {
+                    return;
+                }
+
+                currentZoom -= ZOOM_STEP;
+                currentZoom = Math.max(currentZoom, MIN_ZOOM);
+                applyZoom(currentZoom);
+
+                setTimeout(tryZoomOut, 100);
+            }
+
+            tryZoomOut();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Apply zoom only if there's overflow
+            if (checkNavOverflow()) {
+                zoomOutUntilFits();
+            }
+
+            window.addEventListener('resize', function() { document.body.style.zoom = 1; zoomOutUntilFits(); });
+        });
+        zoomOutUntilFits();
+        const projects = [
+            
+        ];
+
+        const container = document.getElementById("projectCards");
+
+        projects.forEach(project => {
+            const card = document.createElement("div");
+            card.className = "bg-white shadow-lg rounded-2xl overflow-hidden flex flex-col md:flex-row hover:shadow-xl transition-shadow duration-300";
+
+            card.innerHTML = `
+        <img src="${project.image}" alt="${project.title}" class="w-full md:w-2/5 h-60 object-cover" id="${project.id}">
+        <div class="p-6 flex flex-col justify-between md:w-3/5">
+          <div>
+            <h3 class="text-2xl font-bold mb-2 flex items-center gap-2">
+              <i class="${project.icon} text-xl ${project.color} text-white p-2 rounded-full"></i>
+              ${project.title}
+            </h3>
+            <p class="text-gray-600 mb-4">${project.description}</p>
+          </div>
+          <a href="${project.link}" class="inline-block w-fit mt-2 px-5 py-2 rounded-xl text-white font-semibold ${project.color} hover:opacity-90 transition-opacity">
+            View Project
+          </a>
+        </div>
+      `;
+            container.appendChild(card);
+        });
+        const ideaButton = document.getElementById('idea-button');
+        const popupMessage = document.getElementById('popup-message');
+
+        let timeoutHandle = undefined;
+
+        ideaButton.addEventListener('click', (e) => {
+            // Prevent the default link action to stop the navigation
+            e.preventDefault();
+
+            // Shake the button
+            ideaButton.classList.add('shake');
+
+            // Turn the button red
+            ideaButton.classList.remove('bg-gradient-to-r', 'from-blue-500', 'to-indigo-500');
+            ideaButton.classList.add('bg-red-500');
+
+            // Show the popup message below the button
+            popupMessage.classList.remove('hidden');
+
+            // After the shake animation is done, remove the shake class
+            setTimeout(() => {
+                ideaButton.classList.remove('shake');
+            }, 500);
+
+            // Hide the popup message after 1 second
+            if (timeoutHandle != undefined) {
+                clearTimeout(timeoutHandle);
+            }
+            timeoutHandle = setTimeout(() => {
+                popupMessage.classList.add('hidden');
+                ideaButton.classList.remove('bg-red-500');
+                ideaButton.classList.add('bg-gradient-to-r');
+                ideaButton.classList.add('from-blue-500');
+                ideaButton.classList.add('to-indigo-500');
+            }, 1000);
+        });
+    </script>
+
+    <!-- Footer -->
+    <footer class="bg-gray-200 text-center py-6 mt-10">
+        <p class="text-gray-600">&copy; 2025 pi-3-14. All rights reserved.</p>
+    </footer>
 </body>
+
 </html>
