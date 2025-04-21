@@ -39,24 +39,24 @@
             white-space: nowrap;
             transition: all 0.3s ease;
             box-sizing: border-box;
-            transform: scale(0.95);
+            transform: scale(0.85);
         }
         .nav-button:hover,
         .nav-button:focus {
             outline: none;
             box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
-            transform: scale(1.0);
+            transform: scale(0.9);
         }
         .shake {
             animation: shake-animation 0.2s ease-in-out;
         }
 
         @keyframes shake-animation {
-            0% { transform: translateX(0); }
-            25% { transform: translateX(-3px); }
-            50% { transform: translateX(3px); }
-            75% { transform: translateX(-3px); }
-            100% { transform: translateX(0); }
+            0% { transform: translateX(0) scale(0.9); }
+            25% { transform: translateX(-3px) scale(0.9); }
+            50% { transform: translateX(3px) scale(0.9); }
+            75% { transform: translateX(-3px) scale(0.9); }
+            100% { transform: translateX(0) scale(0.9); }
         }
 
         #popup-message {
@@ -71,7 +71,7 @@
     <nav class="bg-white shadow-md p-4 sticky top-0 z-50 hidden md:block">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <h1 class="text-2xl font-bold">Pi = 3.14...</h1>
-            <ul id="desktop-nav" class="flex space-x-4 overflow-auto">
+            <ul id="desktop-nav" class="flex space-x-2 overflow-auto">
                 <!-- Button with click event -->
                 <li>
                     <a href="" id="idea-button" class="nav-button px-4 py-2 rounded-2xl bg-gradient-to-r from-blue-500 to-indigo-500 text-white">
