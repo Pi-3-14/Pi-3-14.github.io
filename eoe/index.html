@@ -293,17 +293,30 @@
         };
         async function send_data(data){
             try{
-                const response=await fetch('https://eoe-game.ddns.net:3001/signup',{
+                const response=await fetch('https://eoe-game.ddns.net:3000/signup',{
                     method: 'POST',
-                    headers: {
+                    headers:{
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify(data)
                 });
                 if(!response.ok){
+                    const errorData=await response.json();
+                    let errorMessage='An error occurred when connecting to the server. Please try again.';
+                    if(errorData.error){
+                        if(errorData.error==='Username is already taken.'){
+                            errorMessage='That username is already taken. Please choose a different one.';
+                        }else if(errorData.error==='Email is already taken.'){
+                            errorMessage='That email is already taken. Please use a different email.';
+                        }else if(errorData.error==='Username may contain inappropriate language.'){
+                            errorMessage='That username contains inappropriate language. Please choose a different one.';
+                        }else{
+                            errorMessage=errorData.error;
+                        }
+                    }
                     clearTimeout(successTimeout);
                     formDiv.classList.remove('fade-out-opacity');
-                    formDiv.innerHTML=`<h1 class="text-2xl font-bold mb-4 text-white">Error!</h1><p class="text-lg mb-4 text-gray-300">An error occurred when connecting to the server.<br>Please try again.</p>`;
+                    formDiv.innerHTML=`<h1 class="text-2xl font-bold mb-4 text-white">Error!</h1><p class="text-lg mb-4 text-gray-300">${errorMessage}</p>`;
                 }
             }catch(error){
                 console.error('Error submitting form:',error);
