@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eclipse of Eternity: Sign Up</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .form-div {
+            animation: expandForm 2s ease-out forwards;
+        }
+        .fade-in-opacity {
+            animation: fadeInOpacity 5s ease-out;
+        }
+        .terrain {
+            animation: fadeOutOpacity 5s ease-out;
+            opacity: 0.5;
+        }
+        .terrain {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            background-color: #2d2b2b;
+            clip-path: polygon(0% 100%, 20% 40%, 40% 50%, 60% 30%, 80% 50%, 100% 40%, 100% 100%);
+            z-index: -1;
+        }
+        @keyframes expandForm {
+            0% {
+                transform: scale(0.1);
+                opacity: 0;
+            }
+            30% {
+                transform: scale(0.9);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        @keyframes fadeInOpacity {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        @keyframes fadeOutOpacity {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0.5;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-b from-[#0d001a] via-[#0d001a] to-black text-white flex items-center justify-center">
+    <div class="terrain"></div>
+    <div class="fade-in-opacity absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-red-700 to-transparent z-0"></div>
+    <div class="form-div z-10 bg-white/5 backdrop-blur-lg p-8 rounded-2xl shadow-lg w-full max-w-md text-center border border-white/10">
+        <h1 class="text-2xl font-bold mb-4 text-white">Eclipse of Eternity: Sign Up</h1>
+        <p class="text-lg mb-4 text-gray-300">Your legend begins, new adventurer...</p>
+        <form>
+            <input placeholder="Traveler name (optional)" class="mb-2 w-full p-3 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-red-500" required/>
+            <input type="email" placeholder="Email address" class="mt-1 w-full p-3 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-red-500" required/>
+            <button type="submit" class="border border-gray-500 mt-4 w-full bg-red-600 hover:bg-red-700 transition text-white font-semibold py-2 px-4 rounded-lg">Enter Realm</button>
+        </form>
+    </div>
+</body>
+</html>

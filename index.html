@@ -8,6 +8,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        .home-link, .home-link:hover, .home-link:focus {
+            text-decoration: none !important;
+        }
+        .home-link {
+            border-radius: 9999px;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+        .home-link:hover, .home-link:focus {
+            transform: scale(1.05);
+        }
+        .home-link:active {
+            transform: scale(0.8);
+        }
         .smalltext {
             font-size: 12px;
             display: inline;
@@ -47,6 +61,9 @@
             box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
             transform: scale(0.9);
         }
+        .nav-button-usable:active {
+            transform: scale(0.75) !important;
+        }
         #custom-tooltip {
             font-size: 14px;
             background-color: black;
@@ -69,13 +86,17 @@
     <!-- Desktop Navigation (hidden on mobile) -->
     <nav class="bg-white shadow-md p-4 sticky top-0 z-50 hidden md:block">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <h1 class="text-2xl font-bold">Pi = 3.14...</h1>
+            <a href="" class="home-link inline-block hover:border-2 hover:px-3 hover:py-1">
+                <h1 class="text-2xl font-bold cursor-pointer">
+                    Pi = 3.14...
+                </h1>
+            </a>
             <ul id="desktop-nav" class="flex space-x-2 overflow-auto">
-                <li><a href="idea/index.html" class="nav-button px-4 py-2 rounded-2xl bg-gradient-to-r from-blue-500 to-indigo-500 text-white">Idea to App</a></li>
-                <li><a href="https://eclipseofeternity.online" class="nav-button px-4 py-2 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 text-white">Eclipse of Eternity</a></li>
-                <li><a href="tutoring/index.html" class="nav-button px-4 py-2 rounded-2xl bg-gradient-to-r from-green-500 to-teal-500 text-white">Coding Tutoring</a></li>
-                <li><a href="job/index.html" class="nav-button px-4 py-2 rounded-2xl bg-gradient-to-r from-yellow-500 to-orange-500 text-white">Get a Coding Job</a></li>
-                <li><a href="amazon/index.html" class="nav-button px-4 py-2 rounded-2xl bg-gradient-to-r from-red-500 to-pink-500 text-white">Amazon Store</a></li>
+                <li><a href="idea/index.html" class="nav-button nav-button-usable px-4 py-2 rounded-2xl bg-gradient-to-r from-blue-500 to-indigo-500 text-white">Idea to App</a></li>
+                <li><a href="https://eclipseofeternity.online" class="nav-button nav-button-usable px-4 py-2 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 text-white">Eclipse of Eternity</a></li>
+                <li><a href="tutoring/index.html" class="nav-button nav-button-usable px-4 py-2 rounded-2xl bg-gradient-to-r from-green-500 to-teal-500 text-white">Coding Tutoring</a></li>
+                <li><a href="job/index.html" class="nav-button nav-button-usable px-4 py-2 rounded-2xl bg-gradient-to-r from-yellow-500 to-orange-500 text-white">Get a Coding Job</a></li>
+                <li><a href="amazon/index.html" class="nav-button nav-button-usable px-4 py-2 rounded-2xl bg-gradient-to-r from-red-500 to-pink-500 text-white">Amazon Store</a></li>
             </ul>
         </div>
     </nav>
