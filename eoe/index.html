@@ -300,7 +300,8 @@
                     },
                     body: JSON.stringify(data)
                 });
-                if(true /*!response.ok*/){
+                throw new Error("Server is not currently operational.");
+                if(!response.ok){
                     const errorData=await response.json();
                     let errorMessage='An error occurred when connecting to the server. Please try again.';
                     if(errorData.error){
@@ -325,6 +326,7 @@
                 formDiv.innerHTML=`<h1 class="text-2xl font-bold mb-4 text-white">Error!</h1><p class="text-lg mb-4 text-gray-300">Could not connect to the server.<br>Please try again later.</p>`;
             }
         }
+        alert("We are aware of an issue that's causing the server to think it's operational, but there is currently no backend. Accounts cannot be created at this time. Please try again later.");
         send_data(data);
     });
 </script>
