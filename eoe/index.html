@@ -300,7 +300,7 @@
                     },
                     body: JSON.stringify(data)
                 });
-                if(!response.ok){
+                if(true /*!response.ok*/){
                     const errorData=await response.json();
                     let errorMessage='An error occurred when connecting to the server. Please try again.';
                     if(errorData.error){
