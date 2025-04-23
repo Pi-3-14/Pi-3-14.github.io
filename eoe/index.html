@@ -284,7 +284,7 @@
         const formDiv=document.getElementById('form-div');
         formDiv.classList.add('fade-out-opacity');
         let successTimeout=setTimeout(()=>{
-            formDiv.innerHTML=`<h1 class="text-2xl font-bold mb-4 text-white">Welcome to Eclispe of Eternity.</h1><p class="text-lg mb-4 text-gray-300">You've reserved your spot.<br>You will receive an email when your account is ready for creation.</p>`;
+            formDiv.innerHTML=`<h1 class="text-2xl font-bold mb-4 text-white">Error!</h1><p class="text-lg mb-4 text-gray-300">We are aware of an issue that's causing the server to think it's operational, but there is currently no backend. Accounts cannot be created at this time. Please try again later.</p>`;
         },2000);
         const form=e.target;
         const data={
