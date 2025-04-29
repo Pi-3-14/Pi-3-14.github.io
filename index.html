@@ -83,8 +83,7 @@
 </head>
 
 <body class="bg-gray-100 text-gray-800 font-sans">
-
-    <!-- Desktop Navigation (hidden on mobile) -->
+    <a href="#main" onclick="document.getElementById('first-link-in-main-content').focus();" class="sr-only focus:not-sr-only absolute left-4 top-4 bg-white text-black font-bold px-4 py-2 rounded shadow z-50">Skip to main content</a>    <!-- Desktop Navigation (hidden on mobile) -->
     <nav class="bg-white shadow-md p-4 sticky top-0 z-50 hidden md:block">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <a href="" class="home-link inline-block hover:border-2 hover:px-3 hover:py-1">
@@ -106,7 +105,7 @@
     </div>
 
     <!-- Desktop Profile Section -->
-    <section class="hidden md:flex max-w-3xl mx-auto px-4 py-12 flex-col md:flex-row items-start gap-8">
+    <section id="#main" class="hidden md:flex max-w-3xl mx-auto px-4 py-12 flex-col md:flex-row items-start gap-8">
         <div class="w-full md:w-1/2 flex flex-col items-center">
         <div class="relative w-full aspect-[3/4] rounded-2xl shadow-md overflow-hidden max-w-[250px]">
             <img src="Profile_Real.png" alt="Real Profile" class="absolute top-0 left-0 w-full h-full object-cover pointer-events-none select-none z-0" />
@@ -129,7 +128,7 @@
                 I'm a multi-disciplinary developer, entrepreneur, and tutor. Whether you're looking to bring your app idea to life, level up your coding skills, or explore new game worlds—I've got something for you.
             </p>
             <div class="flex space-x-4">
-                <a href="https://github.com/Pi-3-14" class="text-blue-600 hover:text-blue-800"><i id="github-link" class="fab fa-github fa-2x"></i></a>
+                <a id="first-link-in-main-content" href="https://github.com/Pi-3-14" class="text-blue-600 hover:text-blue-800"><i id="github-link" class="fab fa-github fa-2x"></i></a>
                 <a href="https://youtube.com/@Coding_Blink" class="text-pink-500 hover:text-pink-700"><i id="youtube-link" class="fab fa-youtube fa-2x"></i></a>
                 <a href="mailto:eclipseofeternityofficial@gmail.com" class="text-gray-600 hover:text-gray-800"><i id="mail-link" class="fas fa-envelope fa-2x"></i></a>
             </div>
