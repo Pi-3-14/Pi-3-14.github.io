@@ -6,106 +6,7 @@
     <title>Pi | Personal Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        .smalltext {
-            font-size: 12px;
-            display: inline;
-        }
-        aside {
-            font-style: italic;
-            font-size: 14px;
-        }
-        a {
-            font-weight: bold;
-        }
-        .mobile-link {
-            border-color: inherit;
-            border-radius: 3px;
-            border: 1px solid;
-            margin-left: 30%;
-            margin-right: 30%;
-        }
-        .nav-button {
-            display: inline-block;
-            color: white;
-            font-weight: bold;
-            padding: 0.75rem 1.25rem;
-            font-size: 1rem;
-            border-radius: 9999px;
-            min-width: 140px;
-            min-height: 44px;
-            text-align: center;
-            white-space: nowrap;
-            transition: all 0.3s ease;
-            box-sizing: border-box;
-            transform: scale(0.85);
-        }
-        .home-link, .home-link:hover, .home-link:focus {
-            text-decoration: none !important;
-        }
-        .home-link {
-            border-radius: 9999px;
-            transition: all 0.3s ease;
-            box-sizing: border-box;
-        }
-        .home-link:hover, .home-link:focus {
-            transform: scale(1.05);
-        }
-        .home-link:active {
-            transform: scale(0.8);
-        }
-        .nav-button-usable:active {
-            transform: scale(0.75) !important;
-        }
-        .nav-button:hover,
-        .nav-button:focus {
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
-            transform: scale(0.9);
-        }
-        .buy-button:active {
-            transform: scale(0.75) !important;
-        }
-        .buy-button:hover,
-        .buy-button:focus {
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
-            transform: scale(0.9);
-        }
-        .buy-button {
-            transition: all 0.3s ease;
-        }
-
-        .shake {
-            animation: shake-animation 0.25s ease-in-out;
-        }
-
-        @keyframes shake-animation {
-            0% { transform: translateX(0) scale(0.9); }
-            25% { transform: translateX(-3px) scale(0.9); }
-            50% { transform: translateX(3px) scale(0.9); }
-            75% { transform: translateX(-3px) scale(0.9); }
-            100% { transform: translateX(0) scale(0.9); }
-        }
-
-        #popup-message {
-            pointer-events: none;
-        }
-
-        @keyframes floatDownFade {
-            0% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(40px);
-                opacity: 0;
-            }
-        }
-
-        .animate-float-down {
-            animation: floatDownFade 0.7s ease-out forwards;
-        }
-    </style>
+    <link rel="stylesheet" href="../style.css">
 </head>
 
 <body class="bg-gray-100 text-gray-800 font-sans">
@@ -114,19 +15,24 @@
     <nav class="bg-white shadow-md p-4 sticky top-0 z-50 hidden md:block">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <a href="../index.html" class="home-link inline-block hover:border-2 hover:px-3 hover:py-1">
-                <h1 class="text-2xl font-bold cursor-pointer">
-                    Pi = 3.14...
+                <h1 class="logo text-2xl font-bold cursor-pointer">
+                    <div class="eyes">
+                        <p class="eye inline-block">
+                            &gt;
+                        </p>
+                        _
+                        <p class="eye inline-block">
+                            &lt;
+                        </p>
+                    </div>
                 </h1>
             </a>
             <ul id="desktop-nav" class="flex space-x-2 overflow-auto">
-                <li>
-                    <a href="" id="idea-button" class="nav-button px-4 py-2 rounded-2xl bg-gradient-to-r from-blue-500 to-indigo-500 text-white">
-                        Idea to App
-                    </a>
+                <li><a href="../idea/index.html" id="current-nav-button" class="nav-button px-4 py-2 rounded-2xl bg-gradient-to-r from-blue-500 to-indigo-500 text-white">Idea to App</a>
+                    <div id="popup-message" class="absolute hidden translate-x-3 translate-y-[-12px] text-center text-lg font-semibold text-red-800 mt-2 duration-300">
+                        Already there!
+                    </div>
                 </li>
-                <div id="popup-message" class="absolute hidden translate-y-8 text-center text-lg font-semibold text-red-800 mt-2 duration-300">
-                    Already there!
-                </div>
                 <li><a href="https://eclipseofeternity.online" class="nav-button nav-button-usable px-4 py-2 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 text-white">Eclipse of Eternity</a></li>
                 <li><a href="../tutoring/index.html" class="nav-button nav-button-usable px-4 py-2 rounded-2xl bg-gradient-to-r from-green-500 to-teal-500 text-white">Coding Tutoring</a></li>
                 <li><a href="../job/index.html" class="nav-button nav-button-usable px-4 py-2 rounded-2xl bg-gradient-to-r from-yellow-500 to-orange-500 text-white">Get a Coding Job</a></li>
@@ -161,7 +67,7 @@
     </section>
 
     <!-- === PLATFORM PRICING & DETAILS === -->
-    <section class="py-16 px-4 md:px-0">
+    <section class="py-16 px-4 md:px-0 main-section">
         <div class="max-w-6xl mx-auto">
             <div class="flex items-center justify-between mb-12">
                 <div class="flex-1"></div>
@@ -212,7 +118,7 @@
 
                 <!-- Detail Box -->
                 <div class="w-full md:w-1/3 bg-blue-50 rounded-lg shadow-md p-6 flex flex-col justify-center">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">What’s Included</h3>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">What's Included</h3>
                     <ul class="list-disc pl-5 space-y-2 text-gray-700 text-lg">
                         <li>Free 30-minute consultation</li>
                         <li>Flexible schedule & pricing</li>
@@ -263,77 +169,8 @@
             </div>
         </div>
     </section>
-
+    <script src="../smartzoom.js"></script>
     <script>
-        const statNames = ["Attack", "Defense", "Power", "Speed", "Agility", "Intelligence", "Mana", "Luck", "Wisdom", "Charisma", "Stealth", "Durability", "Precision", "Energy", "Resilience", "Magic Resistance", "Critical Chance", "Focus", "Endurance", "Dexterity", "Creativity", "Willpower", "Range", "Cooldown Reduction", "Difficulty"];
-
-        const loreSnippets = [
-            "Forged in ancient servers.",
-            "Crafted by digital mages.",
-            "Legacy of forgotten coders.",
-            "Infused with AI spirit.",
-            "Once lost in a merge conflict.",
-            "Spoken of in 0s and 1s.",
-            "Only compiles under a blood moon.",
-            "Documented in cryptic Markdown.",
-            "Passed through countless Git clones.",
-            "Cursed by unresolved dependencies.",
-            "Whispered of in Stack Overflow legends.",
-            "Powered by caffeine and chaos.",
-            "Compiled from forbidden syntax.",
-            "Echoes of legacy systems remain.",
-            "Optimized by the ancients.",
-            "Guarded by unit tests of old.",
-            "Saved seconds before a crash.",
-            "Recovered from a corrupted commit.",
-            "Once part of a forgotten framework.",
-            "Blessed by the merge fairy.",
-            "Refactored under duress.",
-            "Deployed at midnight.",
-            "Once top-secret open source.",
-            "Encoded with quantum bits.",
-            "Discovered in ancient changelogs."
-        ];
-
-        const MIN_ZOOM = 0.3;
-        const ZOOM_STEP = 0.05;
-
-        function applyZoom(zoom) {
-            document.body.style.zoom = zoom;
-        }
-
-        function checkNavOverflow() {
-            const nav = document.getElementById('desktop-nav');
-            return nav.scrollWidth > nav.clientWidth;
-        }
-
-        function zoomOutUntilFits() {
-            let currentZoom = Number(document.body.style.zoom) || 1;
-
-            function tryZoomOut() {
-                if (!checkNavOverflow() || currentZoom <= MIN_ZOOM) {
-                    return;
-                }
-
-                currentZoom -= ZOOM_STEP;
-                currentZoom = Math.max(currentZoom, MIN_ZOOM);
-                applyZoom(currentZoom);
-
-                setTimeout(tryZoomOut, 100);
-            }
-
-            tryZoomOut();
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            // Apply zoom only if there's overflow
-            if (checkNavOverflow()) {
-                zoomOutUntilFits();
-            }
-
-            window.addEventListener('resize', function() { document.body.style.zoom = 1; zoomOutUntilFits(); });
-        });
-        zoomOutUntilFits();
         const projects = [
             
         ];
@@ -361,41 +198,49 @@
       `;
             container.appendChild(card);
         });
-        const ideaButton = document.getElementById('idea-button');
+        const currentPageButton = document.getElementById('current-nav-button');
         const popupMessage = document.getElementById('popup-message');
 
         let timeoutHandle = undefined;
 
-        ideaButton.addEventListener('click', (e) => {
+        currentPageButton.addEventListener('click', (e) => {
             e.preventDefault();
-            ideaButton.classList.add('shake');
-            ideaButton.classList.remove('bg-gradient-to-r', 'from-blue-500', 'to-indigo-500');
-            ideaButton.classList.add('bg-red-500');
+            currentPageButton.classList.add('shake');
+            currentPageButton.classList.remove('bg-gradient-to-r', 'from-blue-500', 'to-indigo-500');
+            currentPageButton.classList.add('bg-red-500');
             popupMessage.classList.remove('hidden');
             popupMessage.classList.add('animate-float-down');
             setTimeout(() => {
-                ideaButton.classList.remove('shake');
+                currentPageButton.classList.remove('shake');
             }, 500);
             if (timeoutHandle != undefined) {
                 clearTimeout(timeoutHandle);
             }
             timeoutHandle = setTimeout(() => {
                 popupMessage.classList.add('hidden');
-                ideaButton.classList.remove('bg-red-500');
-                ideaButton.classList.add('bg-gradient-to-r');
-                ideaButton.classList.add('from-blue-500');
-                ideaButton.classList.add('to-indigo-500');
+                currentPageButton.classList.remove('bg-red-500');
+                currentPageButton.classList.add('bg-gradient-to-r');
+                currentPageButton.classList.add('from-blue-500');
+                currentPageButton.classList.add('to-indigo-500');
             }, 1000);
         });
         popupMessage.addEventListener('animationend', () => {
             popupMessage.classList.add('hidden');
             popupMessage.classList.remove('animate-float-down');
         });
+        if (location.hostname === 'pi-3-14.github.io') {
+            const bar = document.createElement('div');
+            bar.style.cssText =
+            'background:#fffae6;color:#222;padding:12px 16px;font-family:sans-serif;text-align:center;padding-top:5rem;padding-bottom:5rem;';
+            bar.innerHTML =
+            'We\'re moving! The new permanent address is <a href="https://codingblink.com" style="text-decoration: underline !important;">codingblink.com</a>. Please update your bookmark. <a href="https://codingblink.com">Take me to the new page!</a>';
+            document.body.prepend(bar);
+        }
     </script>
 
     <!-- Footer -->
     <footer class="bg-gray-200 text-center py-6 mt-10">
-        <p class="text-gray-600">&copy; 2025 pi-3-14. All rights reserved.</p>
+        <p class="text-gray-600">&copy; 2025 codingblink.com. All rights reserved.</p>
     </footer>
 </body>
 

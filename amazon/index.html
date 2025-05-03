@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Under Construction!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <!-- Desktop Navigation (hidden on mobile) -->
+    <nav class="bg-white shadow-md p-4 sticky top-0 z-50 hidden md:block">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="../index.html" class="home-link inline-block hover:border-2 hover:px-3 hover:py-1">
+                <h1 class="logo text-2xl font-bold cursor-pointer">
+                    <div class="eyes">
+                        <p class="eye inline-block">
+                            &gt;
+                        </p>
+                        _
+                        <p class="eye inline-block">
+                            &lt;
+                        </p>
+                    </div>
+                </h1>
+            </a>
+            <ul id="desktop-nav" class="flex space-x-2 overflow-auto">
+                <li><a href="../idea/index.html" class="nav-button px-4 py-2 rounded-2xl bg-gradient-to-r from-blue-500 to-indigo-500 text-white">Idea to App</a></li>
+                <li><a href="https://eclipseofeternity.online" class="nav-button nav-button-usable px-4 py-2 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 text-white">Eclipse of Eternity</a></li>
+                <li><a href="../tutoring/index.html" class="nav-button nav-button-usable px-4 py-2 rounded-2xl bg-gradient-to-r from-green-500 to-teal-500 text-white">Coding Tutoring</a></li>
+                <li><a href="../job/index.html" class="nav-button nav-button-usable px-4 py-2 rounded-2xl bg-gradient-to-r from-yellow-500 to-orange-500 text-white">Get a Coding Job</a></li>
+                <li><a href="../amazon/index.html" id="current-nav-button" class="nav-button nav-button-usable px-4 py-2 rounded-2xl bg-gradient-to-r from-red-500 to-pink-500 text-white">Amazon Store</a>
+                    <div id="popup-message" class="absolute hidden translate-x-3 translate-y-[-12px] text-center text-lg font-semibold text-red-800 mt-2 duration-300">
+                        Already there!
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- === MOBILE VIEW === -->
+    <section class="block md:hidden max-w-xl mx-auto px-4 py-10">
+        <div class="text-center">
+            <a href="../index.html" class="nav-button nav-button-usable px-6 py-3 rounded-2xl bg-gradient-to-r from-blue-500 to-indigo-500 text-white text-lg shadow-md">
+                Back to Main
+            </a>
+        </div>
+    </section>
+
+    <!-- Under Construction Banner -->
+    <div class="bg-yellow-100 border-b-4 border-yellow-400 text-yellow-800 px-4 py-2 flex items-center text-sm font-medium">
+        <span class="mr-2">🚧</span>
+        This webpage is under construction — data is subject to change.
+    </div>
+
+
+    <!-- === INTRODUCTION BOX === -->
+    <section class="bg-blue-100 py-12">
+        <div class="max-w-6xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-semibold text-gray-800 mb-4">
+                Page is currently under construction. Please come back later.
+            </h2>
+        </div>
+    </section>
+
+    <!-- === INSERT SECTION TITLE HERE === -->
+    <section class="py-16 px-4 md:px-0 main-section">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex items-center justify-between mb-12">
+                <p class="text-gray-500">There is no content to display.<br><a href="../index.html">Back to homepage</a></p>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-200 text-center py-6 mt-10">
+        <p class="text-gray-600">&copy; 2025 codingblink.com. All rights reserved.</p>
+    </footer>
+    <script src="../smartzoom.js"></script>
+    <script>
+        const currentPageButton = document.getElementById('current-nav-button');
+        const popupMessage = document.getElementById('popup-message');
+
+        let timeoutHandle = undefined;
+
+        currentPageButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            currentPageButton.classList.add('shake');
+            currentPageButton.classList.remove('bg-gradient-to-r', 'from-blue-500', 'to-indigo-500');
+            currentPageButton.classList.add('bg-red-500');
+            popupMessage.classList.remove('hidden');
+            popupMessage.classList.add('animate-float-down');
+            setTimeout(() => {
+                currentPageButton.classList.remove('shake');
+            }, 500);
+            if (timeoutHandle != undefined) {
+                clearTimeout(timeoutHandle);
+            }
+            timeoutHandle = setTimeout(() => {
+                popupMessage.classList.add('hidden');
+                currentPageButton.classList.remove('bg-red-500');
+                currentPageButton.classList.add('bg-gradient-to-r');
+                currentPageButton.classList.add('from-blue-500');
+                currentPageButton.classList.add('to-indigo-500');
+            }, 1000);
+        });
+        popupMessage.addEventListener('animationend', () => {
+            popupMessage.classList.add('hidden');
+            popupMessage.classList.remove('animate-float-down');
+        });
+        if (location.hostname === 'pi-3-14.github.io') {
+            const bar = document.createElement('div');
+            bar.style.cssText =
+            'background:#fffae6;color:#222;padding:12px 16px;font-family:sans-serif;text-align:center;padding-top:5rem;padding-bottom:5rem;';
+            bar.innerHTML =
+            'We\'re moving! The new permanent address is <a href="https://codingblink.com" style="text-decoration: underline !important;">codingblink.com</a>. Please update your bookmark. <a href="https://codingblink.com">Take me to the new page!</a>';
+            document.body.prepend(bar);
+        }
+    </script>
+</body>

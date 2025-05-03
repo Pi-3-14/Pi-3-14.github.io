@@ -8,78 +8,7 @@
     <title>Pi | Personal Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        .home-link, .home-link:hover, .home-link:focus {
-            text-decoration: none !important;
-        }
-        .home-link {
-            border-radius: 9999px;
-            transition: all 0.3s ease;
-            box-sizing: border-box;
-        }
-        .home-link:hover, .home-link:focus {
-            transform: scale(1.05);
-        }
-        .home-link:active {
-            transform: scale(0.8);
-        }
-        .smalltext {
-            font-size: 12px;
-            display: inline;
-        }
-        aside {
-            font-style: italic;
-            font-size: 14px;
-        }
-        a {
-            font-weight: bold;
-        }
-        .mobile-link {
-            border-color: inherit;
-            border-radius: 3px;
-            border: 1px solid;
-            margin-left: 30%;
-            margin-right: 30%;
-        }
-        .nav-button {
-            display: inline-block;
-            color: white;
-            font-weight: bold;
-            padding: 0.75rem 1.25rem;
-            font-size: 1rem;
-            border-radius: 9999px;
-            min-width: 140px;
-            min-height: 44px;
-            text-align: center;
-            white-space: nowrap;
-            transition: all 0.3s ease;
-            box-sizing: border-box;
-            transform: scale(0.85);
-        }
-        .nav-button:hover,
-        .nav-button:focus {
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
-            transform: scale(0.9);
-        }
-        .nav-button-usable:active {
-            transform: scale(0.75) !important;
-        }
-        #custom-tooltip {
-            font-size: 14px;
-            background-color: black;
-            color: white;
-            border: 1px solid white;
-            border-radius: 4px;
-            padding: 4px 8px;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            opacity: 0;
-            transition: opacity 0.15s ease;
-            white-space: nowrap;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="bg-gray-100 text-gray-800 font-sans">
@@ -87,8 +16,16 @@
     <nav class="bg-white shadow-md p-4 sticky top-0 z-50 hidden md:block">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <a href="" class="home-link inline-block hover:border-2 hover:px-3 hover:py-1">
-                <h1 class="text-2xl font-bold cursor-pointer">
-                    Pi = 3.14...
+                <h1 class="logo text-2xl font-bold cursor-pointer">
+                    <div class="eyes">
+                        <p class="eye inline-block">
+                            &gt;
+                        </p>
+                        _
+                        <p class="eye inline-block">
+                            &lt;
+                        </p>
+                    </div>
                 </h1>
             </a>
             <ul id="desktop-nav" class="flex space-x-2 overflow-auto">
@@ -101,14 +38,14 @@
         </div>
     </nav>
 
-    <div id="custom-tooltip" class="pointer-events-none fixed z-50 px-3 py-1 bg-black text-white border border-white rounded-md text-sm whitespace-nowrap opacity-0 transition-opacity duration-150">
+    <div id="custom-tooltip" class="main-section pointer-events-none fixed z-50 px-3 py-1 bg-black text-white border border-white rounded-md text-sm whitespace-nowrap opacity-0 transition-opacity duration-150">
     </div>
 
     <!-- Desktop Profile Section -->
     <section id="#main" class="hidden md:flex max-w-3xl mx-auto px-4 py-12 flex-col md:flex-row items-start gap-8">
         <div class="w-full md:w-1/2 flex flex-col items-center">
         <div class="relative w-full aspect-[3/4] rounded-2xl shadow-md overflow-hidden max-w-[250px]">
-            <img src="Profile_Real.png" alt="Real Profile" class="absolute top-0 left-0 w-full h-full object-cover pointer-events-none select-none z-0" />
+            <img src="Profile_Real.png" alt="Real Profile" id="realImage" class="opacity-0 absolute top-0 left-0 w-full h-full object-cover pointer-events-none select-none z-0" />
             <img src="Profile_Anime.png" alt="Anime Profile" id="animeImage" class="absolute top-0 left-0 w-full h-full object-cover pointer-events-none select-none z-10" style="clip-path: inset(0 0 0 0);" />
         </div>
 
@@ -125,7 +62,7 @@
         <div class="w-full md:w-1/2">
             <h2 class="text-2xl font-bold mb-3">Hey! Call me Pi.</h2>
             <p class="text-base mb-4">
-                I'm a multi-disciplinary developer, entrepreneur, and tutor. Whether you're looking to bring your app idea to life, level up your coding skills, or explore new game worlds—I've got something for you.
+                Also known as Coding_Blink on YouTube, I'm a multi-disciplinary developer, entrepreneur, and tutor. Whether you're looking to bring your app idea to life, level up your coding skills, or explore new game worlds—I've got something for you.
             </p>
             <div class="flex space-x-4">
                 <a id="first-link-in-main-content" href="https://github.com/Pi-3-14" class="text-blue-600 hover:text-blue-800"><i id="github-link" class="fab fa-github fa-2x"></i></a>
@@ -158,7 +95,7 @@
     </section>
 
     <!-- === DESKTOP PROJECT CARDS === -->
-    <section class="hidden md:block bg-gray-100 py-16 px-4 md:px-0">
+    <section class="hidden md:block bg-gray-100 py-16 px-4 md:px-0 main-section">
         <div class="max-w-6xl mx-auto">
             <h2 class="text-4xl font-bold text-center mb-12">Projects & Ventures</h2>
             <div id="projectCards" class="space-y-8">
@@ -311,7 +248,7 @@
             if (checkNavOverflow()) {
                 zoomOutUntilFits();
             }
-
+            setTimeout(function() { document.getElementById("realImage").classList.remove("opacity-0"); }, 1000);
             window.addEventListener('resize', function() { document.body.style.zoom = 1; zoomOutUntilFits(); });
         });
         zoomOutUntilFits();
@@ -431,7 +368,7 @@
 
     <!-- Footer -->
     <footer class="bg-gray-200 text-center py-6 mt-10">
-        <p class="text-gray-600">&copy; 2025 pi-3-14. All rights reserved.</p>
+        <p class="text-gray-600">&copy; 2025 codingblink.com. All rights reserved.</p>
     </footer>
 </body>
 
