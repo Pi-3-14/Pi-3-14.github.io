@@ -419,6 +419,14 @@
             sliderThumb.style.left = `${thumbOffset}px`;
         })
         sliderThumb.style.left = `${slider.offsetWidth}px`;
+        if (location.hostname === 'pi-3-14.github.io') {
+            const bar = document.createElement('div');
+            bar.style.cssText =
+            'background:#fffae6;color:#222;padding:12px 16px;font-family:sans-serif;text-align:center;padding-top:5rem;padding-bottom:5rem;';
+            bar.innerHTML =
+            'We\'re moving! The new permanent address is <a href="https://codingblink.com" style="text-decoration: underline !important;">codingblink.com</a>. Please update your bookmark. <a href="https://codingblink.com">Take me to the new page!</a>';
+            document.body.prepend(bar);
+        }
     </script>
 
     <!-- Footer -->
