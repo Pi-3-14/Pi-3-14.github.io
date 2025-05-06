@@ -1,4 +1,4 @@
-The following license applies to the Eclipse of Eternity website, which is a part of my profile's website.
+The following license applies to codingblink.com, eclipseofeternity.online, any subdomains or sites hosted under these domains (including this website), and any software stored on or distributed from those domains.
 
 
 This license applies to the internal code of this website:
