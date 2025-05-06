@@ -1,0 +1,23 @@
+Proprietary Content License
+
+The following license applies to codingblink.com, eclipseofeternity.online, any subdomains or sites hosted under these domains (including this website), and any software stored on or distributed from those domains:
+© Eclipse of Eternity, 2025. All Rights Reserved.
+
+All websites, apps, programs, code (including HTML, CSS, JavaScript, backend scripts), and assets that are not user-generated may not be copied, modified, or distributed without explicit permission from Eclipse of Eternity.
+
+---
+
+User-Generated Content License
+
+This license applies to user-generated content on this website, including blog posts, images, and other contributions:
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+User-generated content remains the property of its creators but is licensed under the Creative Commons Attribution 4.0 International License. You are free to share, redistribute, remix, and build upon this content for any purpose, including commercial use, as long as you provide appropriate attribution.
+Full license details: https://creativecommons.org/licenses/by/4.0/
+
+---
+
+Asset Licensing Clarifications
+
+Some assets used within this game (or other content on the site) may be subject to external licenses with restrictions. These assets are properly licensed for use within the game and its distribution, but the individual asset’s license may take precedence over the proprietary license outlined above.
+For Eclipse of Eternity, please consult the asset’s full license for specific usage rights and any restrictions, which may be available on our legal page: https://eclipseofeternity.online/legal.html
