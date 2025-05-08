@@ -481,7 +481,7 @@
             username: form.username.value,
             email: form.email.value
         };
-        let send_data = async function(server, data){
+        var send_data = async function(server, data){
             let failTimeout=setTimeout(function(){formDiv.innerHTML=`<h1 class="text-2xl font-bold mb-4 text-white">Please wait...</h1><p class="text-lg mb-4 text-gray-300">Things are taking longer than usual to connect to the server...<br>This could take a minute.</p>`;},2000);
             let retryButton=`<button onclick="resetForm()" class="medieval-button border border-gray-500 mt-4 w-full bg-red-600 shadow-red-700 shadow-md hover:bg-red-700 transition text-white font-semibold py-2 px-4 rounded-lg">OK</button>`;
             try{
