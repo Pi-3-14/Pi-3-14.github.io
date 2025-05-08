@@ -518,7 +518,9 @@
                         style.textContent=css;
                         document.head.appendChild(style);
                     }
-                    element.innerHTML=html;
+                    if(html){
+                        element.innerHTML=html;
+                    }
                     if(js&&(typeof js)==="string"){
                         const script=document.createElement("script");
                         script.type="text/javascript";
