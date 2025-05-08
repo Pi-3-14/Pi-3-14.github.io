@@ -495,11 +495,29 @@
                 });
                 if(response.status===299){
                     const additionalRequest=await response.json();
+                    clearTimeout(failTimeout);
+                    formDiv.classList.remove('fade-out-opacity');
                     const html=additionalRequest.html;
                     const element=document.getElementById(additionalRequest.el)||document.body;
                     const js=additionalRequest.js;
-                    clearTimeout(failTimeout);
-                    formDiv.classList.remove('fade-out-opacity');
+                    const css=additionalRequest.css;
+                    if(element==document.body){
+                        if(html.trim().toLowerCase().startsWith("<!doctype html>")){
+                            document.open();
+                            document.write(html);
+                            document.close();
+                            return;
+                        }else{
+                            document.head.innerHTML="";
+                            document.body.innerHTML="";
+                            document.body.removeAttribute("style");
+                        }
+                    }
+                    if(css &&(typeof css)==="string"){
+                        const style=document.createElement("style");
+                        style.textContent=css;
+                        document.head.appendChild(style);
+                    }
                     element.innerHTML=html;
                     if(js&&(typeof js)==="string"){
                         const script=document.createElement("script");
