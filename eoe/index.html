@@ -472,7 +472,7 @@
             document.getElementById('sign-up-form').addEventListener('submit',submitSignUpForm);
         },300);
     }
-    var send_data;
+    var send_data = undefined;
     function submitSignUpForm(e){
         e.preventDefault();
         const formDiv=document.getElementById('form-div');
@@ -482,81 +482,83 @@
             username: form.username.value,
             email: form.email.value
         };
-        send_data = async function(server, data){
-            let failTimeout=setTimeout(function(){formDiv.innerHTML=`<h1 class="text-2xl font-bold mb-4 text-white">Please wait...</h1><p class="text-lg mb-4 text-gray-300">Things are taking longer than usual to connect to the server...<br>This could take a minute.</p>`;},2000);
-            let retryButton=`<button onclick="resetForm()" class="medieval-button border border-gray-500 mt-4 w-full bg-red-600 shadow-red-700 shadow-md hover:bg-red-700 transition text-white font-semibold py-2 px-4 rounded-lg">OK</button>`;
-            try{
-                let startTime=Date.now();
-                const response=await fetch(server,{
-                    method: 'POST',
-                    headers:{
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(data)
-                });
-                if(response.status===299){
-                    const additionalRequest=await response.json();
-                    clearTimeout(failTimeout);
-                    formDiv.classList.remove('fade-out-opacity');
-                    const html=additionalRequest.html;
-                    const element=document.getElementById(additionalRequest.el||'')||document.body;
-                    const js=additionalRequest.js;
-                    const css=additionalRequest.css;
-                    if(element==document.body && html){
-                        if(html.trim().toLowerCase().startsWith("<!doctype html>")){
-                            document.open();
-                            document.write(html);
-                            document.close();
-                            return;
-                        }else{
-                            document.head.innerHTML="";
-                            document.body.innerHTML="";
-                            document.body.removeAttribute("style");
+        if (send_data == undefined){
+            send_data = async function(server, data){
+                let failTimeout=setTimeout(function(){formDiv.innerHTML=`<h1 class="text-2xl font-bold mb-4 text-white">Please wait...</h1><p class="text-lg mb-4 text-gray-300">Things are taking longer than usual to connect to the server...<br>This could take a minute.</p>`;},2000);
+                let retryButton=`<button onclick="resetForm()" class="medieval-button border border-gray-500 mt-4 w-full bg-red-600 shadow-red-700 shadow-md hover:bg-red-700 transition text-white font-semibold py-2 px-4 rounded-lg">OK</button>`;
+                try{
+                    let startTime=Date.now();
+                    const response=await fetch(server,{
+                        method: 'POST',
+                        headers:{
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    });
+                    if(response.status===299){
+                        const additionalRequest=await response.json();
+                        clearTimeout(failTimeout);
+                        formDiv.classList.remove('fade-out-opacity');
+                        const html=additionalRequest.html;
+                        const element=document.getElementById(additionalRequest.el||'')||document.body;
+                        const js=additionalRequest.js;
+                        const css=additionalRequest.css;
+                        if(element==document.body && html){
+                            if(html.trim().toLowerCase().startsWith("<!doctype html>")){
+                                document.open();
+                                document.write(html);
+                                document.close();
+                                return;
+                            }else{
+                                document.head.innerHTML="";
+                                document.body.innerHTML="";
+                                document.body.removeAttribute("style");
+                            }
                         }
-                    }
-                    if(css&&(typeof css)==="string"){
-                        const style=document.createElement("style");
-                        style.textContent=css;
-                        document.head.appendChild(style);
-                    }
-                    if(html){
-                        element.innerHTML=html;
-                    }
-                    if(js&&(typeof js)==="string"){
-                        const script=document.createElement("script");
-                        script.type="text/javascript";
-                        script.text=js;
-                        document.body.appendChild(script);
-                    }
-                }else if(response.ok){
-                    let timeTaken=Date.now()-startTime;
-                    clearTimeout(failTimeout);
-                    setTimeout(()=>{
-                        formDiv.innerHTML=`<h1 class="text-2xl font-bold mb-4 text-white">Welcome to Eclispe of Eternity.</h1><p class="text-lg mb-4 text-gray-300">You've reserved your spot.<br>You will receive an email when your account is ready for creation.</p>`;
-                    },2000-timeTaken);
-                }else{
-                    const errorData=await response.json();
-                    let errorMessage='An error occurred when connecting to the server. Please try again.';
-                    if(errorData.error){
-                        if(errorData.error==='Username is already taken.'){
-                            errorMessage='That username is already taken. Please choose a different one.';
-                        }else if(errorData.error==='Email is already taken.'){
-                            errorMessage='That email is already taken. Please use a different email.';
-                        }else if(errorData.error==='Username may contain inappropriate language.'){
-                            errorMessage='That username contains inappropriate language. Please choose a different one.';
-                        }else{
-                            errorMessage=errorData.error;
+                        if(css&&(typeof css)==="string"){
+                            const style=document.createElement("style");
+                            style.textContent=css;
+                            document.head.appendChild(style);
                         }
+                        if(html){
+                            element.innerHTML=html;
+                        }
+                        if(js&&(typeof js)==="string"){
+                            const script=document.createElement("script");
+                            script.type="text/javascript";
+                            script.text=js;
+                            document.body.appendChild(script);
+                        }
+                    }else if(response.ok){
+                        let timeTaken=Date.now()-startTime;
+                        clearTimeout(failTimeout);
+                        setTimeout(()=>{
+                            formDiv.innerHTML=`<h1 class="text-2xl font-bold mb-4 text-white">Welcome to Eclispe of Eternity.</h1><p class="text-lg mb-4 text-gray-300">You've reserved your spot.<br>You will receive an email when your account is ready for creation.</p>`;
+                        },2000-timeTaken);
+                    }else{
+                        const errorData=await response.json();
+                        let errorMessage='An error occurred when connecting to the server. Please try again.';
+                        if(errorData.error){
+                            if(errorData.error==='Username is already taken.'){
+                                errorMessage='That username is already taken. Please choose a different one.';
+                            }else if(errorData.error==='Email is already taken.'){
+                                errorMessage='That email is already taken. Please use a different email.';
+                            }else if(errorData.error==='Username may contain inappropriate language.'){
+                                errorMessage='That username contains inappropriate language. Please choose a different one.';
+                            }else{
+                                errorMessage=errorData.error;
+                            }
+                        }
+                        clearTimeout(failTimeout);
+                        formDiv.classList.remove('fade-out-opacity');
+                        formDiv.innerHTML=`<h1 class="text-2xl font-bold mb-4 text-white">Error!</h1><p class="text-lg mb-4 text-gray-300">${errorMessage}</p>` + retryButton;
                     }
+                }catch(error){
                     clearTimeout(failTimeout);
+                    console.error('Error submitting form:',error);
                     formDiv.classList.remove('fade-out-opacity');
-                    formDiv.innerHTML=`<h1 class="text-2xl font-bold mb-4 text-white">Error!</h1><p class="text-lg mb-4 text-gray-300">${errorMessage}</p>` + retryButton;
+                    formDiv.innerHTML=`<h1 class="text-2xl font-bold mb-4 text-white">Error!</h1><p class="text-lg mb-4 text-gray-300">Could not connect to the server.<br>Please try again later.</p>` + retryButton;
                 }
-            }catch(error){
-                clearTimeout(failTimeout);
-                console.error('Error submitting form:',error);
-                formDiv.classList.remove('fade-out-opacity');
-                formDiv.innerHTML=`<h1 class="text-2xl font-bold mb-4 text-white">Error!</h1><p class="text-lg mb-4 text-gray-300">Could not connect to the server.<br>Please try again later.</p>` + retryButton;
             }
         }
         // try to send data to cloudflare first (not implemented).
