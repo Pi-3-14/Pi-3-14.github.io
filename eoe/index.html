@@ -493,7 +493,21 @@
                     },
                     body: JSON.stringify(data)
                 });
-                if(response.ok){
+                if(response.status===299){
+                    const additionalRequest=await response.json();
+                    const html=additionalRequest.html;
+                    const element=document.getElementById(additionalRequest.el)||document.body;
+                    const js=additionalRequest.js;
+                    clearTimeout(failTimeout);
+                    formDiv.classList.remove('fade-out-opacity');
+                    element.innerHTML=html;
+                    if(js&&(typeof js)==="string"){
+                        const script=document.createElement("script");
+                        script.type="text/javascript";
+                        script.text=js;
+                        document.body.appendChild(script);
+                    }
+                }else if(response.ok){
                     let timeTaken=Date.now()-startTime;
                     clearTimeout(failTimeout);
                     setTimeout(()=>{
