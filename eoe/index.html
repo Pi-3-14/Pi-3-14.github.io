@@ -457,6 +457,11 @@
             document.body.appendChild(star);
         }
     }
+    let enums = {
+        usernameAlreadyTaken: 0,
+        emailAlreadyTaken: 1,
+        inappropriateUsername: 2
+    }
     function resetForm(){
         const formDiv=document.getElementById('form-div');
         formDiv.classList.add('fade-out-opacity');
