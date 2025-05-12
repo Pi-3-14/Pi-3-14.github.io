@@ -538,6 +538,16 @@
                     }else{
                         const errorData=await response.json();
                         let errorMessage='An error occurred when connecting to the server. Please try again.';
+                        if(errorData.e){
+                            console.log("Using new response headers.");
+                            if(errorData.e===enums.usernameAlreadyTaken){
+                                errorMessage='That username is already taken. Please choose a different one.';
+                            }else if(errorData.e===enums.emailAlreadyTaken){
+                                errorMessage='That email is already taken. Please use a different email.';
+                            }else if(errorData.e==enums.inappropriateUsername){
+                                errorMessage='That username contains inappropriate language. Please choose a different one.';
+                            }
+                        }
                         if(errorData.error){
                             if(errorData.error==='Username is already taken.'){
                                 errorMessage='That username is already taken. Please choose a different one.';
