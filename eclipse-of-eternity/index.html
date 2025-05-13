@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Almendra+SC&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caudex&display=swap" rel="stylesheet">
     <link rel="icon" href="https://codingblink.com/eclipse-of-eternity/favicon.ico" type="image/x-icon">
     <style>
         *{
@@ -26,6 +27,21 @@
             font-family: 'Almendra SC';
             letter-spacing: 2px;
             font-weight: bold;
+        }
+        .title-font{
+            font-family: 'Caudex';
+            letter-spacing: 5px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-shadow: 2px 2px 6px rgba(255,255,255,1);
+            animation: ellipticalMotion 10s linear infinite;
+        }
+        @keyframes ellipticalMotion{
+            0%{transform: translateX(0px) translateY(0px);}
+            25%{transform: translateX(-5px) translateY(-2.5px);}
+            50%{transform: translateX(-10px) translateY(0px);}
+            75%{transform: translateX(-5px) translateY(2.5px);}
+            100%{transform: translateX(0px) translateY(0px);}
         }
         .terrain{
             animation: fadeHalfOutOpacity 5s ease-out;
@@ -71,6 +87,36 @@
             opacity: 0.4;
             filter: blur(2px);
         }
+        .asteroid-glints{
+            position: absolute;
+            top: 20%;
+            right: 20%;
+            width: 300px;
+            height: 300px;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .crystal-glint{
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle,rgba(255,192,255,0.9),rgba(255,192,255,0.2));
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle at center,rgba(255,192,255,0.9),rgba(255,192,255,0.2));
+            filter: drop-shadow(0 0 3px rgba(255,192,255,0.6));
+            animation: shimmer 3s infinite ease-in-out;
+            opacity: 0.8;
+            clip-path: polygon(50% 0%,80% 30%,100% 80%,60% 100%,30% 80%,0% 40%);
+            filter: blur(1px);
+            animation: shimmer 3s infinite ease-in-out;
+            opacity: 0.7;
+        }
+        @keyframes shimmer{
+            0%,100%{transform: scale(1.4);opacity: 0.7;}
+            50%{transform: scale(1.5);opacity: 1;}
+        }
         .light{
             position: absolute;
             width: 10px;
@@ -91,7 +137,7 @@
             transform: rotate(-45deg);
             animation: flickerParticle 1.2s infinite ease-in-out;
             pointer-events: none;
-            z-index: -1;
+            z-index: 700;
         }
         @keyframes flickerParticle{
             0%{
@@ -235,7 +281,6 @@
             pointer-events: none !important;
             transform: scale(0.90) translate(40px,0);
         }
-
         @media (max-width: 767px){
             #eoe-chat-window{
                 max-width: 98vw !important;
@@ -281,48 +326,62 @@
                 transform: scale(0.9) translateX(10%) translateY(10%) !important;
             }
         }
-        #eoe-chat-scroll::-webkit-scrollbar{
+        ::-webkit-scrollbar{
             width: 8px;
             background: transparent;
         }
-
-        #eoe-chat-scroll::-webkit-scrollbar-thumb{
-            background: linear-gradient(180deg, #be123c 40%, #a21caf 100%);
+        ::-webkit-scrollbar-thumb{
+            background: linear-gradient(180deg,#be123c 40%,#a21caf 100%);
             border-radius: 6px;
         }
-
-        #eoe-chat-scroll::-webkit-scrollbar-track{
+        ::-webkit-scrollbar-track{
             background: rgba(90,0,20,0.2);
             border-radius: 8px;
         }
-
         #eoe-chat-scroll{
             scrollbar-width: thin;
             scrollbar-color: #be123c rgba(90,0,20,0.2);
+        }
+        html{
+            scroll-behavior: smooth;
+            background-color: black;
         }
         #eoe-chat-window{
             z-index: 1200;
         }
         @keyframes blink{ 50%{ opacity: 0; } }
         .blink{
-            animation: blink 1s steps(2, start) infinite;
+            animation: blink 1s steps(2,start) infinite;
         }
     </style>
 </head>
-<body class="min-h-screen bg-gradient-to-b from-[#0d001a] via-[#0d001a] to-black text-white flex items-center justify-center">
+<body class="min-h-screen bg-gradient-to-b from-[#0d001a] via-[#0d001a] to-black text-white flex items-center justify-center overflow-x-hidden">
     <!-- Background -->
-    <div class="asteroid" id="asteroid"></div>
+    <div class="asteroid z-[499]" id="asteroid"></div>
+    <div class="asteroid-glints absolute top-[20%] right-[20%] w-[300px] h-[300px] pointer-events-none z-[500]">
+        <div class="crystal-glint top-[30px] left-[160px] w-[16px] h-[16px]"></div>
+        <div class="crystal-glint top-[60px] left-[180px] w-[12px] h-[12px]"></div>
+        <div class="crystal-glint top-[90px] left-[170px] w-[10px] h-[10px]"></div>
+        <div class="crystal-glint top-[40px] left-[140px] w-[14px] h-[14px]"></div>
+        <div class="crystal-glint top-[70px] left-[150px] w-[11px] h-[11px]"></div>
+        <div class="crystal-glint top-[120px] left-[160px] w-[13px] h-[13px]"></div>
+        <div class="crystal-glint top-[50px] left-[130px] w-[15px] h-[15px]"></div>
+        <div class="crystal-glint top-[80px] left-[190px] w-[10px] h-[10px]"></div>
+        <div class="crystal-glint top-[110px] left-[140px] w-[12px] h-[12px]"></div>
+        <div class="crystal-glint top-[130px] left-[180px] w-[14px] h-[14px]"></div>
+    </div>      
     <div class="terrain"></div>
     <div class="light" style="bottom: 10%; left: 10%;"></div>
     <div class="light" style="bottom: 13%; left: 30%;"></div>
     <div class="light" style="bottom: 10%; left: 50%;"></div>
     <div class="light" style="bottom: 15%; left: 70%;"></div>
     <div class="light" style="bottom: 11%; left: 90%;"></div>
-    <div class="eclipse-container">
+    <div class="z-[100] eclipse-container">
         <div class="eclipse-core"></div>
     </div>
     <!-- Sign-Up Form -->
     <div class="fade-in-opacity absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-red-700 to-transparent z-0"></div>
+    <p class="absolute top-[15%] text-8xl lg:block hidden font-extrabold mb-4 opacity-20 text-white title-font">Eclipse of Eternity</p>
     <div id="form-div" class="form-div mx-4 bg-white/5 backdrop-blur-lg p-8 rounded-2xl shadow-lg w-full max-w-md text-center border border-white/10">
         <h1 class="lg:text-2xl text-md font-bold lg:mb-4 mb-2 text-white">Eclipse of Eternity: Sign Up</h1>
         <p class="special-text lg:text-lg text-xs lg:mb-4 mb-2 text-gray-300">Your legend begins here, new adventurer...</p>
@@ -365,8 +424,7 @@
         <i class="fas fa-comments text-xl text-purple-300 group-hover:text-red-300 transition"></i>
     </div>
     </div>
-    <div id="eoe-chat-window"
-    class="fixed z-[120] bottom-4 right-4 md:right-16 md:bottom-auto w-[95vw] max-w-sm md:max-w-md min-h-[430px] opacity-0 pointer-events-none transition-transform transition-opacity duration-500 origin-bottom-right md:origin-right">
+    <div id="eoe-chat-window" class="fixed z-[120] bottom-4 right-4 md:right-16 md:bottom-auto w-[95vw] max-w-sm md:max-w-md min-h-[430px] opacity-0 pointer-events-none transition-transform transition-opacity duration-500 origin-bottom-right md:origin-right">
         <div class="chat-container-div scale-85 lg:scale-90 bg-gradient-to-b from-[#210033] via-[#32002d] to-black border border-red-800 rounded-2xl shadow-2xl shadow-red-900/50">
             <div class="relative bg-gradient-to-r from-[#31001a] via-[#480024] to-transparent px-5 py-3 rounded-t-2xl border-b border-red-900 flex items-center justify-between">
                 <h2 class="text-sm sm:text-lg md:text-xl font-bold text-red-400 flex items-center mr-8">
@@ -413,6 +471,33 @@
             </form>
         </div>
     </div>
+    <div class="2xl:block hidden absolute inset-0 flex flex-col items-center justify-center text-center top-[100%]">
+        <img class="absolute w-[100vw] h-[100vh] object-cover" style="filter: brightness(50%);" src="landscape-under-construction.png">
+        <p class="mx-auto mt-[10%] text-center flex text-8xl lg:block hidden font-extrabold mb-4 opacity-90 text-white title-font">World under construction...</p>
+        <p class="mx-auto mt-[5%] text-center flex text-3xl lg:block hidden font-extrabold mb-4 opacity-90 text-white title-font">Here's a quick taste of the game so far</p>
+        <div class="grid grid-cols-3">
+            <div class="mx-auto mt-[10%] w-[80%] text-center flex lg:block hidden font-extrabold mb-4 opacity-90 text-white">
+                <h2 class="text-2xl mb-2 title-font">Three Game Modes</h2>
+                <p class="mx-auto border-white/30 w-[10%] text-center flex lg:block hidden text-xs title-font">:::</p>
+                <p class="text-left mt-2">Eclipse of Eternity does welcomes all kinds of gameplay, so long as it's done on the right server. Here's our three ways to play:</p>
+                <ul>
+                    <li class="text-left mt-2 border-t-2 border-white/30">Normal: The game plays normally on this server. You can respawn after death and cheating is not allowed. (Recommended game mode)</li>
+                    <li class="text-left mt-2 border-t-2 border-white/30">Cheating-enabled: Cheating is allowed on this server. You'll be given a set of tools to fly, duplicate items, destroy others in PvP, and much more! Note that everyone can cheat, and while cheating is allowed, hacking is not! You can still be banned for trying to hack other accounts or threaten others.</li>
+                    <li class="text-left mt-2 border-t-2 border-white/30">One-life: The game plays normally. However, if your character dies even once, it will be permanently deleted from that server. You will get the opportunity to play One-life again in the future when the following month's server launches.</li>
+                </ul>
+            </div>
+            <div class="mx-auto mt-[10%] w-[80%] text-center flex lg:block hidden font-extrabold mb-4 opacity-90 text-white">
+                <h2 class="text-2xl mb-2 title-font">Craft Your Own Magic</h2>
+                <p class="mx-auto border-white/30 w-[10%] text-center flex lg:block hidden text-xs title-font">:::</p>
+                <p class="text-left mt-2">Combine two ordinary spells to invent the new combo! Just like Infinite Craft and other popular internet games, you'll be able to make endless spells using generative AI. The limit is your imagination!</p>
+            </div>
+            <div class="mx-auto mt-[10%] w-[80%] text-center flex lg:block hidden font-extrabold mb-4 opacity-90 text-white">
+                <h2 class="text-2xl mb-2 title-font">No Fixed Dialog NPCs</h2>
+                <p class="mx-auto border-white/30 w-[10%] text-center flex lg:block hidden text-xs title-font">:::</p>
+                <p class="text-left mt-2">Tired of clicking the same buttons on an NPC over and over? Eclipse of Eternity NPCs will be powered by a custom-trained AI that knows everything inside the game. You can ask any NPC how to find your next encounter, where to find a city or another point of interest, or just chat with them like a friend!</p>
+            </div>
+        </div>
+    </div>
 </body>
 <script>
     let asteroid=document.getElementById("asteroid");
@@ -457,6 +542,49 @@
             document.body.appendChild(star);
         }
     }
+    const CENTER_X = 50;
+    const CENTER_Y = 50;
+    const A_AXIS = 40;
+    const B_AXIS = 30;
+    const ROTATION_SPEED = 0.001;
+    const DEPTH_FACTOR = 0.1;
+
+    const starOffsets = [];
+    const starDepths = [];
+    for (let i = 0; i < 100; i++) {
+        const initialLeft = starPositions[i][1];
+        const initialTop = starPositions[i][0];
+        const offsetX = initialLeft - CENTER_X;
+        const offsetY = initialTop - CENTER_Y;
+        const depth = DEPTH_FACTOR * i;
+        starOffsets.push([offsetX, offsetY]);
+        starDepths.push(depth);
+    }
+
+    function animateStarsWith3DEffect() {
+        let angleOffset = 0;
+
+        setInterval(() => {
+            angleOffset += ROTATION_SPEED;
+            for (let i = 0; i < 100; i++) {
+                const star = document.querySelectorAll('.star')[i];
+                if (star) {
+                    const angle = angleOffset + i * (2 * Math.PI / 100);
+                    const offsetX = starOffsets[i][0];
+                    const offsetY = starOffsets[i][1];
+
+                    const depthFactor = 1 + starDepths[i];
+                    const size = starPositions[i][2] * depthFactor; 
+
+                    const newLeft = CENTER_X + (A_AXIS * Math.cos(angle) - offsetX) * depthFactor;
+                    const newTop = CENTER_Y + (B_AXIS * Math.sin(angle) - offsetY) * depthFactor;
+                    star.style.left = `${newLeft % 98 + 1}vw`;
+                    star.style.top = `${newTop % 100 % 98 + 1}vh`;
+                }
+            }
+        }, 50);
+    }
+    animateStarsWith3DEffect();
     let enums = {
         usernameAlreadyTaken: 0,
         emailAlreadyTaken: 1,
@@ -488,7 +616,7 @@
             email: form.email.value
         };
         if (send_data == undefined){
-            send_data = async function(server, data){
+            send_data = async function(server,data){
                 let failTimeout=setTimeout(function(){formDiv.innerHTML=`<h1 class="text-2xl font-bold mb-4 text-white">Please wait...</h1><p class="text-lg mb-4 text-gray-300">Things are taking longer than usual to connect to the server...<br>This could take a minute.</p>`;},2000);
                 let retryButton=`<button onclick="resetForm()" class="medieval-button border border-gray-500 mt-4 w-full bg-red-600 shadow-red-700 shadow-md hover:bg-red-700 transition text-white font-semibold py-2 px-4 rounded-lg">OK</button>`;
                 try{
