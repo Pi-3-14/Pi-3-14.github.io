@@ -23,7 +23,7 @@ const html = `<!-- Desktop Navigation (hidden on mobile) -->
                         Already there!
                     </div>
                 </li>
-                <li><a href="https://eclipseofeternity.online" class="nav-button nav-button-usable px-4 py-2 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 text-white">Eclipse of Eternity</a>
+                <li><a href="https://codingblink.com/eclipse-of-eternity" class="nav-button nav-button-usable px-4 py-2 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 text-white">Eclipse of Eternity</a>
                     <div class="popup-message" class="absolute hidden translate-x-3 translate-y-[-12px] text-center text-lg font-semibold text-red-800 mt-2 duration-300">
                         Already there!
                     </div>
