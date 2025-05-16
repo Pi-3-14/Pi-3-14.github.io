@@ -33,12 +33,6 @@ aside {
 a {
     font-weight: 700
 }
-.mobile-link {
-    border-radius: 3px;
-    border: 1px solid;
-    margin-left: 30%;
-    margin-right: 30%
-}
 .nav-button {
     display: inline-block;
     color: #fff;

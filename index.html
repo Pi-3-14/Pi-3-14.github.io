@@ -15,7 +15,7 @@
 </head>
 
 <body class="bg-gradient-to-r from-indigo-100 via-gray-100 to-indigo-100 text-gray-800">
-    <a href="#main" onclick="document.getElementById('first-link-in-main-content').focus();" class="sr-only focus:not-sr-only absolute left-4 top-4 bg-white text-black font-bold px-4 py-2 rounded shadow z-50">Skip to main content</a>    <!-- Desktop Navigation (hidden on mobile) -->
+    <a href="#main" onclick="document.getElementById('first-link-in-main-content').focus();" class="sr-only focus:not-sr-only absolute left-4 top-4 bg-white text-black font-bold px-4 py-2 rounded shadow z-50">Skip to main content</a>
     <nav class="bg-white shadow-md p-4 sticky top-0 z-50 hidden md:block">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <a href="" class="home-link inline-block hover:border-2 hover:px-3 hover:py-1">
@@ -45,70 +45,46 @@
 
     <div id="custom-tooltip" class="fixed main-section pointer-events-none fixed z-50 px-3 py-1 bg-black text-white border border-white rounded-md text-sm whitespace-nowrap opacity-0 transition-opacity duration-150">
     </div>
+        <!-- Main Responsive Section -->
+        <section class="mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+            <section id="#main" class="flex mx-auto px-4 py-12 flex-col md:flex-row items-start gap-8">
+                <div class="w-full md:w-1/2 flex flex-col items-center">
+                <div class="relative w-full aspect-[3/4] rounded-2xl shadow-md overflow-hidden max-w-[250px]">
+                    <img src="Profile_Real.png" alt="Real Profile" id="realImage" class="opacity-0 absolute top-0 left-0 w-full h-full object-cover pointer-events-none select-none z-0" />
+                    <img src="Profile_Anime.jpg" alt="Anime Profile" id="animeImage" class="absolute top-0 left-0 w-full h-full object-cover pointer-events-none select-none z-10" style="clip-path: inset(0 0 0 0);" />
+                </div>
 
-    <!-- Desktop Profile Section -->
-    <section id="#main" class="hidden md:flex max-w-3xl mx-auto px-4 py-12 flex-col md:flex-row items-start gap-8">
-        <div class="w-full md:w-1/2 flex flex-col items-center">
-        <div class="relative w-full aspect-[3/4] rounded-2xl shadow-md overflow-hidden max-w-[250px]">
-            <img src="Profile_Real.png" alt="Real Profile" id="realImage" class="opacity-0 absolute top-0 left-0 w-full h-full object-cover pointer-events-none select-none z-0" />
-            <img src="Profile_Anime.jpg" alt="Anime Profile" id="animeImage" class="absolute top-0 left-0 w-full h-full object-cover pointer-events-none select-none z-10" style="clip-path: inset(0 0 0 0);" />
-        </div>
+                <div class="relative w-full max-w-[250px] mt-3">
+                    <input id="slider" type="range" min="0" max="100" value="100" class="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer"/>
+                    <div class="absolute -top-2 left-1/2 transform -translate-x-1/2 w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center text-lg font-bold pointer-events-none" id="sliderThumb">
+                    ⇄
+                    </div>
+                </div>
 
-        <div class="relative w-full max-w-[250px] mt-3">
-            <input id="slider" type="range" min="0" max="100" value="100" class="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer"/>
-            <div class="absolute -top-2 left-1/2 transform -translate-x-1/2 w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center text-lg font-bold pointer-events-none" id="sliderThumb">
-            ⇄
+                <p class="text-sm text-gray-500 mt-2">← Real | Anime →</p>
+                </div>
+
+                <div class="w-full md:w-1/2">
+                    <h2 class="text-2xl font-bold mb-3">Hey! Call me Pi.</h2>
+                    <p class="text-base mb-4">
+                        Also known as <a href="https://youtube.com/@Coding_Blink">@Coding_Blink</a> on YouTube, I'm a multi-disciplinary developer, entrepreneur, and tutor. Whether you're looking to bring your app idea to life, level up your coding skills, or explore new game worlds—I've got something for you.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a id="first-link-in-main-content" href="https://github.com/Pi-3-14" class="text-blue-600 hover:text-blue-800"><i id="github-link" class="fab fa-github fa-2x"></i></a>
+                        <a href="https://youtube.com/@Coding_Blink" class="text-pink-500 hover:text-pink-700"><i id="youtube-link" class="fab fa-youtube fa-2x"></i></a>
+                        <a href="mailto:eclipseofeternityofficial@gmail.com" class="text-gray-600 hover:text-gray-800"><i id="mail-link" class="fas fa-envelope fa-2x"></i></a>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Project Cards Column -->
+            <div>
+                <h2 class="text-3xl font-bold mb-6 text-center md:text-left">Products & Services</h2>
+                <div id="projectCards" class="flex flex-col gap-8">
+                    <!-- JS inserts project cards here -->
+                </div>
             </div>
-        </div>
-
-        <p class="text-sm text-gray-500 mt-2">← Real | Anime →</p>
-        </div>
-
-        <div class="w-full md:w-1/2">
-            <h2 class="text-2xl font-bold mb-3">Hey! Call me Pi.</h2>
-            <p class="text-base mb-4">
-                Also known as <a href="https://youtube.com/@Coding_Blink">@Coding_Blink</a> on YouTube, I'm a multi-disciplinary developer, entrepreneur, and tutor. Whether you're looking to bring your app idea to life, level up your coding skills, or explore new game worlds—I've got something for you.
-            </p>
-            <div class="flex space-x-4">
-                <a id="first-link-in-main-content" href="https://github.com/Pi-3-14" class="text-blue-600 hover:text-blue-800"><i id="github-link" class="fab fa-github fa-2x"></i></a>
-                <a href="https://youtube.com/@Coding_Blink" class="text-pink-500 hover:text-pink-700"><i id="youtube-link" class="fab fa-youtube fa-2x"></i></a>
-                <a href="mailto:eclipseofeternityofficial@gmail.com" class="text-gray-600 hover:text-gray-800"><i id="mail-link" class="fas fa-envelope fa-2x"></i></a>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- === MOBILE VIEW === -->
-    <section class="block md:hidden max-w-xl mx-auto px-4 py-10">
-        <div class="flex flex-col items-center text-center">
-            <img src="Profile_Real.png" alt="Profile" class="rounded-2xl shadow-md w-48 mb-4">
-            <h2 class="text-2xl font-bold">Hey! Call me Pi.</h2>
-            <p class="text-gray-600 mb-4">Dev • Tutor • Creator</p>
-            <div class="flex justify-center space-x-4 mb-6">
-                <a href="https://github.com/Pi-3-14" class="text-blue-600 hover:text-blue-800"><i class="fab fa-github fa-2x"></i></a>
-                <a href="https://youtube.com/@Coding_Blink" class="text-pink-500 hover:text-pink-700"><i class="fab fa-youtube fa-2x"></i></a>
-                <a href="mailto:eclipseofeternityofficial@gmail.com" class="text-gray-600 hover:text-gray-800"><i class="fas fa-envelope fa-2x"></i></a>
-            </div>
-            <div class="w-full space-y-4 text-lg font-semibold">
-                <a href="idea/index.html" class="mobile-link block text-blue-600">Idea to App</a>
-                <a href="https://codingblink.com/eclipse-of-eternity" class="mobile-link block text-purple-600">Eclipse of Eternity</a>
-                <a href="tutoring/index.html" class="mobile-link block text-green-600">Coding Tutoring</a>
-                <a href="job/index.html" class="mobile-link block text-yellow-600">Get a Coding Job</a>
-                <a href="amazon/index.html" class="mobile-link block text-red-600">Amazon Store</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- === DESKTOP PROJECT CARDS === -->
-    <section class="hidden md:block py-16 px-4 md:px-0 main-section">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl font-bold text-center mb-12">Projects & Ventures</h2>
-            <div id="projectCards" class="space-y-8">
-                <!-- Cards will be inserted here -->
-            </div>
-        </div>
-    </section>
-
+        </section>
     <script>
         const statNames = ["Attack", "Defense", "Power", "Speed", "Agility", "Intelligence", "Mana", "Luck", "Wisdom", "Charisma", "Stealth", "Durability", "Precision", "Energy", "Resilience", "Magic Resistance", "Critical Chance", "Focus", "Endurance", "Dexterity", "Creativity", "Willpower", "Range", "Cooldown Reduction", "Difficulty"];
 
@@ -279,7 +255,7 @@
                 title: "Coding Tutoring",
                 description: "1-on-1 personalized CS tutoring with job referrals. Learn Python, C++, web dev, and more.",
                 link: "tutoring/index.html",
-                image: "https://images.unsplash.com/photo-1632910121591-29e2484c0259",
+                image: "tutoring-image.jpg",
                 icon: "fas fa-chalkboard-teacher",
                 color: "bg-gradient-to-r from-green-500 to-teal-500",
                 id: "codingTutoring"
@@ -295,7 +271,7 @@
             },
             {
                 title: "Amazon Store",
-                description: "Handpicked developer gear, tech, and tools I use — all in one Amazon shop.",
+                description: "Handpicked developer gear, tech, and tools I use — all displayed neatly with powerful custom search engines I built using my personal experiences and recommendations.",
                 link: "amazon/index.html",
                 image: "amazon/pc-setup.jpg",
                 icon: "fas fa-shopping-cart",
@@ -310,23 +286,26 @@
             const card = document.createElement("div");
             card.className = "bg-white shadow-lg rounded-2xl overflow-hidden flex flex-col md:flex-row hover:shadow-xl transition-shadow duration-300";
 
-            card.innerHTML = `
-                <img src="${project.image}" alt="${project.title}" class="w-full md:w-2/5 h-60 object-cover" id="${project.id}">
-                <div class="p-6 flex flex-col justify-between md:w-3/5">
-                <div>
-                    <h3 class="text-2xl font-bold mb-2 flex items-center gap-2">
-                    <i class="${project.icon} text-xl ${project.color} text-white p-2 rounded-full"></i>
-                    ${project.title}
-                    </h3>
-                    <p class="text-gray-600 mb-4">${project.description}</p>
-                </div>
-                <a href="${project.link}" class="inline-block w-fit mt-2 px-5 py-2 rounded-xl text-white font-semibold ${project.color} hover:opacity-90 transition-opacity">
-                    View Project
-                </a>
+            card.innerHTML = `<div class="flex flex-col md:flex-row items-center bg-white rounded-xl shadow overflow-hidden">
+                    <div class="flex items-center justify-center bg-gray-200 h-full w-full md:w-[400px]">
+                    <img src="${project.image}" alt="${project.title}" class="w-full h-60 object-cover" id="${project.id}">
+                    </div>
+                    <div class="p-6 flex flex-col justify-between w-full md:w-3/5">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-2 flex items-center gap-2">
+                            <i class="${project.icon} text-xl ${project.color} text-white p-2 rounded-full"></i>
+                            ${project.title}
+                        </h3>
+                        <p class="text-gray-600 mb-4">${project.description}</p>
+                    </div>
+                    <a href="${project.link}" class="inline-block w-fit mt-2 px-5 py-2 rounded-xl text-white font-semibold ${project.color} hover:opacity-90 transition-opacity">
+                        View Website
+                    </a>
+                    </div>
                 </div>`;
             const img = card.querySelector('img');
             const placeholder = document.createElement("div");
-            placeholder.className = "w-full md:w-2/5 h-60 flex items-center justify-center bg-gray-100 text-gray-500 text-center px-4";
+            placeholder.className = "w-full h-60 flex items-center justify-center bg-gray-100 text-gray-500 text-center px-4";
             placeholder.innerHTML = `
                 <div class="flex flex-col items-center">
                 <i class="fas fa-image text-5xl mb-2"></i> 
