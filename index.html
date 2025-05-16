@@ -43,7 +43,7 @@
         </div>
     </nav>
 
-    <div id="custom-tooltip" class="main-section pointer-events-none fixed z-50 px-3 py-1 bg-black text-white border border-white rounded-md text-sm whitespace-nowrap opacity-0 transition-opacity duration-150">
+    <div id="custom-tooltip" class="fixed main-section pointer-events-none fixed z-50 px-3 py-1 bg-black text-white border border-white rounded-md text-sm whitespace-nowrap opacity-0 transition-opacity duration-150">
     </div>
 
     <!-- Desktop Profile Section -->
@@ -180,12 +180,10 @@
 
         document.addEventListener('mousemove', (e) => {
             const tooltip = document.getElementById('custom-tooltip');
-            const offsetX = 12;
-            const offsetY = 40;
-            tooltip.style.left = `${e.clientX + offsetX}px`;
-            tooltip.style.top = `${e.clientY - offsetY}px`;
-
             const element = document.elementFromPoint(e.clientX, e.clientY);
+
+            tooltip.style.left = `${e.clientX}px`;
+            tooltip.style.top = `${e.clientY}px`;
             if(!element) return;
             const id = element.id;
             const tooltipText = tooltipTextMap[id];
@@ -281,7 +279,7 @@
                 title: "Coding Tutoring",
                 description: "1-on-1 personalized CS tutoring with job referrals. Learn Python, C++, web dev, and more.",
                 link: "tutoring/index.html",
-                image: "tutoring-image.jpg",
+                image: "https://images.unsplash.com/photo-1632910121591-29e2484c0259",
                 icon: "fas fa-chalkboard-teacher",
                 color: "bg-gradient-to-r from-green-500 to-teal-500",
                 id: "codingTutoring"
@@ -299,7 +297,7 @@
                 title: "Amazon Store",
                 description: "Handpicked developer gear, tech, and tools I use — all in one Amazon shop.",
                 link: "amazon/index.html",
-                image: "amazon-image.jpg",
+                image: "amazon/pc-setup.jpg",
                 icon: "fas fa-shopping-cart",
                 color: "bg-gradient-to-r from-red-500 to-pink-500",
                 id: "amazonStore"
