@@ -79,7 +79,7 @@
             
             <!-- Project Cards Column -->
             <div>
-                <h2 class="text-3xl font-bold mb-6 text-center md:text-left">Products & Services</h2>
+                <h2 class="text-3xl font-bold mb-6 text-center md:text-left">Developing Projects for <span id="years_since_2013"></span> Years</h2>
                 <div id="projectCards" class="flex flex-col gap-8">
                     <!-- JS inserts project cards here -->
                 </div>
@@ -350,6 +350,7 @@
             bar.innerHTML = 'We\'re moving! The new permanent address is <a href="https://codingblink.com" style="text-decoration: underline !important;">codingblink.com</a>. Please update your bookmark. <a href="https://codingblink.com">Take me to the new page!</a>';
             document.body.prepend(bar);
         }
+        document.getElementById("years_since_2013").textContent = new Date().getFullYear() - 2013;
     </script>
 
     <!-- Footer -->
