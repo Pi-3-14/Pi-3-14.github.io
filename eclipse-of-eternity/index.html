@@ -803,18 +803,19 @@ And if you wish to track our signs across the realms, follow us at **@eoe_game**
     }
     async function pingServer() {
         const display = document.getElementById('pingDisplay');
-        const sendTime = new Date().toISOString();
+        const t0 = performance.now();
+        const sendTime = Date.now();
 
         try {
             const response = await fetch('https://api.codingblink.com/ping');
+            const t2 = performance.now();
+            const recvTime = Date.now();
             const data = await response.json();
             const serverTime = new Date(data.t).getTime();
-            const t0Millis = new Date(sendTime).getTime();
-            const t2Millis = Date.now();
-
-            const uploadMs = serverTime - t0Millis;
-            const downloadMs = t2Millis - serverTime;
-            const roundtrip = t2Millis - t0Millis;
+            const estimatedRTT = t2 - t0;
+            const estimatedClientMid = sendTime + estimatedRTT / 2;
+            const uploadMs = serverTime - sendTime;
+            const downloadMs = recvTime - serverTime;
 
             display.innerHTML = `
                 <span class="mr-1"><i class="fas fa-network-wired mr-1"></i>Connected!</span>
