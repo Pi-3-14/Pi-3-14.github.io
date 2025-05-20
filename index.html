@@ -229,6 +229,7 @@
             }
             setTimeout(function() { document.getElementById("realImage").classList.remove("opacity-0"); }, 1000);
             window.addEventListener('resize', function() { document.body.style.zoom = 1; zoomOutUntilFits(); });
+            pingServer();
         });
         zoomOutUntilFits();
         const projects = [
@@ -351,11 +352,38 @@
             document.body.prepend(bar);
         }
         document.getElementById("years_since_2013").textContent = new Date().getFullYear() - 2013;
+        async function pingServer() {
+            const display = document.getElementById('pingDisplay');
+            const sendTime = new Date().toISOString();
+
+            try {
+                const response = await fetch('https://api.codingblink.com/ping');
+                const data = await response.json();
+                const serverTime = new Date().getTime();
+                const t0Millis = new Date(sendTime).getTime();
+                const t2Millis = Date.now();
+
+                const uploadMs = serverTime - t0Millis;
+                const downloadMs = t2Millis - serverTime;
+                const roundtrip = t2Millis - t0Millis;
+
+                display.innerHTML = `
+                    <span class="mr-1"><i class="fas fa-network-wired mr-1"></i>Connected!</span>
+                    <i class="fas fa-arrow-up text-blue-500 mr-1"></i>${uploadMs}ms<span class="w-[10px]"></span>
+                    <i class="fas fa-arrow-down text-green-500 mr-1"></i>${downloadMs}ms
+                `;
+            } catch (e) {
+                display.innerHTML = `<span class="text-red-500"><i class="fas fa-plug-circle-xmark mr-1"></i>Server offline!</span>`;
+            }
+        }
     </script>
 
     <!-- Footer -->
     <footer class="bg-gray-200 text-center py-6 mt-10">
         <p class="text-gray-600">&copy; 2025 codingblink.com. All rights reserved.</p>
+        <div id="pingDisplay" class="relative bottom-20 left-4 text-sm text-gray-600 flex items-center">
+            <span><i class="fas fa-wifi mr-1"></i>Pinging server...</span>
+        </div>
     </footer>
 </body>
 
