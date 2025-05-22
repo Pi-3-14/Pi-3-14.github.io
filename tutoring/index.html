@@ -93,11 +93,11 @@
                 </ul>
                 <div class="flex space-x-3 mt-6">
                     <button onclick="signupHandler()"
-                        class="shadow-lg px-6 py-3 bg-gradient-to-r from-green-500 to-teal-500 text-white font-semibold rounded-xl hover:bg-green-600 hover:scale-105 transition duration-200">
+                        class="shadow-lg px-6 py-3 bg-gradient-to-r from-green-500 to-teal-500 text-white font-semibold rounded-xl hover:bg-green-600 hover:scale-105 active:scale-95 transition duration-200">
                         <i class="fa fa-user-plus mr-2"></i>Sign Up
                     </button>
                     <button onclick="signinHandler()"
-                        class="shadow px-6 py-3 bg-indigo-500 text-white font-semibold rounded-xl hover:bg-indigo-700 transition">
+                        class="shadow px-6 py-3 bg-indigo-500 text-white font-semibold rounded-xl hover:bg-indigo-700 hover:scale-105 active:scale-95 transition duration-200">
                         <i class="fa fa-sign-in-alt mr-2"></i>Sign In
                     </button>
                 </div>
@@ -235,12 +235,149 @@
         });
         showSlide(0);
 
+        let authModal = null;
+        function removeAuthForm() {
+            if (authModal) {
+                authModal.remove();
+                authModal = null;
+            }
+        }
+
+        function showModal(innerHtml, focusSelector) {
+            removeAuthForm();
+            const modal = document.createElement("div");
+            modal.id = "cb-auth-modal";
+            modal.className = `fixed inset-0 z-[100] flex items-center justify-center bg-black/40`;
+            modal.innerHTML = `
+            <div class="relative animate-fadein bg-white rounded-2xl shadow-2xl border w-full max-w-md mx-4 p-7">
+                <button id="cb-modal-close" aria-label="Close" class="absolute top-3 right-3 text-xl text-gray-400 hover:text-red-600 transition-colors">
+                    <i class="fa fa-times"></i>
+                </button>
+                ${innerHtml}
+            </div>
+            `;
+            document.body.appendChild(modal);
+            document.getElementById("cb-modal-close").onclick = removeAuthForm;
+            modal.onclick = (e) => { if (e.target === modal) removeAuthForm(); };
+            authModal = modal;
+            setTimeout(() => {
+                const field = document.querySelector(focusSelector);
+                if (field) field.focus();
+            }, 100);
+        }
+
+        if (!document.getElementById("cb-auth-style")) {
+            const style = document.createElement('style');
+            style.id = "cb-auth-style";
+            style.textContent = `
+            @keyframes fadein { from { opacity:0; transform: scale(0.97) translateY(20px);} to { opacity: 1; transform:none;} }
+            .animate-fadein { animation:fadein .2s cubic-bezier(.4,.2,.1,1);}
+            #cb-auth-modal input:focus { outline: none; border-color: #4f46e5; box-shadow: 0 0 0 2px #3b82f6 !important;}
+            #cb-auth-modal input[type="text"]:hover, 
+            #cb-auth-modal input[type="email"]:hover,
+            #cb-auth-modal input[type="password"]:hover { border-color: #0ea5e9; background: #fafdff }
+            #cb-auth-modal button[type="submit"]:hover { filter: brightness(1.13); }
+            `;
+            document.head.appendChild(style);
+        }
+
         function signupHandler() {
-            alert('Feature not yet available publicly.');
+            showModal(`
+            <form id="cb-signup-form" class="space-y-5 w-full">
+                <h3 class="text-2xl font-bold text-indigo-700 flex items-center mb-2">
+                    <i class="fa fa-user-plus mr-2 text-green-500"></i>Sign Up for CodingBlink
+                </h3>
+                <div class="relative">
+                    <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"><i class="fa fa-user"></i></span>
+                    <input autocomplete="username" class="pl-10 pr-3 py-2 rounded border w-full focus:ring-2" type="text" id="cb-signup-username" placeholder="Username" required>
+                </div>
+                <div class="relative">
+                    <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"><i class="fa fa-envelope"></i></span>
+                    <input autocomplete="email" class="pl-10 pr-3 py-2 rounded border w-full focus:ring-2" type="email" id="cb-signup-email" placeholder="Email" required>
+                </div>
+                <div class="relative">
+                    <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"><i class="fa fa-lock"></i></span>
+                    <input autocomplete="new-password" class="pl-10 pr-3 py-2 rounded border w-full focus:ring-2" type="password" id="cb-signup-password" placeholder="Password" required>
+                </div>
+                <button class="w-full mt-2 bg-gradient-to-r from-green-600 to-teal-500 text-white py-2 rounded font-semibold flex items-center justify-center gap-2 transition hover:scale-105 active:scale-95" type="submit">
+                    <i class="fa fa-user-plus"></i> Create Account
+                </button>
+                <div id="cb-signup-message" class="mt-2 text-sm text-center"></div>
+            </form>`,
+            "#cb-signup-username");
+            document.getElementById('cb-signup-form').onsubmit = async (e) => {
+                e.preventDefault();
+                const btn = e.target.querySelector('button[type="submit"]');
+                btn.disabled = true; btn.textContent = "Creating...";
+                const res = await fetch('https://api.codingblink.com:443/newaccount', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        username: document.getElementById('cb-signup-username').value,
+                        email: document.getElementById('cb-signup-email').value,
+                        password: document.getElementById('cb-signup-password').value
+                    })
+                });
+                const data = await (async () => { try { return await res.json(); } catch { return {}; } })();
+                const msg = document.getElementById('cb-signup-message');
+                if (res.ok) {
+                    msg.className = 'mt-2 text-green-600 text-sm text-center';
+                    msg.innerText = "Account created! Signing in...";
+                    // login to the tutoring portal, load /confirimemail.html, ask user to confirm their email
+                } else {
+                    msg.className = 'mt-2 text-red-600 text-sm text-center';
+                    msg.innerText = data.error || "Error creating account.";
+                }
+                btn.disabled = false; btn.innerHTML = `<i class="fa fa-user-plus"></i> Create Account`;
+            };
         }
+
         function signinHandler() {
-            alert('Feature not yet available publicly.');
+            showModal(`
+            <form id="cb-signin-form" class="space-y-5 w-full">
+                <h3 class="text-2xl font-bold text-indigo-700 flex items-center mb-2">
+                    <i class="fa fa-sign-in-alt mr-2 text-indigo-500"></i>Sign In to CodingBlink
+                </h3>
+                <div class="relative">
+                    <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"><i class="fa fa-user"></i></span>
+                    <input autocomplete="email" class="pl-10 pr-3 py-2 rounded border w-full focus:ring-2" type="text" id="cb-signin-email" placeholder="Username or Email" required>
+                </div>
+                <div class="relative">
+                    <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"><i class="fa fa-lock"></i></span>
+                    <input autocomplete="current-password" class="pl-10 pr-3 py-2 rounded border w-full focus:ring-2" type="password" id="cb-signin-password" placeholder="Password" required>
+                </div>
+                <button class="w-full mt-2 bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded font-semibold flex items-center justify-center gap-2 transition hover:scale-105 active:scale-95" type="submit">
+                    <i class="fa fa-sign-in-alt"></i> Sign In
+                </button>
+                <div id="cb-signin-message" class="mt-2 text-sm text-center"></div>
+            </form>`,
+            "#cb-signin-email");
+            document.getElementById('cb-signin-form').onsubmit = async (e) => {
+                e.preventDefault();
+                const btn = e.target.querySelector('button[type="submit"]');
+                btn.disabled = true; btn.textContent = "Signing In...";
+                const res = await fetch('https://api.codingblink.com:443/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        email: document.getElementById('cb-signin-email').value,
+                        password: document.getElementById('cb-signin-password').value
+                    })
+                });
+                const data = await (async () => { try { return await res.json(); } catch { return {}; } })();
+                const msg = document.getElementById('cb-signin-message');
+                if (res.ok) {
+                    msg.className = 'mt-2 text-green-600 text-sm text-center';
+                    msg.innerText = "Login successful! Redirecting...";
+                    // login to the tutoring portal, load /dashboard, dashboard sends fetch() to server, syncs user data.
+                } else {
+                    msg.className = 'mt-2 text-red-600 text-sm text-center';
+                    msg.innerText = data.error || "Invalid login.";
+                }
+                btn.disabled = false; btn.innerHTML = `<i class="fa fa-sign-in-alt"></i> Sign In`;
+            };
         }
+
         if (location.hostname === 'pi-3-14.github.io') {
             const bar = document.createElement('div');
             bar.style.cssText =
