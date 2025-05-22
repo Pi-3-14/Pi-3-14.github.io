@@ -2,6 +2,12 @@
 <html lang="en">
 
 <head>
+    <link rel="canonical" href="https://codingblink.com/">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Coding Blink">
+    <meta property="og:description" content="Hey! Call me Pi. I'm a multi-disciplinary developer...">
+    <meta property="og:url" content="https://codingblink.com/">
+    <meta property="og:type" content="website">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Hey! Call me Pi. I'm a multi-disciplinary developer, entrepreneur, and tutor. Whether you're looking to bring your app idea to life, level up your coding skills, or explore new game worlds—I've got something for you." />
@@ -14,9 +20,9 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 
-<body class="bg-gradient-to-r from-indigo-100 via-gray-100 to-indigo-100 text-gray-800">
+<body class="bg-gradient-to-r from-indigo-100 via-gray-100 to-indigo-100 text-gray-800 overflow-x-hidden">
     <a href="#main" onclick="document.getElementById('first-link-in-main-content').focus();" class="sr-only focus:not-sr-only absolute left-4 top-4 bg-white text-black font-bold px-4 py-2 rounded shadow z-50">Skip to main content</a>
-    <nav class="bg-white shadow-md p-4 sticky top-0 z-50 hidden md:block">
+    <nav class="bg-white shadow-md p-4 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <a href="" class="home-link inline-block hover:border-2 hover:px-3 hover:py-1">
                 <h1 class="logo text-2xl font-bold cursor-pointer">
@@ -33,7 +39,7 @@
                     </nobr>
                 </h1>
             </a>
-            <ul id="desktop-nav" class="flex space-x-2 overflow-auto">
+            <ul id="desktop-nav" class="flex space-x-2 overflow-auto ml-2">
                 <li><a href="idea/index.html" class="nav-button nav-button-usable px-4 py-2 rounded-2xl bg-gradient-to-r from-blue-500 to-indigo-500 text-white">Idea to App</a></li>
                 <li><a href="https://codingblink.com/eclipse-of-eternity" class="nav-button nav-button-usable px-4 py-2 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 text-white">Eclipse of Eternity</a></li>
                 <li><a href="tutoring/index.html" class="nav-button nav-button-usable px-4 py-2 rounded-2xl bg-gradient-to-r from-green-500 to-teal-500 text-white">Coding Tutoring</a></li>
@@ -45,46 +51,108 @@
 
     <div id="custom-tooltip" class="fixed main-section pointer-events-none fixed z-50 px-3 py-1 bg-black text-white border border-white rounded-md text-sm whitespace-nowrap opacity-0 transition-opacity duration-150">
     </div>
-        <!-- Main Responsive Section -->
-        <section class="mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-            <section id="#main" class="flex mx-auto px-4 py-12 flex-col md:flex-row items-start gap-8">
-                <div class="w-full md:w-1/2 flex flex-col items-center">
-                <div class="relative w-full aspect-[3/4] rounded-2xl shadow-md overflow-hidden max-w-[250px]">
-                    <img src="Profile_Real.png" alt="Real Profile" id="realImage" class="opacity-0 absolute top-0 left-0 w-full h-full object-cover pointer-events-none select-none z-0" />
-                    <img src="Profile_Anime.jpg" alt="Anime Profile" id="animeImage" class="absolute top-0 left-0 w-full h-full object-cover pointer-events-none select-none z-10" style="clip-path: inset(0 0 0 0);" />
-                </div>
 
-                <div class="relative w-full max-w-[250px] mt-3">
-                    <input id="slider" type="range" min="0" max="100" value="100" class="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer"/>
-                    <div class="absolute -top-2 left-1/2 transform -translate-x-1/2 w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center text-lg font-bold pointer-events-none" id="sliderThumb">
-                    ⇄
-                    </div>
-                </div>
+    <!-- Main Responsive Section -->
+    <main class="mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+        <section id="#main" class="flex mx-auto px-4 py-12 flex-col md:flex-row items-start gap-8">
+            <div class="w-full md:w-1/2 flex flex-col items-center">
+            <div class="relative w-full aspect-[3/4] rounded-2xl shadow-md overflow-hidden max-w-[250px]">
+                <img src="Profile_Real.png" alt="Real Profile" id="realImage" class="opacity-0 absolute top-0 left-0 w-full h-full object-cover pointer-events-none select-none z-0" />
+                <img src="Profile_Anime.jpg" alt="Anime Profile" id="animeImage" class="absolute top-0 left-0 w-full h-full object-cover pointer-events-none select-none z-10" style="clip-path: inset(0 0 0 0);" />
+            </div>
 
-                <p class="text-sm text-gray-500 mt-2">← Real | Anime →</p>
-                </div>
-
-                <div class="w-full md:w-1/2">
-                    <h2 class="text-2xl font-bold mb-3">Hey! Call me Pi.</h2>
-                    <p class="text-base mb-4">
-                        Also known as <a href="https://youtube.com/@Coding_Blink">@Coding_Blink</a> on YouTube, I'm a multi-disciplinary developer, entrepreneur, and tutor. Whether you're looking to bring your app idea to life, level up your coding skills, or explore new game worlds—I've got something for you.
-                    </p>
-                    <div class="flex space-x-4">
-                        <a id="first-link-in-main-content" href="https://github.com/Pi-3-14" class="text-blue-600 hover:text-blue-800"><i id="github-link" class="fab fa-github fa-2x"></i></a>
-                        <a href="https://youtube.com/@Coding_Blink" class="text-pink-500 hover:text-pink-700"><i id="youtube-link" class="fab fa-youtube fa-2x"></i></a>
-                        <a href="mailto:eclipseofeternityofficial@gmail.com" class="text-gray-600 hover:text-gray-800"><i id="mail-link" class="fas fa-envelope fa-2x"></i></a>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Project Cards Column -->
-            <div>
-                <h2 class="text-3xl font-bold mb-6 text-center md:text-left">Developing Projects for <span id="years_since_2013"></span> Years</h2>
-                <div id="projectCards" class="flex flex-col gap-8">
-                    <!-- JS inserts project cards here -->
+            <div class="relative w-full max-w-[250px] mt-3">
+                <input id="slider" type="range" min="0" max="100" value="100" class="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer"/>
+                <div class="absolute -top-2 left-1/2 transform -translate-x-1/2 w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center text-lg font-bold pointer-events-none" id="sliderThumb">
+                ⇄
                 </div>
             </div>
+
+            <p class="text-sm text-gray-500 mt-2">← Real | Anime →</p>
+            </div>
+
+            <div class="w-full md:w-1/2">
+                <h2 class="text-2xl font-bold mb-3">Hey! Call me Pi.</h2>
+                <p class="text-base mb-4">
+                    Also known as <a href="https://youtube.com/@Coding_Blink">@Coding_Blink</a> on YouTube, I'm a multi-disciplinary developer, entrepreneur, and tutor. Whether you're looking to bring your app idea to life, level up your coding skills, or explore new game worlds—I've got something for you.
+                </p>
+                <div class="flex space-x-4">
+                    <a id="first-link-in-main-content" href="https://github.com/Pi-3-14" class="text-blue-600 hover:text-blue-800"><i id="github-link" class="fab fa-github fa-2x"></i></a>
+                    <a href="https://youtube.com/@Coding_Blink" class="text-pink-500 hover:text-pink-700"><i id="youtube-link" class="fab fa-youtube fa-2x"></i></a>
+                    <a href="mailto:eclipseofeternityofficial@gmail.com" class="text-gray-600 hover:text-gray-800"><i id="mail-link" class="fas fa-envelope fa-2x"></i></a>
+                </div>
+                <div class="card my-4 bg-white shadow-lg rounded-2xl p-4 max-w-lg mx-auto">
+                    <h2 class="text-base font-bold mb-2"><i class="fas fa-book-bookmark mr-1"></i>A peek into my journey...</h2>
+                    <p class="text-gray-600 mb-2">
+                        Curious about my past? Learn how I mastered coding at such a young age and how I use the skills now!
+                    </p>
+                    <a href="#" onclick="document.getElementById('story-section').scrollIntoView({behavior:'smooth'});event.preventDefault();" class="inline-block text-blue-600 hover:underline font-semibold">
+                        <i class="fas fa-book-open mr-1"></i>Read my full story &rarr;
+                    </a>
+                    </div>
+            </div>
         </section>
+        
+        <!-- About Me Column -->
+        <section class="flex flex-col gap-6 md:max-w-[45vw]">
+            <div class="card bg-white shadow-lg rounded-2xl p-5">
+                <h2 class="text-lg font-semibold mb-2">👋 About Me</h2>
+                <p class="text-gray-600">
+                    On the internet, I go by Pi. I play a few PC games, mainly Minecraft, World of Warcraft, Valorant, and occasionally Genshin Impact (in the past).
+                </p>
+            </div>
+            <div class="card bg-white shadow-lg rounded-2xl p-5">
+                <h2 class="text-lg font-semibold mb-2">🛠️ Skills</h2>
+                <p class="text-gray-600">
+                    Full-stack web, apps, game development, tutoring, and...
+                    <br>Taekwondo (2nd-degree black belt), Piano (and other instruments too), and cooking!
+                </p>
+            </div>
+            <div class="card bg-white shadow-lg rounded-2xl p-5">
+                <h2 class="text-lg font-semibold mb-2">🎮 Fun Facts</h2>
+                <p class="text-gray-600">
+                    <ul>
+                        <li><i class="fas fa-star-of-life mr-1 text-gray-600 scale-75"></i><span class="text-gray-600">In high school, I built and CNCed a guitar shaped like an Among Us impostor—yes, it’s playable!</span></li>
+                        <li><i class="fas fa-star-of-life mr-1 text-gray-600 scale-75"></i><span class="text-gray-600">At 15, I coded a WoW addon with AI to predict deaths in raids seconds before they happen (but nearly crashed my computer!).</span></li>
+                        <li><i class="fas fa-star-of-life mr-1 text-gray-600 scale-75"></i><span class="text-gray-600">I switch between Apple and Android daily—can’t pick a side, but love building apps for both.</span></li>
+                        <li><i class="fas fa-star-of-life mr-1 text-gray-600 scale-75"></i><span class="text-gray-600">I’m an anime fan for life—Demon Slayer tops my list. I’m counting down hours for the next movie!</span></li>
+                        <li><i class="fas fa-star-of-life mr-1 text-gray-600 scale-75"></i><span class="text-gray-600">Had a “secret” YouTube channel called HeyItsTedde—my first 100 subs were for World of Warcraft videos!</span></li>
+                        <li><i class="fas fa-star-of-life mr-1 text-gray-600 scale-75"></i><span class="text-gray-600">I’m currently coding and adventuring in Japan at Aoyama Gakuin University—say hi if you visit Tokyo!</span></li>
+                        <li><i class="fas fa-star-of-life mr-1 text-gray-600 scale-75"></i><span class="text-gray-600">My first app? A Japanese reading tool called Furigana Anywhere—ironically, I still use it in class.</span></li>
+                    </ul>
+                </p>
+            </div>
+        </section>
+        
+        <!-- Project Cards Column -->
+        <section class="col-span-1 md:col-span-2 mx-auto">
+            <h2 class="text-3xl font-bold mb-6 text-center md:text-left">Developing Projects for <span id="years_since_2013"></span> Years</h2>
+            <div id="projectCards" class="flex flex-col gap-8">
+                <!-- JS inserts project cards here -->
+            </div>
+        </section>
+
+        <!-- Story Section -->
+        <section class="bg-white shadow-lg rounded-2xl p-5 col-span-1 md:col-span-2 xl:max-w-[33vw] lg:max-w-[80vw] md:max-w-[90vw] md:mx-auto mt-20" id="story-section">
+            <h2 class="text-lg font-semibold mb-2"><i class="fas fa-book-bookmark"></i> My Story</h2>
+            <p class="text-gray-600">
+                I'm <span id="years_since_birth"></span> years old, but I've been coding for more than half my life! Though I first started coding in 2013, it wasn't really anything big, just "Hello World" programs and basic math. However, during my middle and high school years, I was given a chromebook from my school district, and this is when things really started up.
+                <br><br>The bus ride to and from my school was agonizingly long. Since it took over an hour both ways, I had to find some way to keep myself entertained without a cell phone, so I decided to make games on Scratch for fun, using the chromebook provided by my school. This led to over 2½ hours of coding practice per day for several years! You can see my Scratch profile <a href="https://scratch.mit.edu/users/videogames102/" target="_blank">here</a>.
+                <br><br>In 7th grade, I took my first high school computer science class about programming, and I took the remaining classes in future grades. By the time I graduated grade school, I was capable of writing apps that college seniors were making! However, college applications didn't go too well. Despite having a 34.25/36 on the ACT and a 4.23 weighted GPA, I ended up getting rejected from every institution I applied to, except for two: Oregon State University, and Hawaii Pacific University. I chose Hawaii Pacific University (HPU) because I didn't want to stay in Oregon anymore, and they also gave me a scholarship.
+                <br><br>In my freshman year of college, I managed to land a job at Outlier AI, which is where I plan on working until I make my own game company, which has been my dream since my first year of programming at 7 years old.
+                <br><br>In my sophomore year, I decided to study abroad in Japan. This was possibly one of the best decisions I made. With my extra 42 credits totaling almost 1.5 years of college, I get to spend 2/5 of my actual college semesters in Japan, add a minor to my degree, learn a new language, and make some new friends who inspired me to add some features to my online game, <a href="eclipse-of-eternity/index.html" target="_blank">Eclipse of Eternity</a>.
+                <br><br>Thank you for reading my story, and I hope you enjoyed it! Check out some of the projects I've made over the time I spent coding!
+            </p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-200 text-center py-6 mt-10">
+        <p class="text-gray-600">&copy; 2025 codingblink.com. All rights reserved.</p>
+        <div id="pingDisplay" class="relative bottom-20 left-4 text-sm text-gray-600 flex items-center">
+            <span><i class="fas fa-wifi mr-1"></i>Pinging server...</span>
+        </div>
+    </footer>
     <script>
         const statNames = ["Attack", "Defense", "Power", "Speed", "Agility", "Intelligence", "Mana", "Luck", "Wisdom", "Charisma", "Stealth", "Durability", "Precision", "Energy", "Resilience", "Magic Resistance", "Critical Chance", "Focus", "Endurance", "Dexterity", "Creativity", "Willpower", "Range", "Cooldown Reduction", "Difficulty"];
 
@@ -205,6 +273,9 @@
         }
 
         function zoomOutUntilFits() {
+            if (window.innerWidth < 768) {
+                return;
+            }
             let currentZoom = Number(document.body.style.zoom) || 1;
 
             function tryZoomOut() {
@@ -285,7 +356,7 @@
 
         projects.forEach(project => {
             const card = document.createElement("div");
-            card.className = "bg-white shadow-lg rounded-2xl overflow-hidden flex flex-col md:flex-row hover:shadow-xl transition-shadow duration-300";
+            card.className = "xl:max-w-[50vw] lg:max-w-[75vw] bg-white shadow-lg rounded-2xl overflow-hidden flex flex-col md:flex-row hover:shadow-xl transition-shadow duration-300";
 
             card.innerHTML = `<div class="flex flex-col md:flex-row items-center bg-white rounded-xl shadow overflow-hidden">
                     <div class="flex items-center justify-center bg-gray-200 h-full w-full md:w-[400px]">
@@ -293,10 +364,10 @@
                     </div>
                     <div class="p-6 flex flex-col justify-between w-full md:w-3/5">
                     <div>
-                        <h3 class="text-2xl font-bold mb-2 flex items-center gap-2">
+                        <h2 class="text-2xl font-bold mb-2 flex items-center gap-2">
                             <i class="${project.icon} text-xl ${project.color} text-white p-2 rounded-full"></i>
                             ${project.title}
-                        </h3>
+                        </h2>
                         <p class="text-gray-600 mb-4">${project.description}</p>
                     </div>
                     <a href="${project.link}" class="inline-block w-fit mt-2 px-5 py-2 rounded-xl text-white font-semibold ${project.color} hover:opacity-90 transition-opacity">
@@ -352,6 +423,7 @@
             document.body.prepend(bar);
         }
         document.getElementById("years_since_2013").textContent = new Date().getFullYear() - 2013;
+        document.getElementById("years_since_birth").textContent = Math.floor((new Date() - new Date("2005-07-04")) / (1000 * 60 * 60 * 24 * 365.25));
         async function pingServer() {
             const display = document.getElementById('pingDisplay');
             const sendTime = Date.now();
@@ -378,14 +450,5 @@
             }
         }
     </script>
-
-    <!-- Footer -->
-    <footer class="bg-gray-200 text-center py-6 mt-10">
-        <p class="text-gray-600">&copy; 2025 codingblink.com. All rights reserved.</p>
-        <div id="pingDisplay" class="relative bottom-20 left-4 text-sm text-gray-600 flex items-center">
-            <span><i class="fas fa-wifi mr-1"></i>Pinging server...</span>
-        </div>
-    </footer>
 </body>
-
 </html>
