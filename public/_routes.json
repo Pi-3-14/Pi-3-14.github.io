@@ -1,0 +1,5 @@
+{
+  "version": 1,
+  "include": ["/", "/idea", "/eoe", "/eclipse-of-eternity", "/tutoring", "/job", "/amazon"],
+  "exclude": ["/*"]
+}
