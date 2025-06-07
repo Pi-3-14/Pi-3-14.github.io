@@ -308,9 +308,9 @@
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        username: document.getElementById('cb-signup-username').value,
-                        email: document.getElementById('cb-signup-email').value,
-                        password: document.getElementById('cb-signup-password').value
+                        u: document.getElementById('cb-signup-username').value,
+                        e: document.getElementById('cb-signup-email').value,
+                        p: document.getElementById('cb-signup-password').value
                     })
                 });
                 const data = await (async () => { try { return await res.json(); } catch { return {}; } })();
