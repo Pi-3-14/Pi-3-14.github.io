@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <meta name="description" content="Eclipse of Eternity is an open-world RPG set to release in December 2028. Sign up before the early deadline to earn 1 year of game time for free!" />
-    <title>Eclipse of Eternity: Sign Up</title>
+    <title>Eclipse of Eternity: Login</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="particles.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css"/>
@@ -374,21 +374,10 @@
         .animate-disappear {
             animation: disappear 10s ease-out;
         }
-        .bg-video {
-            opacity: 0%;
-            position: absolute;
-            top: 0; left: 0;
-            width: 100vw;
-            height: 100vh;
-            object-fit: cover;
-            z-index: 1000;
-            pointer-events: none;
-        }
     </style>
 </head>
 <body class="min-h-screen bg-gradient-to-b from-[#0d001a] via-[#0d001a] to-black text-white flex items-center justify-center overflow-x-hidden">
     <!-- Background -->
-    <video src="https://pi-3-14-github-io.pages.dev/eclipse-of-eternity/GamePreview.mp4" autoplay muted playsinline class="bg-video"></video>
     <div class="asteroid z-[499]" id="asteroid"></div>
     <div class="asteroid-glints absolute top-[20%] right-[20%] w-[300px] h-[300px] pointer-events-none z-[500]">
         <div class="crystal-glint top-[30px] left-[160px] w-[16px] h-[16px]"></div>
@@ -411,18 +400,17 @@
     <div class="z-[100] eclipse-container">
         <div class="eclipse-core"></div>
     </div>
-    <!-- Sign-Up Form -->
+    <!-- Login Form -->
     <div class="fade-in-opacity absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-red-700 to-transparent z-0"></div>
     <p class="absolute top-[15%] text-8xl lg:block hidden font-extrabold mb-4 opacity-80 text-white title-font z-[1000]">Eclipse of Eternity</p>
     <div id="form-div" class="form-div mx-4 bg-white/5 backdrop-blur-lg p-8 rounded-2xl shadow-lg w-full max-w-md text-center border border-white/10">
-        <h1 class="lg:text-2xl text-md font-bold lg:mb-4 mb-2 text-white">Eclipse of Eternity: Sign Up</h1>
-        <p class="special-text lg:text-lg text-xs lg:mb-4 mb-2 text-gray-300">Your legend begins here, new adventurer...</p>
-        <form id="sign-up-form">
-            <input id="usernameInput" name="username" placeholder="Traveler name (optional)" class="focus:shadow-lg focus:shadow-red-500 transition-shadow mb-2 w-full lg:p-3 p-2 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-red-500 text-xs lg:text-lg"/>
-            <input name="email" type="email" placeholder="Email address (required)" class="focus:shadow-lg focus:shadow-red-500 transition-shadow mt-1 mb-2 w-full lg:p-3 p-2 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-red-500 text-xs lg:text-lg" required/>
-            <input name="password" type="password" placeholder="Password (required)" class="focus:shadow-lg focus:shadow-red-500 transition-shadow mt-1 w-full p-3 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-red-500 text-xs lg:text-lg" required/>
-            <button type="submit" class="medieval-button border border-gray-500 my-4 w-full bg-red-600 shadow-red-700 shadow-md hover:bg-red-700 transition text-white font-semibold py-2 px-4 rounded-lg text-xs lg:text-lg">Join The World</button>
-            <button onclick="window.location.href='https://codingblink.com/eclipse-of-eternity/login';" class="text-blue-500 underline w-full shadow-white hover:text-white transition duration-300 font-semibold text-right">I already have an account</button>
+        <h1 class="lg:text-2xl text-md font-bold lg:mb-4 mb-2 text-white">Eclipse of Eternity: Login</h1>
+        <p class="special-text lg:text-lg text-xs lg:mb-4 mb-2 text-gray-300">Welcome back, Adventurer!</p>
+        <form id="login-form">
+            <input id="emailInput" name="email" type="email" placeholder="Email address" class="focus:shadow-lg focus:shadow-red-500 transition-shadow mt-1 mb-2 w-full lg:p-3 p-2 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-red-500 text-xs lg:text-lg" required/>
+            <input name="password" type="password" placeholder="Password" class="focus:shadow-lg focus:shadow-red-500 transition-shadow mt-1 w-full p-3 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-red-500 text-xs lg:text-lg" required/>
+            <button type="submit" class="medieval-button border border-gray-500 my-4 w-full bg-red-600 shadow-red-700 shadow-md hover:bg-red-700 transition text-white font-semibold py-2 px-4 rounded-lg text-xs lg:text-lg">Login</button>
+            <button onclick="window.location.href='https://codingblink.com/eclipse-of-eternity/signup';" class="text-blue-500 underline w-full shadow-white hover:text-white transition duration-300 font-semibold text-right">I don't have an account</button>
         </form>
     </div>
     <!-- Links -->
@@ -536,14 +524,7 @@
     </div>
 </body>
 <script>
-    const vid = document.querySelector('.bg-video');
-    vid.addEventListener('play', function() {
-        vid.classList.add('animate-disappear');
-        vid.addEventListener('animationend', function() {
-            vid.style.display = 'none';
-        });
-    });
-    document.getElementById("usernameInput").focus();
+    document.getElementById("emailInput").focus();
     let asteroid=document.getElementById("asteroid");
     for(let i=0;i<60;i++){
         const particle=document.createElement('div');
@@ -630,39 +611,38 @@
     }
     // animateStarsWith3DEffect();
     let enums = {
-        emailAlreadyTaken: 0,
-        usernameAlreadyTaken: 1,
-        passwordInsecure: 2,
-        passwordNotAllowed: 3,
-        unknownError: 4,
-        inappropriateUsername: 5,
-        invalidRequest: 6
+        accountNotFound: 0,
+        accountBanned: 1,
+        accountLocked: 2,
+        tokenInvalid: 3,
+        tokenExpired: 4,
+        wrongPassword: 5,
+        invalidRequest: 6,
+        noPassword: 7
     }
     function resetForm(){
         const formDiv=document.getElementById('form-div');
         formDiv.classList.add('fade-out-opacity');
         setTimeout(() =>{
             formDiv.classList.remove('fade-out-opacity');
-            formDiv.innerHTML=`<h1 class="text-2xl font-bold mb-4 text-white">Eclipse of Eternity: Sign Up</h1>
+            formDiv.innerHTML=`<h1 class="text-2xl font-bold mb-4 text-white">Eclipse of Eternity: Login</h1>
             <p class="special-text text-lg mb-4 text-gray-300">Your legend begins here, new adventurer...</p>
-            <form id="sign-up-form">
-                <input name="username" placeholder="Traveler name" class="focus:shadow-lg focus:shadow-red-500 transition-shadow mb-2 w-full p-3 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-red-500 text-xs lg:text-lg"/>
-                <input name="email" type="email" placeholder="Email address (required)" class="focus:shadow-lg focus:shadow-red-500 transition-shadow mt-1 mb-2 w-full p-3 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-red-500 text-xs lg:text-lg" required/>
-                <input name="password" type="password" placeholder="Password (required)" class="focus:shadow-lg focus:shadow-red-500 transition-shadow mt-1 w-full p-3 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-red-500 text-xs lg:text-lg" required/>
+            <form id="login-form">
+                <input name="email" type="email" placeholder="Email address" class="focus:shadow-lg focus:shadow-red-500 transition-shadow mt-1 mb-2 w-full p-3 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-red-500 text-xs lg:text-lg" required/>
+                <input name="password" type="password" placeholder="Password" class="focus:shadow-lg focus:shadow-red-500 transition-shadow mt-1 w-full p-3 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-red-500 text-xs lg:text-lg" required/>
                 <button type="submit" class="medieval-button border border-gray-500 my-4 w-full bg-red-600 shadow-red-700 shadow-md hover:bg-red-700 transition text-white font-semibold py-2 px-4 rounded-lg">Join The World</button>
-                <button onclick="window.location.href='https://codingblink.com/eclipse-of-eternity/login';" class="text-blue-500 underline w-full shadow-white hover:text-white transition duration-300 font-semibold text-right">I already have an account</button>
+                <button onclick="window.location.href='https://codingblink.com/eclipse-of-eternity/login';" class="text-blue-500 underline w-full shadow-white hover:text-white transition duration-300 font-semibold text-right">I don't have an account</button>
             </form>`;
-            document.getElementById('sign-up-form').addEventListener('submit',submitSignUpForm);
+            document.getElementById('login-form').addEventListener('submit',submitLogInForm);
         },300);
     }
     var send_data = undefined;
-    function submitSignUpForm(e){
+    function submitLogInForm(e){
         e.preventDefault();
         const formDiv=document.getElementById('form-div');
         formDiv.classList.add('fade-out-opacity');
         const form=e.target;
         const data={
-            u: form.username.value,
             e: form.email.value,
             p: form.password.value
         };
@@ -714,31 +694,32 @@
                             document.body.appendChild(script);
                         }
                     }else if(response.ok){
+                        const data=await response.json();
                         let timeTaken=Date.now()-startTime;
                         clearTimeout(failTimeout);
                         setTimeout(()=>{
-                            formDiv.innerHTML=`<h1 class="text-2xl font-bold mb-4 text-white">Welcome to Eclispe of Eternity.</h1><p class="text-lg mb-4 text-gray-300">Please verify your email to create your account.<br>Verification expires in 10 minutes.</p>`;
+                            formDiv.innerHTML=`<h1 class="text-2xl font-bold mb-4 text-white">Welcome to Eclispe of Eternity.</h1><p class="text-lg mb-4 text-gray-300">You've logged in successfully as ${data.username}. More features are coming soon!</p>`;
                         },2000-timeTaken);
                     }else{
                         const errorData=await response.json();
                         let errorMessage='An error occurred when connecting to the server. Please try again.';
                         if(errorData){
-                            if(errorData.e===enums.usernameAlreadyTaken){
-                                errorMessage='That username is already taken. Please choose a different one.';
-                            }else if(errorData.e===enums.emailAlreadyTaken){
-                                errorMessage='That email is already taken. Please use a different email.';
-                            }else if(errorData.e==enums.inappropriateUsername){
-                                errorMessage='That username contains inappropriate language. Please choose a different one.';
-                            }else if(errorData.e==enums.passwordInsecure){
-                                errorMessage='Your password needs to have at least: one uppercase letter (A-Z), one lowercase letter (a-z), one number (0-9), one symbol (like :,-*!@/), and 11 total characters.';
-                            }else if(errorData.e==enums.passwordNotAllowed){
-                                errorMessage='That password isn\'t allowed. Please choose a more secure one without patterns.';
-                            }else if(errorData.e==enums.invalidRequest && response.status==400){
-                                errorMessage='Something went wrong. Try refreshing the page.';
-                            }else if(errorData.e==enums.invalidRequest && response.status==500){
-                                errorMessage='We couldn\'t process your account because of a server exception. Please contact support at support@eclipseofeternity.online within the next 48 hours. We may also reach out to you regarding this issue.';
-                            }else if(errorData.e==enums.unknownError || response.status==500){
-                                errorMessage='Something went wrong. Please try again later.';
+                            if(errorData.e===enums.accountNotFound){
+                                errorMessage='Account not found. Did you mean to <nobr><a href="https://codingblink.com/eclipse-of-eternity/signup" class="text-blue-500 underline">Sign Up</a></nobr> instead?';
+                            }else if(errorData.e===enums.accountBanned){
+                                errorMessage='Your account has been banned. Please contact support if you believe this is a mistake.';
+                            }else if(errorData.e==enums.accountLocked){
+                                errorMessage='Your account has been locked. Reset your password or contact support.';
+                            }else if(errorData.e==enums.tokenInvalid){
+                                errorMessage='Session invalid! Please login again.';
+                            }else if(errorData.e==enums.tokenExpired){
+                                errorMessage='Session expired! Please login again.';
+                            }else if(errorData.e==enums.wrongPassword){
+                                errorMessage='Your password is incorrect. Please try again or reset your password if you forgot it.';
+                            }else if(errorData.e==enums.invalidRequest){
+                                errorMessage='Something went wrong! Please try again later.';
+                            }else if(errorData.e==enums.noPassword){
+                                errorMessage='Your account doesn\'t have a password. Login with a magic code instead. (Check your email)';
                             }
                         }
                         clearTimeout(failTimeout);
@@ -754,9 +735,9 @@
             }
         }
         // try to send data to cloudflare first (not implemented).
-        send_data('https://api.codingblink.com:443/newaccount',data); // fallback (pre-migration).
+        send_data('https://api.codingblink.com:443/login',data); // fallback (pre-migration).
     }
-    document.getElementById('sign-up-form').addEventListener('submit',submitSignUpForm);
+    document.getElementById('login-form').addEventListener('submit',submitLogInForm);
     const chatBubble=document.getElementById('eoe-chat-bubble');
     const chatWindow=document.getElementById('eoe-chat-window');
     const closeBtn=document.getElementById('eoe-chat-close');
