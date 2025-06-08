@@ -694,10 +694,11 @@
                             document.body.appendChild(script);
                         }
                     }else if(response.ok){
+                        const data=await response.json();
                         let timeTaken=Date.now()-startTime;
                         clearTimeout(failTimeout);
                         setTimeout(()=>{
-                            formDiv.innerHTML=`<h1 class="text-2xl font-bold mb-4 text-white">Welcome to Eclispe of Eternity.</h1><p class="text-lg mb-4 text-gray-300">You've logged in successfully. More features are coming soon!</p>`;
+                            formDiv.innerHTML=`<h1 class="text-2xl font-bold mb-4 text-white">Welcome to Eclispe of Eternity.</h1><p class="text-lg mb-4 text-gray-300">You've logged in successfully as ${data.username}. More features are coming soon!</p>`;
                         },2000-timeTaken);
                     }else{
                         const errorData=await response.json();
