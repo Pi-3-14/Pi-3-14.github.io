@@ -703,9 +703,8 @@
                         const errorData=await response.json();
                         let errorMessage='An error occurred when connecting to the server. Please try again.';
                         if(errorData){
-                            console.log("Using new response headers.");
                             if(errorData.e===enums.accountNotFound){
-                                errorMessage='Account not found. Do you need to <a href="https://codingblink.com/eclipse-of-eternity/signup" class="text-blue-500 underline">Sign Up</a> first?';
+                                errorMessage='Account not found. Did you mean to <nobr><a href="https://codingblink.com/eclipse-of-eternity/signup" class="text-blue-500 underline">Sign Up</a></nobr> instead?';
                             }else if(errorData.e===enums.accountBanned){
                                 errorMessage='Your account has been banned. Please contact support if you believe this is a mistake.';
                             }else if(errorData.e==enums.accountLocked){
