@@ -419,8 +419,10 @@
         <p class="special-text lg:text-lg text-xs lg:mb-4 mb-2 text-gray-300">Your legend begins here, new adventurer...</p>
         <form id="sign-up-form">
             <input id="usernameInput" name="username" placeholder="Traveler name (optional)" class="focus:shadow-lg focus:shadow-red-500 transition-shadow mb-2 w-full lg:p-3 p-2 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-red-500 text-xs lg:text-lg"/>
-            <input name="email" type="email" placeholder="Email address (required)" class="focus:shadow-lg focus:shadow-red-500 transition-shadow mt-1 w-full lg:p-3 p-2 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-red-500 text-xs lg:text-lg" required/>
-            <button type="submit" class="medieval-button border border-gray-500 mt-4 w-full bg-red-600 shadow-red-700 shadow-md hover:bg-red-700 transition text-white font-semibold py-2 px-4 rounded-lg text-xs lg:text-lg">Join The World</button>
+            <input name="email" type="email" placeholder="Email address (required)" class="focus:shadow-lg focus:shadow-red-500 transition-shadow mt-1 mb-2 w-full lg:p-3 p-2 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-red-500 text-xs lg:text-lg" required/>
+            <input name="password" type="password" placeholder="Password (required)" class="focus:shadow-lg focus:shadow-red-500 transition-shadow mt-1 w-full p-3 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-red-500 text-xs lg:text-lg" required/>
+            <button type="submit" class="medieval-button border border-gray-500 my-4 w-full bg-red-600 shadow-red-700 shadow-md hover:bg-red-700 transition text-white font-semibold py-2 px-4 rounded-lg text-xs lg:text-lg">Join The World</button>
+            <button onclick="window.location.href='https://codingblink.com/eclipse-of-eternity/login';" class="text-blue-500 underline w-full shadow-white hover:text-white transition duration-300 font-semibold text-right">I already have an account</button>
         </form>
     </div>
     <!-- Links -->
@@ -491,7 +493,7 @@
             </div>
             <form autocomplete="off" onsubmit="return false;" class="bg-[#180016] px-5 py-4 border-t border-red-800 flex flex-col items-stretch">
                 <div class="flex gap-2">
-                    <input type="text" disabled placeholder="AI chat is in development! Thank you for supporting Eclipse of Eternity."
+                    <input type="text" disabled placeholder="Sign in to chat with NPCs."
                         class="flex-1 rounded-lg px-3 py-1 md:py-2 bg-black/60 border border-red-800 text-gray-400 opacity-60 font-medium shadow-inner outline-none transition disabled:cursor-not-allowed disabled:bg-black/60 disabled:text-gray-500 text-xs md:text-base" />
                     <button type="submit" disabled
                         class="bg-gradient-to-bl from-red-900 via-red-700 to-purple-800 text-red-100 font-semibold px-4 py-2 rounded-lg shadow hover:scale-105 transition disabled:opacity-60 disabled:cursor-not-allowed">
@@ -513,7 +515,7 @@
             <div class="mx-auto mt-[10%] w-[80%] text-center flex lg:block hidden font-extrabold mb-4 opacity-90 text-white">
                 <h2 class="text-2xl mb-2 title-font">Three Game Modes</h2>
                 <p class="mx-auto border-white/30 w-[10%] text-center flex lg:block hidden text-xs title-font">:::</p>
-                <p class="text-left mt-2">Eclipse of Eternity welcomes all kinds of gameplay, so long as it's done on the right server. Here's our three ways to play:</p>
+                <p class="text-left mt-2">Eclipse of Eternity welcomes all kinds of gameplay, so long as it's done on the right server. Each server is separate. Here are our three ways to play:</p>
                 <ul>
                     <li class="text-left mt-2 border-t-2 border-white/30">Normal: The game plays normally on this server. You can respawn after death and cheating is not allowed. (Recommended game mode)</li>
                     <li class="text-left mt-2 border-t-2 border-white/30">Cheating-enabled: Cheating is allowed on this server. You'll be given a set of tools to fly, duplicate items, destroy others in PvP, and much more! Note that everyone can cheat, and while cheating is allowed, hacking is not! You can still be banned for trying to hack other accounts or threaten others.</li>
@@ -628,9 +630,13 @@
     }
     // animateStarsWith3DEffect();
     let enums = {
-        usernameAlreadyTaken: 0,
-        emailAlreadyTaken: 1,
-        inappropriateUsername: 2
+        emailAlreadyTaken: 0,
+        usernameAlreadyTaken: 1,
+        passwordInsecure: 2,
+        passwordNotAllowed: 3,
+        unknownError: 4,
+        inappropriateUsername: 5,
+        invalidRequest: 6
     }
     function resetForm(){
         const formDiv=document.getElementById('form-div');
@@ -640,9 +646,11 @@
             formDiv.innerHTML=`<h1 class="text-2xl font-bold mb-4 text-white">Eclipse of Eternity: Sign Up</h1>
             <p class="special-text text-lg mb-4 text-gray-300">Your legend begins here, new adventurer...</p>
             <form id="sign-up-form">
-                <input name="username" placeholder="Traveler name (optional)" class="focus:shadow-lg focus:shadow-red-500 transition-shadow mb-2 w-full p-3 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-red-500"/>
-                <input name="email" type="email" placeholder="Email address (required)" class="focus:shadow-lg focus:shadow-red-500 transition-shadow mt-1 w-full p-3 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-red-500" required/>
-                <button type="submit" class="medieval-button border border-gray-500 mt-4 w-full bg-red-600 shadow-red-700 shadow-md hover:bg-red-700 transition text-white font-semibold py-2 px-4 rounded-lg">Join The World</button>
+                <input name="username" placeholder="Traveler name" class="focus:shadow-lg focus:shadow-red-500 transition-shadow mb-2 w-full p-3 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-red-500 text-xs lg:text-lg"/>
+                <input name="email" type="email" placeholder="Email address (required)" class="focus:shadow-lg focus:shadow-red-500 transition-shadow mt-1 mb-2 w-full p-3 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-red-500 text-xs lg:text-lg" required/>
+                <input name="password" type="password" placeholder="Password (required)" class="focus:shadow-lg focus:shadow-red-500 transition-shadow mt-1 w-full p-3 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-red-500 text-xs lg:text-lg" required/>
+                <button type="submit" class="medieval-button border border-gray-500 my-4 w-full bg-red-600 shadow-red-700 shadow-md hover:bg-red-700 transition text-white font-semibold py-2 px-4 rounded-lg">Join The World</button>
+                <button onclick="window.location.href='https://codingblink.com/eclipse-of-eternity/login';" class="text-blue-500 underline w-full shadow-white hover:text-white transition duration-300 font-semibold text-right">I already have an account</button>
             </form>`;
             document.getElementById('sign-up-form').addEventListener('submit',submitSignUpForm);
         },300);
@@ -655,7 +663,8 @@
         const form=e.target;
         const data={
             username: form.username.value,
-            email: form.email.value
+            email: form.email.value,
+            password: form.password.value
         };
         if (send_data == undefined){
             send_data = async function(server,data){
@@ -708,12 +717,12 @@
                         let timeTaken=Date.now()-startTime;
                         clearTimeout(failTimeout);
                         setTimeout(()=>{
-                            formDiv.innerHTML=`<h1 class="text-2xl font-bold mb-4 text-white">Welcome to Eclispe of Eternity.</h1><p class="text-lg mb-4 text-gray-300">You've reserved your spot.<br>You will receive an email when your account is ready for creation.</p>`;
+                            formDiv.innerHTML=`<h1 class="text-2xl font-bold mb-4 text-white">Welcome to Eclispe of Eternity.</h1><p class="text-lg mb-4 text-gray-300">Please verify your email to create your account.<br>Verification expires in 10 minutes.</p>`;
                         },2000-timeTaken);
                     }else{
                         const errorData=await response.json();
                         let errorMessage='An error occurred when connecting to the server. Please try again.';
-                        if(errorData.e){
+                        if(errorData){
                             console.log("Using new response headers.");
                             if(errorData.e===enums.usernameAlreadyTaken){
                                 errorMessage='That username is already taken. Please choose a different one.';
@@ -721,17 +730,16 @@
                                 errorMessage='That email is already taken. Please use a different email.';
                             }else if(errorData.e==enums.inappropriateUsername){
                                 errorMessage='That username contains inappropriate language. Please choose a different one.';
-                            }
-                        }
-                        if(errorData.error){
-                            if(errorData.error==='Username is already taken.'){
-                                errorMessage='That username is already taken. Please choose a different one.';
-                            }else if(errorData.error==='Email is already taken.'){
-                                errorMessage='That email is already taken. Please use a different email.';
-                            }else if(errorData.error==='Username may contain inappropriate language.'){
-                                errorMessage='That username contains inappropriate language. Please choose a different one.';
-                            }else{
-                                errorMessage=errorData.error;
+                            }else if(errorData.e==enums.passwordInsecure){
+                                errorMessage='Your password needs to have at least: one uppercase letter (A-Z), one lowercase letter (a-z), one number (0-9), one symbol (like :,-*!@/), and 11 total characters.';
+                            }else if(errorData.e==enums.passwordNotAllowed){
+                                errorMessage='That password isn\'t allowed. Please choose a more secure one without patterns.';
+                            }else if(errorData.e==enums.invalidRequest && response.status==400){
+                                errorMessage='Something went wrong. Try refreshing the page.';
+                            }else if(errorData.e==enums.invalidRequest && response.status==500){
+                                errorMessage='We couldn\'t process your account because of a server exception. Please contact support at support@eclipseofeternity.online within the next 48 hours. We may also reach out to you regarding this issue.';
+                            }else if(errorData.e==enums.unknownError || response.status==500){
+                                errorMessage='Something went wrong. Please try again later.';
                             }
                         }
                         clearTimeout(failTimeout);
@@ -747,8 +755,7 @@
             }
         }
         // try to send data to cloudflare first (not implemented).
-        send_data('https://api.codingblink.com:443/signup',data); // fallback (pre-migration).
-        // try to send to non-ddns.net url (not implemented).
+        send_data('https://api.codingblink.com:443/newaccount',data); // fallback (pre-migration).
     }
     document.getElementById('sign-up-form').addEventListener('submit',submitSignUpForm);
     const chatBubble=document.getElementById('eoe-chat-bubble');

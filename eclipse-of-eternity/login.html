@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <link rel="canonical" href="https://codingblink.com/eclipse-of-eternity">
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-    <meta name="description" content="Eclipse of Eternity is an open-world RPG set to release in December 2028. Sign up before the early deadline to earn 1 year of game time for free!"/>
-    <title>Eclipse of Eternity: Pre-Impact</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta name="description" content="Eclipse of Eternity is an open-world RPG set to release in December 2028. Sign up before the early deadline to earn 1 year of game time for free!" />
+    <title>Eclipse of Eternity: Login</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="particles.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css"/>
@@ -17,6 +17,9 @@
         *{
             font-family: 'Poppins';
             font-weight: bold;
+        }
+        .form-div{
+            animation: expandForm 2s ease-out forwards;
         }
         .fade-in-opacity{
             animation: fadeInOpacity 2s ease-out;
@@ -32,6 +35,7 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             text-shadow: 2px 2px 6px rgba(255,255,255,1);
+            animation: ellipticalMotion 10s linear infinite;
         }
         @keyframes ellipticalMotion{
             0%{transform: translateX(0px) translateY(0px);}
@@ -115,13 +119,13 @@
             50%{transform: scale(1.5);opacity: 1;}
         }
         .light{
-            position: fixed;
+            position: absolute;
             width: 10px;
             height: 10px;
             background: #ffd700;
             border-radius: 50%;
             box-shadow: 0 0 30px 10px rgba(255,215,0,0.5);
-            z-index: 2501;
+            z-index: 0;
             animation: flicker 2s infinite ease-in-out;
         }
         .fire-particle{
@@ -262,6 +266,9 @@
                 transform: scale(1.2);
             }
         }
+        #form-div{
+            z-index: 1000;
+        }
         .special-text{
             font-family: 'Almendra SC';
         }
@@ -297,6 +304,24 @@
                 transform: scale(0.92) translate(30px,10px);
             }
         }
+        @media (max-height: 600px){
+            #eoe-chat-bubble{
+                top: 16px !important;
+                bottom: auto !important;
+            }
+            #eoe-chat-scroll{
+                max-height: 40vh !important;
+            }
+            .chat-container-div{
+                transform: translateY(-15%) translateX(10%) scale(0.65) !important;
+            }
+            .scale-text-size{
+                font-size: 9px !important;
+            }
+            .scale-line-height{
+                line-height: 75% !important;
+            }
+        }
         @media (max-height: 850px){
             .chat-container-div{
                 transform: scale(0.9) translateX(10%) translateY(10%) !important;
@@ -323,7 +348,7 @@
             background-color: black;
         }
         #eoe-chat-window{
-            z-index: 3500;
+            z-index: 1200;
         }
         @keyframes blink{ 50%{ opacity: 0; } }
         .blink{
@@ -349,55 +374,9 @@
         .animate-disappear {
             animation: disappear 10s ease-out;
         }
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        @keyframes spin-reverse {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(-360deg); }
-        }
-        .minute-hand {
-            transform-origin: 50px 50px;
-            animation: spin-reverse 5s linear infinite;
-        }
-        .hour-hand {
-            transform-origin: 50px 50px;
-            animation: spin 8s linear infinite;
-        }
-        .text-card {
-            background: rgba(20, 0, 30, 0.8);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 24px;
-            transition: all 0.3s ease;
-        }
-
-        .text-card:hover {
-            background: rgba(30, 0, 40, 0.9);
-            border-color: rgba(255, 255, 255, 0.2);
-            transform: translateY(-4px);
-            box-shadow: 0 10px 30px rgba(150, 0, 200, 0.3);
-        }
-
-        @media (max-width: 1024px) {
-            .asteroid {
-                right: 5% !important;
-                transform: scale(0.7);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .eclipse-container {
-                top: 25%;
-                transform: translate(-50%, -50%) scale(0.8);
-            }
-        }
     </style>
 </head>
-<body class="min-h-screen bg-gradient-to-b from-[#0d001a] via-[#0d001a] to-black text-white flex justify-center overflow-x-hidden">
+<body class="min-h-screen bg-gradient-to-b from-[#0d001a] via-[#0d001a] to-black text-white flex items-center justify-center overflow-x-hidden">
     <!-- Background -->
     <div class="asteroid z-[499]" id="asteroid"></div>
     <div class="asteroid-glints absolute top-[20%] right-[20%] w-[300px] h-[300px] pointer-events-none z-[500]">
@@ -412,53 +391,35 @@
         <div class="crystal-glint top-[110px] left-[140px] w-[12px] h-[12px]"></div>
         <div class="crystal-glint top-[130px] left-[180px] w-[14px] h-[14px]"></div>
     </div>
-    <div class="terrain z-[2400]"></div>
+    <div class="terrain"></div>
     <div class="light" style="bottom: 10%; left: 10%;"></div>
     <div class="light" style="bottom: 13%; left: 30%;"></div>
     <div class="light" style="bottom: 10%; left: 50%;"></div>
     <div class="light" style="bottom: 15%; left: 70%;"></div>
     <div class="light" style="bottom: 11%; left: 90%;"></div>
-    <div class="z-[50] eclipse-container">
+    <div class="z-[100] eclipse-container">
         <div class="eclipse-core"></div>
-        <div class="absolute flex justify-center items-center translate-y-[250%] scale-[3]">
-            <svg class="w-40 h-40 drop-shadow-[0_0_10px_white]" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="50" cy="50" r="44" stroke="white" stroke-dasharray="3,4" stroke-width="1" fill="none" opacity="0.5"/>
-                <circle cx="50" cy="50" r="48" stroke="white" stroke-width="2" fill="none"/>
-                <text x="50" y="18" text-anchor="middle" fill="white" font-size="6" font-family="serif">XII</text>
-                <text x="85" y="55" text-anchor="middle" fill="white" font-size="6" font-family="serif">III</text>
-                <text x="50" y="95" text-anchor="middle" fill="white" font-size="6" font-family="serif">VI</text>
-                <text x="15" y="55" text-anchor="middle" fill="white" font-size="6" font-family="serif">IX</text>
-                <g class="hour-hand">
-                    <line x1="50" y1="50" x2="50" y2="30" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                    <path d="M49,35 L51,35 L50,20 Z" fill="white"/>
-                    <path d="M47,30 L53,30 L50,31 Z" fill="white"/>
-                    <circle cx="50" cy="30" r="1.5" fill="white"/>
-                </g>
-                <g class="minute-hand">
-                    <line x1="50" y1="50" x2="50" y2="20" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                    <path d="M49,25 L51,25 L50,10 Z" fill="white"/>
-                    <path d="M47,20 L53,20 L50,21 Z" fill="white"/>
-                    <circle cx="50" cy="20" r="1.5" fill="white"/>
-                </g>
-                <circle cx="50" cy="50" r="3" fill="white" stroke="white" stroke-width="1"/>
-            </svg>
-        </div>
     </div>
-    <div class="fade-in-opacity fixed top-0 left-0 w-full h-32 bg-gradient-to-b from-red-700 to-transparent z-[3000]"></div>
-    <div class="fixed top-4 right-4 flex flex-row gap-6 z-[3003]">
-        <a href="./signup.html" class="text-white-400 hover:text-yellow-500 md:text-lg text-sm transition duration-300">
-            <i class="fas fa-right-to-bracket inline mr-2"></i>Sign Up
-        </a>
+    <!-- Login Form -->
+    <div class="fade-in-opacity absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-red-700 to-transparent z-0"></div>
+    <p class="absolute top-[15%] text-8xl lg:block hidden font-extrabold mb-4 opacity-80 text-white title-font z-[1000]">Eclipse of Eternity</p>
+    <div id="form-div" class="form-div mx-4 bg-white/5 backdrop-blur-lg p-8 rounded-2xl shadow-lg w-full max-w-md text-center border border-white/10">
+        <h1 class="lg:text-2xl text-md font-bold lg:mb-4 mb-2 text-white">Eclipse of Eternity: Login</h1>
+        <p class="special-text lg:text-lg text-xs lg:mb-4 mb-2 text-gray-300">Welcome back, Adventurer!</p>
+        <form id="login-form">
+            <input id="emailInput" name="email" type="email" placeholder="Email address" class="focus:shadow-lg focus:shadow-red-500 transition-shadow mt-1 mb-2 w-full lg:p-3 p-2 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-red-500 text-xs lg:text-lg" required/>
+            <input name="password" type="password" placeholder="Password" class="focus:shadow-lg focus:shadow-red-500 transition-shadow mt-1 w-full p-3 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-red-500 text-xs lg:text-lg" required/>
+            <button type="submit" class="medieval-button border border-gray-500 my-4 w-full bg-red-600 shadow-red-700 shadow-md hover:bg-red-700 transition text-white font-semibold py-2 px-4 rounded-lg text-xs lg:text-lg">Login</button>
+            <button onclick="window.location.href='https://codingblink.com/eclipse-of-eternity/signup';" class="text-blue-500 underline w-full shadow-white hover:text-white transition duration-300 font-semibold text-right">I don't have an account</button>
+        </form>
     </div>
-    <h1 class="fixed text-lg md:text-2xl md:pt-4 pt-10 font-extrabold mb-4 text-white title-font z-[3001]">Eclipse of Eternity</h1>
-    
     <!-- Links -->
-    <div class="fixed top-4 left-4 transform flex gap-6 z-[3002] transition-all">
-        <a href="https://codingblink.com" class="text-white opacity-50 hover:opacity-100 hover:text-yellow-400 text-2xl transition">
+    <div class="fixed top-4 left-4 transform flex gap-6 z-50 transition-all">
+        <a href="https://codingblink.com/eclipse-of-eternity" class="text-white opacity-50 hover:opacity-100 hover:text-yellow-400 text-2xl transition">
             <i class="fas fa-home"></i>
         </a>
     </div>
-    <div class="fixed bottom-4 left-1/2 transform -translate-x-1/2 flex gap-6 z-[2500]">
+    <div class="fixed bottom-4 left-1/2 transform -translate-x-1/2 flex gap-6 z-50">
         <a href="https://discord.gg/GnGEwzwvGe" target="_blank" class="text-white hover:text-indigo-400 text-2xl transition">
             <i class="fab fa-discord"></i>
         </a>
@@ -472,22 +433,22 @@
             <i class="fas fa-hand-holding-heart"></i>
         </a>
     </div>
-    <div class="fixed bottom-4 right-4 flex flex-row gap-6 z-[2500]">
+    <div class="fixed bottom-4 right-4 flex flex-row gap-6 z-50">
         <a href="legal.html" class="text-gray-400 hover:text-red-500 lg:text-lg text-xs transition">
             <p class="mr-2 inline">Legal</p><i class="fas fa-gavel inline"></i>
         </a>
     </div>
-    <div id="pingDisplay" class="fixed bottom-4 left-4 flex flex-row gap-6 z-[2500] opacity-80 hover:opacity-100">
+    <div id="pingDisplay" class="fixed bottom-4 left-4 flex flex-row gap-6 z-50 opacity-80 hover:opacity-100">
         <span class="hidden md:block"><i class="fas fa-wifi mr-1"></i>Pinging server...</span><span class="md:hidden block"><i class="fas fa-wifi mr-1"></i><span>
     </div>
     <!-- NEW! (Under Construction) AI Chat -->
-    <div id="eoe-chat-bubble" class="fixed z-[2450] right-6 bottom-16 md:bottom-[85%] md:top-auto bg-gradient-to-b from-[#180025] via-[#22002c] to-[#110015] border border-red-700 rounded-xl shadow-lg shadow-red-900/30 opacity-80 hover:opacity-100 transition-all duration-500 cursor-pointer sm:w-60 w-16 h-16 flex items-center justify-center group md:w-52 md:h-14 hover:scale-110 hover:translate-x-[-20px]">
-        <div class="z-[2450] w-full flex items-center gap-3 px-5 pointer-events-none">
-            <span class="sm:block hidden text-md block text-base text-red-400 font-semibold tracking-wider group-hover:text-white transition">Chat with NPCs</span>
-            <i class="fas fa-comments text-lg text-purple-300 group-hover:text-red-300 transition"></i>
-        </div>
+    <div id="eoe-chat-bubble" class="fixed z-50 right-6 bottom-16 md:bottom-[85%] md:top-auto bg-gradient-to-b from-[#180025] via-[#22002c] to-[#110015] border border-red-700 rounded-xl shadow-lg shadow-red-900/30 opacity-80 hover:opacity-100 transition-all duration-500 cursor-pointer w-60 h-16 flex items-center justify-center group md:w-52 md:h-14 hover:scale-110 hover:translate-x-[-20px]">
+    <div class="w-full flex items-center gap-3 px-5 pointer-events-none">
+        <span class="block text-base text-red-400 font-semibold tracking-wider group-hover:text-white transition">Chat with NPCs</span>
+        <i class="fas fa-comments text-xl text-purple-300 group-hover:text-red-300 transition"></i>
     </div>
-    <div id="eoe-chat-window" class="fixed bottom-40 right-4 md:right-16 lg:max-w-2xl w-[95vw] max-w-sm md:max-w-md min-h-[430px] opacity-0 pointer-events-none transition-transform transition-opacity duration-500 origin-bottom-right md:origin-right">
+    </div>
+    <div id="eoe-chat-window" class="fixed z-[120] bottom-4 right-4 md:right-16 md:bottom-auto w-[95vw] max-w-sm md:max-w-md min-h-[430px] opacity-0 pointer-events-none transition-transform transition-opacity duration-500 origin-bottom-right md:origin-right">
         <div class="chat-container-div scale-85 lg:scale-90 bg-gradient-to-b from-[#210033] via-[#32002d] to-black border border-red-800 rounded-2xl shadow-2xl shadow-red-900/50">
             <div class="relative bg-gradient-to-r from-[#31001a] via-[#480024] to-transparent px-5 py-3 rounded-t-2xl border-b border-red-900 flex items-center justify-between">
                 <h2 class="text-sm sm:text-lg md:text-xl font-bold text-red-400 flex items-center mr-8">
@@ -506,7 +467,7 @@
                 Ask for <span class="text-pink-300">directions</span>, advice, hints, lore, or even <span class="text-pink-300">complex questions</span> like <em>“how do I get to the city of Lysara?”</em>.<br>
                 Each conversation shapes your journey in unique ways.</span>
             </p>
-            <div id="eoe-chat-scroll" class="lg:max-h-[720px] lg:h-[720px] md:max-h-[480px] md:h-[480px] h-80 max-h-64 flex-1 overflow-y-auto px-5 py-6 bg-gradient-to-t from-black/80 via-transparent to-transparent">
+            <div id="eoe-chat-scroll" class="lg:max-h-80 h-80 max-h-64 flex-1 overflow-y-auto px-5 py-6 bg-gradient-to-t from-black/80 via-transparent to-transparent">
                 <div class="flex items-start gap-3 mb-4">
                     <div class="flex-shrink-0">
                     </div>
@@ -520,8 +481,8 @@
             </div>
             <form autocomplete="off" onsubmit="return false;" class="bg-[#180016] px-5 py-4 border-t border-red-800 flex flex-col items-stretch">
                 <div class="flex gap-2">
-                    <input type="text" disabled placeholder="AI chat is in development! Thank you for supporting Eclipse of Eternity."
-                        class="flex-1 rounded-lg px-3 py-1 md:py-2 bg-black/60 border border-red-800 text-gray-400 opacity-60 font-medium shadow-inner outline-none transition disabled:cursor-not-allowed disabled:bg-black/60 disabled:text-gray-500 text-xs md:text-base"/>
+                    <input type="text" disabled placeholder="Sign in to chat with NPCs."
+                        class="flex-1 rounded-lg px-3 py-1 md:py-2 bg-black/60 border border-red-800 text-gray-400 opacity-60 font-medium shadow-inner outline-none transition disabled:cursor-not-allowed disabled:bg-black/60 disabled:text-gray-500 text-xs md:text-base" />
                     <button type="submit" disabled
                         class="bg-gradient-to-bl from-red-900 via-red-700 to-purple-800 text-red-100 font-semibold px-4 py-2 rounded-lg shadow hover:scale-105 transition disabled:opacity-60 disabled:cursor-not-allowed">
                         <i class="fas fa-paper-plane"></i>
@@ -534,100 +495,36 @@
             </form>
         </div>
     </div>
-    <div class="bg-gradient-to-b from-[#0d001a]/0 via-[#0d001a] to-black fixed bottom-0 h-[30%] w-full z-[2300]"></div>
-    <div class="bg-gradient-to-t from-[#0d001a]/0 via-[#0d001a] to-[#0d001a] fixed top-0 h-[20%] w-full z-[1950]"></div>
-    <div id="content-grid" class="my-32 md:my-64 container mx-auto px-4 py-8 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8 z-[1000] relative">
-        <!-- Content will be dynamically inserted here -->
+    <div class="2xl:block hidden absolute inset-0 flex flex-col items-center justify-center text-center top-[100%]">
+        <img class="absolute w-[100vw] h-[100vh] object-cover" style="filter: brightness(50%);" src="landscape-under-construction.jpg">
+        <p class="mx-auto mt-[10%] text-center flex text-8xl lg:block hidden font-extrabold mb-4 opacity-90 text-white title-font">World under construction...</p>
+        <p class="mx-auto mt-[5%] text-center flex text-3xl lg:block hidden font-extrabold mb-4 opacity-90 text-white title-font">Here's a quick taste of the game so far</p>
+        <div class="grid grid-cols-3">
+            <div class="mx-auto mt-[10%] w-[80%] text-center flex lg:block hidden font-extrabold mb-4 opacity-90 text-white">
+                <h2 class="text-2xl mb-2 title-font">Three Game Modes</h2>
+                <p class="mx-auto border-white/30 w-[10%] text-center flex lg:block hidden text-xs title-font">:::</p>
+                <p class="text-left mt-2">Eclipse of Eternity welcomes all kinds of gameplay, so long as it's done on the right server. Each server is separate. Here are our three ways to play:</p>
+                <ul>
+                    <li class="text-left mt-2 border-t-2 border-white/30">Normal: The game plays normally on this server. You can respawn after death and cheating is not allowed. (Recommended game mode)</li>
+                    <li class="text-left mt-2 border-t-2 border-white/30">Cheating-enabled: Cheating is allowed on this server. You'll be given a set of tools to fly, duplicate items, destroy others in PvP, and much more! Note that everyone can cheat, and while cheating is allowed, hacking is not! You can still be banned for trying to hack other accounts or threaten others.</li>
+                    <li class="text-left mt-2 border-t-2 border-white/30">One-life: The game plays normally. However, if your character dies even once, it will be permanently deleted from that server. You will get the opportunity to play One-life again in the future when the following month's server launches.</li>
+                </ul>
+            </div>
+            <div class="mx-auto mt-[10%] w-[80%] text-center flex lg:block hidden font-extrabold mb-4 opacity-90 text-white">
+                <h2 class="text-2xl mb-2 title-font">Craft Your Own Magic</h2>
+                <p class="mx-auto border-white/30 w-[10%] text-center flex lg:block hidden text-xs title-font">:::</p>
+                <p class="text-left mt-2">Combine two ordinary spells to invent the new combo! Just like Infinite Craft and other popular internet games, you'll be able to make endless spells using generative AI. The limit is your imagination!</p>
+            </div>
+            <div class="mx-auto mt-[10%] w-[80%] text-center flex lg:block hidden font-extrabold mb-4 opacity-90 text-white">
+                <h2 class="text-2xl mb-2 title-font">No Fixed Dialog NPCs</h2>
+                <p class="mx-auto border-white/30 w-[10%] text-center flex lg:block hidden text-xs title-font">:::</p>
+                <p class="text-left mt-2">Tired of clicking the same buttons on an NPC over and over? Eclipse of Eternity NPCs will be powered by a custom-trained AI that knows everything inside the game. You can ask any NPC how to find your next encounter, where to find a city or another point of interest, or just chat with them like a friend!</p>
+            </div>
+        </div>
     </div>
 </body>
 <script>
-    const gameContent = [
-        {
-            title: "What is Eclipse of Eternity?",
-            content: "Eclipse of Eternity is an <span class='text-blue-400'>Open-world RPG Game</span> that is set to release on <span class='text-purple-400'>December 2028</span>. It all starts with <span class='text-red-500'>a living meteor</span>. Made of nothing but crystal, this meteor seeks to fulfill one purpose: destroy the world. This meteor succeeded in all but one timeline, stopped by none other than <span class='text-green-400'>Nyx Kaida</span>, a noble sorcerer who would often disappear for months at a time to perform experiments. However, a single noble alone is not enough to stop such a meteor. Nyx realized this months ago when he first sensed its evil presence, so he prepared a powerful spell to freeze the meteor in time. However, due to the meteor's overwhelming power, Nyx would have to sacrifice himself to time as well, until someone with enough strength to destroy this meteor can awaken. The <span class=''>Kaida Family</span> is the royal family of <span class='text-orange-400'>Kaida Castle</span>, the starting point of the storyline, and the goal of the adventure is to awaken <span class='text-orange-400'>The Elder Dragon</span>, who we hope will be strong enough to destroy the meteor for good, freeing Nyx from his frozen timeline. In other timelines, the meteor successfully destroyed the planet. However, the meteor's failure to destroy one timeline tore holes across time. Known as <span class='text-blue-400'>Time Portals</span>, these allow players to revisit the past or venture far into the future.",
-            hspan: 3
-        },
-        {
-            title: "Three Game Modes",
-            content: "Eclipse of Eternity welcomes all kinds of gameplay, so long as it's done on the right server. Each server is separate. Here are our three ways to play:",
-            list: [
-                "<span class='text-green-300'>Normal</span>: The game plays normally on this server. You can respawn after death and cheating is not allowed. (Recommended game mode)",
-                "<span class='text-blue-300'>Cheating-enabled</span>: Cheating is allowed on this server. You'll be given a set of tools to fly, duplicate items, destroy others in PvP, and much more! Note that everyone can cheat, and while cheating is allowed, hacking is not! You can still be banned for trying to hack other accounts or threaten others.",
-                "<span class='text-red-300'>One-life</span>: The game plays normally. However, if your character dies even once, it will be permanently deleted from that server. You will get the opportunity to play One-life again in the future when the following month's server launches."
-            ],
-            vspan: 2
-        },
-        {
-            title: "Craft Your Own Magic",
-            content: "Combine two ordinary spells to invent the new combo! Just like Infinite Craft and other popular internet games, you'll be able to make endless spells using generative AI. The limit is your imagination!"
-        },
-        {
-            title: "No Fixed Dialog NPCs",
-            content: "Tired of clicking the same buttons on an NPC over and over? Eclipse of Eternity NPCs will be powered by a custom-trained AI that knows everything inside the game. You can ask any NPC how to find your next encounter, where to find a city or another point of interest, or just chat with them like a friend!"
-        },
-        {
-            title: "A Combined Timeline",
-            content: "Experience a living world where the past, present, and future are connected. In this world, it's normal for a rich adventurer to own both a dragon and a spaceship, and you will frequently see adventures that clash between ancient magic and futuristic technology."
-        },
-        {
-            title: "Cross-Platform Play",
-            content: "Join your friends regardless of their device. Eclipse of Eternity supports seamless cross-platform gameplay between PC, console, and mobile devices."
-        },
-        {
-            title: "Player-Driven Environment",
-            content: "Build your empire through trading, crafting, or conquest. Each player gets their own pocket dimension, so build to your heart's content! We'll also randomly select builds to be featured in future expansions, awarding the owner of the build with a free PC."
-        },
-        {
-            title: "Free Offer! (Limited Time)",
-            content: "To enter the timeline and play Eclipse of Eternity, you'll need <span class='text-pink-500'>Time Crystals</span>, which last for one full day. Power up your game with <span class='text-pink-500'>365 Time Crystals for free</span> by <a href='./signup.html' class='underline text-blue-400'>creating an Eclipse of Eternity account</a>. That's a whole year!<br><br>Additional time crystals can be bought from the in-game shop, or earned through special events.",
-            hspan: 2
-        }
-    ];
-
-    function renderContentCards() {
-        const contentGrid = document.getElementById('content-grid');
-        
-        gameContent.forEach((item, index) => {
-            const card = document.createElement('div');
-            card.className = 'text-card opacity-0';
-            card.style.animationDelay = `${index * 0.1}s`;
-            
-            let listHTML = '';
-            if (item.list) {
-                listHTML = '<ul class="mt-4 space-y-2">';
-                item.list.forEach(listItem => {
-                    listHTML += `<li class="text-left text-sm border-t-2 border-white/20 pt-2">${listItem}</li>`;
-                });
-                listHTML += '</ul>';
-            }
-
-            if (item.hspan) {
-                card.className += ` lg:col-span-${Math.min(item.hspan, 3)} md:col-span-${Math.min(item.hspan, 2)} col-span-${Math.min(item.hspan, 1)}`
-            }
-            if (item.vspan) {
-                card.className += ` row-span-${item.vspan}`
-            }
-            
-            card.innerHTML = `
-                <h2 class="text-xl md:text-2xl mb-3 title-font text-center text-white">${item.title}</h2>
-                <div class="mx-auto border-white/30 w-12 h-[1px] mb-4"></div>
-                <p class="text-left text-sm md:text-base text-gray-200">${item.content}</p>
-                ${listHTML}
-            `;
-            
-            contentGrid.appendChild(card);
-            
-            setTimeout(() => {
-                card.classList.add('fade-in-opacity');
-                card.classList.remove('opacity-0');
-            }, 50);
-        });
-    }
-    document.addEventListener('DOMContentLoaded', () => {
-        renderContentCards();
-        pingServer();
-    });
-
+    document.getElementById("emailInput").focus();
     let asteroid=document.getElementById("asteroid");
     for(let i=0;i<60;i++){
         const particle=document.createElement('div');
@@ -712,63 +609,135 @@
             }
         }, 50);
     }
-    animateStarsWith3DEffect();
-    function alertHandle() {
-        alert("Unhandled error in API response!");
+    // animateStarsWith3DEffect();
+    let enums = {
+        accountNotFound: 0,
+        accountBanned: 1,
+        accountLocked: 2,
+        tokenInvalid: 3,
+        tokenExpired: 4,
+        wrongPassword: 5,
+        invalidRequest: 6,
+        noPassword: 7
     }
-    async function apiRequest(server,data,handle,errorHandle=alertHandle){
-        try{
-            let startTime=Date.now();
-            const response=await fetch(server,{
-                method: 'POST',
-                headers:{
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            });
-            if(response.status===299){
-                const additionalRequest=await response.json();
-                formDiv.classList.remove('fade-out-opacity');
-                const html=additionalRequest.html;
-                const element=document.getElementById(additionalRequest.el||'')||document.body;
-                const js=additionalRequest.js;
-                const css=additionalRequest.css;
-                if(element==document.body && html){
-                    if(html.trim().toLowerCase().startsWith("<!doctype html>")){
-                        document.open();
-                        document.write(html);
-                        document.close();
-                        return;
+    function resetForm(){
+        const formDiv=document.getElementById('form-div');
+        formDiv.classList.add('fade-out-opacity');
+        setTimeout(() =>{
+            formDiv.classList.remove('fade-out-opacity');
+            formDiv.innerHTML=`<h1 class="text-2xl font-bold mb-4 text-white">Eclipse of Eternity: Login</h1>
+            <p class="special-text text-lg mb-4 text-gray-300">Your legend begins here, new adventurer...</p>
+            <form id="login-form">
+                <input name="email" type="email" placeholder="Email address" class="focus:shadow-lg focus:shadow-red-500 transition-shadow mt-1 mb-2 w-full p-3 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-red-500 text-xs lg:text-lg" required/>
+                <input name="password" type="password" placeholder="Password" class="focus:shadow-lg focus:shadow-red-500 transition-shadow mt-1 w-full p-3 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-red-500 text-xs lg:text-lg" required/>
+                <button type="submit" class="medieval-button border border-gray-500 my-4 w-full bg-red-600 shadow-red-700 shadow-md hover:bg-red-700 transition text-white font-semibold py-2 px-4 rounded-lg">Join The World</button>
+                <button onclick="window.location.href='https://codingblink.com/eclipse-of-eternity/login';" class="text-blue-500 underline w-full shadow-white hover:text-white transition duration-300 font-semibold text-right">I don't have an account</button>
+            </form>`;
+            document.getElementById('login-form').addEventListener('submit',submitLogInForm);
+        },300);
+    }
+    var send_data = undefined;
+    function submitLogInForm(e){
+        e.preventDefault();
+        const formDiv=document.getElementById('form-div');
+        formDiv.classList.add('fade-out-opacity');
+        const form=e.target;
+        const data={
+            email: form.email.value,
+            password: form.password.value
+        };
+        if (send_data == undefined){
+            send_data = async function(server,data){
+                let failTimeout=setTimeout(function(){formDiv.innerHTML=`<h1 class="text-2xl font-bold mb-4 text-white">Please wait...</h1><p class="text-lg mb-4 text-gray-300">Things are taking longer than usual to connect to the server...<br>This could take a minute.</p>`;},2000);
+                let retryButton=`<button onclick="resetForm()" class="medieval-button border border-gray-500 mt-4 w-full bg-red-600 shadow-red-700 shadow-md hover:bg-red-700 transition text-white font-semibold py-2 px-4 rounded-lg">OK</button>`;
+                try{
+                    let startTime=Date.now();
+                    const response=await fetch(server,{
+                        method: 'POST',
+                        headers:{
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    });
+                    if(response.status===299){
+                        const additionalRequest=await response.json();
+                        clearTimeout(failTimeout);
+                        formDiv.classList.remove('fade-out-opacity');
+                        const html=additionalRequest.html;
+                        const element=document.getElementById(additionalRequest.el||'')||document.body;
+                        const js=additionalRequest.js;
+                        const css=additionalRequest.css;
+                        if(element==document.body && html){
+                            if(html.trim().toLowerCase().startsWith("<!doctype html>")){
+                                document.open();
+                                document.write(html);
+                                document.close();
+                                return;
+                            }else{
+                                document.head.innerHTML="";
+                                document.body.innerHTML="";
+                                document.body.removeAttribute("style");
+                            }
+                        }
+                        if(css&&(typeof css)==="string"){
+                            const style=document.createElement("style");
+                            style.textContent=css;
+                            document.head.appendChild(style);
+                        }
+                        if(html){
+                            element.innerHTML=html;
+                        }
+                        if(js&&(typeof js)==="string"){
+                            const script=document.createElement("script");
+                            script.type="text/javascript";
+                            script.text=js;
+                            document.body.appendChild(script);
+                        }
+                    }else if(response.ok){
+                        let timeTaken=Date.now()-startTime;
+                        clearTimeout(failTimeout);
+                        setTimeout(()=>{
+                            formDiv.innerHTML=`<h1 class="text-2xl font-bold mb-4 text-white">Welcome to Eclispe of Eternity.</h1><p class="text-lg mb-4 text-gray-300">You've logged in successfully. More features are coming soon!</p>`;
+                        },2000-timeTaken);
                     }else{
-                        document.head.innerHTML="";
-                        document.body.innerHTML="";
-                        document.body.removeAttribute("style");
+                        const errorData=await response.json();
+                        let errorMessage='An error occurred when connecting to the server. Please try again.';
+                        if(errorData){
+                            console.log("Using new response headers.");
+                            if(errorData.e===enums.accountNotFound){
+                                errorMessage='Account not found. Do you need to <a href="https://codingblink.com/eclipse-of-eternity/signup" class="text-blue-500 underline">Sign Up</a> first?';
+                            }else if(errorData.e===enums.accountBanned){
+                                errorMessage='Your account has been banned. Please contact support if you believe this is a mistake.';
+                            }else if(errorData.e==enums.accountLocked){
+                                errorMessage='Your account has been locked. Reset your password or contact support.';
+                            }else if(errorData.e==enums.tokenInvalid){
+                                errorMessage='Session invalid! Please login again.';
+                            }else if(errorData.e==enums.tokenExpired){
+                                errorMessage='Session expired! Please login again.';
+                            }else if(errorData.e==enums.wrongPassword){
+                                errorMessage='Your password is incorrect. Please try again or reset your password if you forgot it.';
+                            }else if(errorData.e==enums.invalidRequest){
+                                errorMessage='Something went wrong! Please try again later.';
+                            }else if(errorData.e==enums.noPassword){
+                                errorMessage='Your account doesn\'t have a password. Login with a magic code instead. (Check your email)';
+                            }
+                        }
+                        clearTimeout(failTimeout);
+                        formDiv.classList.remove('fade-out-opacity');
+                        formDiv.innerHTML=`<h1 class="text-2xl font-bold mb-4 text-white">Error!</h1><p class="text-lg mb-4 text-gray-300">${errorMessage}</p>` + retryButton;
                     }
+                }catch(error){
+                    clearTimeout(failTimeout);
+                    console.error('Error submitting form:',error);
+                    formDiv.classList.remove('fade-out-opacity');
+                    formDiv.innerHTML=`<h1 class="text-2xl font-bold mb-4 text-white">Error!</h1><p class="text-lg mb-4 text-gray-300">Could not connect to the server.<br>Please try again later.</p>` + retryButton;
                 }
-                if(css&&(typeof css)==="string"){
-                    const style=document.createElement("style");
-                    style.textContent=css;
-                    document.head.appendChild(style);
-                }
-                if(html){
-                    element.innerHTML=html;
-                }
-                if(js&&(typeof js)==="string"){
-                    const script=document.createElement("script");
-                    script.type="text/javascript";
-                    script.text=js;
-                    document.body.appendChild(script);
-                }
-            }else if(response.ok){
-                handle(response);
-            }else{
-                errorHandle(response);
             }
-        }catch(error){
-            console.log(`Error sending request: ${error}`);
-            alert(`Could not send request: ${error}`);
         }
+        // try to send data to cloudflare first (not implemented).
+        send_data('https://api.codingblink.com:443/login',data); // fallback (pre-migration).
     }
+    document.getElementById('login-form').addEventListener('submit',submitLogInForm);
     const chatBubble=document.getElementById('eoe-chat-bubble');
     const chatWindow=document.getElementById('eoe-chat-window');
     const closeBtn=document.getElementById('eoe-chat-close');
@@ -825,7 +794,7 @@ And if you wish to track our signs across the realms, follow us at **@eoe_game**
         const spinner=document.getElementById('eoe-chat-spinner');
         if(spinner)spinner.parentNode.removeChild(spinner);
     }
-    eoeAIReply=function(message,speed=5){
+    eoeAIReply=function(message,speed=90){
         eoeHideSpinner();
         const messages=document.getElementById('eoe-chat-scroll');
         const msgDiv=document.createElement('div');
@@ -851,7 +820,7 @@ And if you wish to track our signs across the realms, follow us at **@eoe_game**
             let partial=message.slice(0,index);
             typingSpan.innerHTML=eoeFormatAIText(partial)+'<span class="blink text-red-400">|</span>';
             if(index<message.length){
-                index+=1;
+                index+=9;
                 setTimeout(typeNext,speed);
             }else{
                 typingSpan.innerHTML=eoeFormatAIText(message);
