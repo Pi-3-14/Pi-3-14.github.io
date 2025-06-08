@@ -643,8 +643,8 @@
         formDiv.classList.add('fade-out-opacity');
         const form=e.target;
         const data={
-            email: form.email.value,
-            password: form.password.value
+            e: form.email.value,
+            p: form.password.value
         };
         if (send_data == undefined){
             send_data = async function(server,data){
