@@ -311,7 +311,8 @@
                 image: "app-image.jpg",
                 icon: "fas fa-lightbulb",
                 color: "bg-gradient-to-r from-blue-500 to-indigo-500",
-                id: "ideaToApp"
+                id: "ideaToApp",
+                tags: "<span class='ml-2 text-xs rounded bg-yellow-100 text-yellow-800 font-mono px-2 py-0.5'>🚧 Under Construction</span>"
             },
             {
                 title: "Eclipse of Eternity",
@@ -321,7 +322,8 @@
                 icon: "fas fa-gamepad",
                 color: "bg-gradient-to-r from-purple-500 to-pink-500",
                 id: "eclipseOfEternity",
-                filters: "brightness(75%)"
+                filters: "brightness(75%)",
+                tags: "<span class='ml-2 text-xs rounded bg-red-100 text-red-800 font-mono px-2 py-0.5'><i class='fas fa-gamepad'></i> Video Game</span> <span class='ml-2 text-xs rounded bg-green-100 text-green-800 font-mono px-2 py-0.5'><i class='fas fa-gift'></i> Free offer!</span>"
             },
             {
                 title: "Coding Tutoring",
@@ -330,7 +332,8 @@
                 image: "tutoring-image.jpg",
                 icon: "fas fa-chalkboard-teacher",
                 color: "bg-gradient-to-r from-green-500 to-teal-500",
-                id: "codingTutoring"
+                id: "codingTutoring",
+                tags: "<span class='ml-2 text-xs rounded bg-indigo-100 text-indigo-800 font-mono px-2 py-0.5'><i class='fas fa-graduation-cap'></i> Education</span> <span class='ml-2 text-xs rounded bg-green-100 text-green-800 font-mono px-2 py-0.5'><i class='fas fa-gift'></i> Free offer!</span>"
             },
             {
                 title: "Get a Coding Job",
@@ -339,7 +342,8 @@
                 image: "job-image.jpg",
                 icon: "fas fa-briefcase",
                 color: "bg-gradient-to-r from-yellow-500 to-orange-500",
-                id: "getACodingJob"
+                id: "getACodingJob",
+                tags: "<span class='ml-2 text-xs rounded bg-yellow-100 text-yellow-800 font-mono px-2 py-0.5'>🚧 Under Construction</span>"
             },
             {
                 title: "Amazon Store",
@@ -348,7 +352,8 @@
                 image: "amazon/pc-setup.jpg",
                 icon: "fas fa-shopping-cart",
                 color: "bg-gradient-to-r from-red-500 to-pink-500",
-                id: "amazonStore"
+                id: "amazonStore",
+                tags: "<span class='ml-2 text-xs rounded bg-yellow-100 text-yellow-800 font-mono px-2 py-0.5'>🚧 Under Construction</span>"
             }
         ];
 
@@ -366,7 +371,7 @@
                     <div>
                         <h2 class="text-2xl font-bold mb-2 flex items-center gap-2">
                             <i class="${project.icon} text-xl ${project.color} text-white p-2 rounded-full"></i>
-                            ${project.title}
+                            ${project.title} ${project.tags}
                         </h2>
                         <p class="text-gray-600 mb-4">${project.description}</p>
                     </div>
