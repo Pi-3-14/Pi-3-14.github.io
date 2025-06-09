@@ -8,7 +8,7 @@
     <title>Tutoring Services | Coding_Blink</title>
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../style.css">
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
@@ -88,7 +88,7 @@
                 </ul>
                 <div class="flex space-x-3 mt-6">
                     <button onclick="signupHandler()"
-                        class="shadow-lg px-6 py-3 bg-gradient-to-r from-green-500 to-teal-500 text-white font-semibold rounded-xl hover:bg-green-600 hover:scale-105 active:scale-95 transition duration-200">
+                        class="shadow-lg px-6 py-3 bg-gradient-to-r from-green-500 to-teal-500 hover:brightness-105 text-white font-semibold rounded-xl hover:bg-green-600 hover:scale-105 active:scale-95 transition duration-200">
                         <i class="fa fa-user-plus mr-2"></i>Sign Up
                     </button>
                     <button onclick="signinHandler()"
@@ -268,12 +268,29 @@
             @keyframes fadein { from { opacity:0; transform: scale(0.97) translateY(20px);} to { opacity: 1; transform:none;} }
             .animate-fadein { animation:fadein .2s cubic-bezier(.4,.2,.1,1);}
             #cb-auth-modal input:focus { outline: none; border-color: #4f46e5; box-shadow: 0 0 0 2px #3b82f6 !important;}
-            #cb-auth-modal input[type="text"]:hover, 
+            #cb-auth-modal input[type="text"]:hover,
             #cb-auth-modal input[type="email"]:hover,
             #cb-auth-modal input[type="password"]:hover { border-color: #0ea5e9; background: #fafdff }
             #cb-auth-modal button[type="submit"]:hover { filter: brightness(1.13); }
             `;
             document.head.appendChild(style);
+        }
+
+        function getErrorMessage(e) {
+            switch(e) {
+                case 0:
+                    return "Email is already in use.";
+                case 1:
+                    return "Username is already taken.";
+                case 2:
+                    return "Password requirements:<br><ul><li>At least one uppercase letter (ABC)</li><li>At least one lowercase letter (abc)</li><li>At least one number (0-9)</li><li>At least one special character (@:!+?)</li><li>Password must be at least 11 characters long.</li></ul>";
+                case 3:
+                    return "Password is not allowed. Choose a more secure one.";
+                case 5:
+                    return "Username may be inappropriate.";
+                default:
+                    return "Error creating account. Try again?";
+            }
         }
 
         function signupHandler() {
@@ -308,22 +325,24 @@
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        username: document.getElementById('cb-signup-username').value,
-                        email: document.getElementById('cb-signup-email').value,
-                        password: document.getElementById('cb-signup-password').value
+                        u: document.getElementById('cb-signup-username').value,
+                        e: document.getElementById('cb-signup-email').value,
+                        p: document.getElementById('cb-signup-password').value
                     })
                 });
                 const data = await (async () => { try { return await res.json(); } catch { return {}; } })();
                 const msg = document.getElementById('cb-signup-message');
                 if (res.ok) {
                     msg.className = 'mt-2 text-green-600 text-sm text-center';
-                    msg.innerText = "Account created! Signing in...";
+                    msg.innerHTML = "Account created! Check your email.";
+                    btn.innerHTML = `<i class="fas fa-check"></i> Account created!`;
                     // login to the tutoring portal, load /confirimemail.html, ask user to confirm their email
                 } else {
                     msg.className = 'mt-2 text-red-600 text-sm text-center';
-                    msg.innerText = data.error || "Error creating account.";
+                    msg.innerHTML = getErrorMessage(data.e) || "Error creating account.";
                 }
-                btn.disabled = false; btn.innerHTML = `<i class="fa fa-user-plus"></i> Create Account`;
+                btn.disabled = false;
+                btn.innerHTML = `<i class="fa fa-user-plus"></i> Create Account`;
             };
         }
 
@@ -335,7 +354,7 @@
                 </h3>
                 <div class="relative">
                     <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"><i class="fa fa-user"></i></span>
-                    <input autocomplete="email" class="pl-10 pr-3 py-2 rounded border w-full focus:ring-2" type="text" id="cb-signin-email" placeholder="Username or Email" required>
+                    <input autocomplete="email" class="pl-10 pr-3 py-2 rounded border w-full focus:ring-2" type="text" id="cb-signin-email" placeholder="Email" required>
                 </div>
                 <div class="relative">
                     <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"><i class="fa fa-lock"></i></span>
@@ -355,8 +374,8 @@
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        email: document.getElementById('cb-signin-email').value,
-                        password: document.getElementById('cb-signin-password').value
+                        e: document.getElementById('cb-signin-email').value,
+                        p: document.getElementById('cb-signin-password').value
                     })
                 });
                 const data = await (async () => { try { return await res.json(); } catch { return {}; } })();
@@ -364,6 +383,7 @@
                 if (res.ok) {
                     msg.className = 'mt-2 text-green-600 text-sm text-center';
                     msg.innerText = "Login successful! Redirecting...";
+                    alert("Not publicly available! Check back later!");
                     // login to the tutoring portal, load /dashboard, dashboard sends fetch() to server, syncs user data.
                 } else {
                     msg.className = 'mt-2 text-red-600 text-sm text-center';
