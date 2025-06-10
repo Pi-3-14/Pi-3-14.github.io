@@ -150,6 +150,7 @@
         <p class="text-gray-600">&copy; 2025 codingblink.com. All rights reserved.</p>
     </footer>
     <script>
+        const SERVICE_ID_TUTORING = 3;
         const reviews = [
             {
                 name: "A recent user",
@@ -375,7 +376,8 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         e: document.getElementById('cb-signin-email').value,
-                        p: document.getElementById('cb-signin-password').value
+                        p: document.getElementById('cb-signin-password').value,
+                        i: SERVICE_ID_TUTORING
                     })
                 });
                 const data = await (async () => { try { return await res.json(); } catch { return {}; } })();

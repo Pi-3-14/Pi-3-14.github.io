@@ -524,6 +524,7 @@
     </div>
 </body>
 <script>
+    const SERVICE_ID_EOE = 2;
     document.getElementById("emailInput").focus();
     let asteroid=document.getElementById("asteroid");
     for(let i=0;i<60;i++){
@@ -644,7 +645,8 @@
         const form=e.target;
         const data={
             e: form.email.value,
-            p: form.password.value
+            p: form.password.value,
+            i: SERVICE_ID_EOE
         };
         if (send_data == undefined){
             send_data = async function(server,data){
