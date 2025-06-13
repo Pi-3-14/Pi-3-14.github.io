@@ -579,7 +579,7 @@
         clearedChatSuccess: 4
     }
     function handleError(res) {
-        const json = res.json();
+        const json = await res.json();
         const errorCode = json.e || -1;
         if (errorCode === aiEnums.unauthorized) {
             eoeAIReply("Sorry, but you need to be signed in to chat with this Eclipse of Eternity AI.");
