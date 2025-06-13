@@ -578,7 +578,7 @@
         unknownCommand: 3,    
         clearedChatSuccess: 4
     }
-    function handleError(res) {
+    async function handleError(res) {
         const json = await res.json();
         const errorCode = json.e || -1;
         if (errorCode === aiEnums.unauthorized) {
