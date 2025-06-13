@@ -580,7 +580,7 @@
     async function handleError(res) {
         const json = await res.json();
         console.log(json);
-        const errorCode = json.e || -1;
+        const errorCode = json.e;
         if (errorCode === aiEnums.unauthorized) {
             eoeAIReply("Sorry, but you need to be signed in to chat with this Eclipse of Eternity AI.");
         } else if (errorCode === aiEnums.aiNotSubscribed) {
@@ -592,7 +592,7 @@
         } else if (errorCode === aiEnums.clearedChatSuccess) {
             eoeAIReply("I've now forgotten everything we talked about. What brings you here, adventurer?");
         } else {
-            console.log("invalid error code",errorCode,json.e)
+            eoeAIReply("Something went wrong! Try refreshing the page or contact support.");
         }
     }
     let chatTextInput = document.getElementById("chatTextInput");
