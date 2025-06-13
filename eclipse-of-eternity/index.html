@@ -580,6 +580,7 @@
     }
     async function handleError(res) {
         const json = await res.json();
+        console.log(json);
         const errorCode = json.e || -1;
         if (errorCode === aiEnums.unauthorized) {
             eoeAIReply("Sorry, but you need to be signed in to chat with this Eclipse of Eternity AI.");
