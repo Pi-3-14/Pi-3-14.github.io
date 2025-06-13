@@ -568,7 +568,6 @@
             if (done) break;
             const chunk = decoder.decode(value, { stream: true });
             result += chunk;
-            console.log(chunk);
         }
     }
     const aiEnums = {
@@ -592,6 +591,8 @@
             eoeAIReply("That's not a valid command. Did you mean '/clearchat', to clear the chat? Try typing it again.");
         } else if (errorCode === aiEnums.clearedChatSuccess) {
             eoeAIReply("I've now forgotten everything we talked about. What brings you here, adventurer?");
+        } else {
+            console.log("invalid error code",errorCode,json.e)
         }
     }
     let chatTextInput = document.getElementById("chatTextInput");
