@@ -21,3 +21,12 @@ Asset Licensing Clarifications
 
 Some assets used within this game (or other content on the site) may be subject to external licenses with restrictions. These assets are properly licensed for use within the game and its distribution, but the individual asset’s license may take precedence over the proprietary license outlined above.
 For Eclipse of Eternity, please consult the asset’s full license for specific usage rights and any restrictions, which may be available on our legal page: https://eclipseofeternity.online/legal.html
+
+---
+
+AI License
+
+This project includes the Qwen3:30b-a3b model, licensed under the Apache License 2.0.
+
+Model source: https://huggingface.co/Qwen/Qwen3-30B-A3B
+License: https://www.apache.org/licenses/LICENSE-2.0
