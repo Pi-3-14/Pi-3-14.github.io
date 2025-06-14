@@ -584,12 +584,12 @@
         eoeScrollToBottom();
         
         const speed = 5;
+        let index = 0;
         while (true) {
             const { done, value } = await reader.read();
             const chunk = decoder.decode(value, { stream: true });
             result += chunk;
             const typingSpan=msgDiv.querySelector('#eoe-ai-typing');
-            let index=0;
             let typeNext=function(){
                 let partial=result.slice(0,index);
                 typingSpan.innerHTML=eoeFormatAIText(partial)+'<span class="blink text-red-400">|</span>';
@@ -610,6 +610,9 @@
             notRunning = false;
             if (done) break;
         }
+        document.getElementById('chatSubmitButton').disabled = false;
+        document.getElementById('chatTextInput').disabled = false;
+        document.getElementById('chatTextInput').focus();
     }
     const aiEnums = {
         unauthorized: 0,
@@ -636,12 +639,21 @@
             eoeAIReply("Something went wrong! Try refreshing the page or contact support.");
         }
     }
+    function eoeHideSpinner(){
+        const spinner=document.getElementById('eoe-chat-spinner');
+        if(spinner)spinner.classList.add('hidden');
+    }
+    function eoeShowSpinner(){
+        const spinner=document.getElementById('eoe-chat-spinner');
+        if(spinner)chatArea.classList.remove('hidden');
+    }
     let chatTextInput = document.getElementById("chatTextInput");
     function sendAIMessage(e) {
         document.getElementById('chatSubmitButton').disabled = true;
         document.getElementById('chatTextInput').disabled = true;
         e.preventDefault();
         apiRequest("https://api.codingblink.com:443/aichat", { t: "Akira Kaida", m: chatTextInput.value }, typeTextAndStream, errorHandle=handleError);
+        eoeShowSpinner();
     }
     const gameContent = [
         {
@@ -921,14 +933,6 @@ And if you wish to track our signs across the realms, follow us at **@eoe_game**
     function eoeScrollToBottom(){
         const messages=document.getElementById('eoe-chat-scroll');
         messages.scrollTop=messages.scrollHeight;
-    }
-    function eoeHideSpinner(){
-        const spinner=document.getElementById('eoe-chat-spinner');
-        if(spinner)spinner.parentNode.removeChild(spinner);
-    }
-    function eoeShowSpinner(){
-        const spinner=document.getElementById('eoe-chat-spinner');
-        if(spinner)chatArea.appendChild(spinner);
     }
     eoeAIReply=function(message,speed=5){
         document.getElementById('chatSubmitButton').disabled = true;
