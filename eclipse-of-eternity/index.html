@@ -562,12 +562,52 @@
         const reader = response.body.getReader();
         const decoder = new TextDecoder();
         let result = '';
+        let notRunning = true;
+        eoeHideSpinner();
+        const messages=document.getElementById('eoe-chat-scroll');
+        const msgDiv=document.createElement('div');
+        msgDiv.className='flex items-start gap-3 mb-4';
+        msgDiv.innerHTML=`<div class="flex-shrink-0">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-red-800 via-purple-900 to-black flex items-center justify-center border-2 border-pink-900 shadow-md">
+                <i class="fas fa-user-astronaut text-xl text-red-300"></i>
+            </div>
+            </div>
+            <div>
+            <div class="chat-area">
+                <div class="bg-[#270022] border border-red-900 rounded-xl px-4 py-2 text-white shadow">
+                    <span class="font-medium text-red-200 text-xs md:text-sm">Akira Kaida</span><br>
+                    <p class="font-medium text-gray-200 text-xs md:text-sm" id="eoe-ai-typing"></p>
+                </div>
+            </div>
+            </div>`;
+        messages.appendChild(msgDiv);
+        eoeScrollToBottom();
 
         while (true) {
             const { done, value } = await reader.read();
-            if (done) break;
             const chunk = decoder.decode(value, { stream: true });
             result += chunk;
+            const typingSpan=msgDiv.querySelector('#eoe-ai-typing');
+            let index=0;
+            let typeNext=function(){
+                let partial=result.slice(0,index);
+                typingSpan.innerHTML=eoeFormatAIText(partial)+'<span class="blink text-red-400">|</span>';
+                if(index<result.length){
+                    index+=1;
+                    setTimeout(typeNext,speed);
+                }else{
+                    notRunning = true;
+                    typingSpan.innerHTML=eoeFormatAIText(result);
+                    if (done) {
+                        document.getElementById('chatSubmitButton').disabled = false;
+                        document.getElementById('chatTextInput').disabled = false;
+                        document.getElementById('chatTextInput').focus();
+                    }
+                }
+            }
+            if (notRunning) typeNext();
+            notRunning = false;
+            if (done) break;
         }
     }
     const aiEnums = {
@@ -597,6 +637,8 @@
     }
     let chatTextInput = document.getElementById("chatTextInput");
     function sendAIMessage(e) {
+        document.getElementById('chatSubmitButton').disabled = true;
+        document.getElementById('chatTextInput').disabled = true;
         e.preventDefault();
         apiRequest("https://api.codingblink.com:443/aichat", { t: "Akira Kaida", m: chatTextInput.value }, typeTextAndStream, errorHandle=handleError);
     }
