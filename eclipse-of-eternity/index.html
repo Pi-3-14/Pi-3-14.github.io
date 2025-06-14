@@ -608,6 +608,7 @@
                         document.getElementById('chatTextInput').focus();
                     }
                 }
+                eoeScrollToBottom();
             }
             if (notRunning) typeNext();
             notRunning = false;
@@ -921,7 +922,7 @@ Oh—and if you’ve already chosen your destiny, don’t forget to pre-register
 
 And if you wish to track our signs across the realms, follow us at **@eoe_game** on Twitter. Trouble finding your way? You can reach the high sages through eclipseofeternityofficial@gmail.com.
 
-“Now, brave one — what kind of legend do you seek to become?”`);
+“Now, brave one — what kind of legend do you seek to become?”`,speed=5,chars=20);
     });
     closeBtn.addEventListener('click',()=>{
         chatWindow.classList.remove('eoe-chat-window-open');
@@ -943,7 +944,7 @@ And if you wish to track our signs across the realms, follow us at **@eoe_game**
         const messages=document.getElementById('eoe-chat-scroll');
         messages.scrollTop=messages.scrollHeight;
     }
-    eoeAIReply=function(message,speed=5){
+    eoeAIReply=function(message,speed=5,chars=1){
         document.getElementById('chatSubmitButton').disabled = true;
         document.getElementById('chatTextInput').disabled = true;
         eoeHideSpinner();
@@ -971,7 +972,7 @@ And if you wish to track our signs across the realms, follow us at **@eoe_game**
             let partial=message.slice(0,index);
             typingSpan.innerHTML=eoeFormatAIText(partial)+'<span class="blink text-red-400">|</span>';
             if(index<message.length){
-                index+=1;
+                index+=chars;
                 setTimeout(typeNext,speed);
             }else{
                 typingSpan.innerHTML=eoeFormatAIText(message);
