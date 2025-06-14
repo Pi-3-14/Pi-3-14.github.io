@@ -780,6 +780,7 @@
             let startTime=Date.now();
             const response=await fetch(server,{
                 method: 'POST',
+                credentials: 'include',
                 headers:{
                     'Content-Type': 'application/json'
                 },
