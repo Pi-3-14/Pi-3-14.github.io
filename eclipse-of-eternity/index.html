@@ -648,8 +648,12 @@
     }
     function eoeShowSpinner(){
         const spinner=document.getElementById('eoe-chat-spinner');
-        if(spinner)spinner.classList.remove('hidden');
-        spinner.parentNode.appendChild(spinner);
+        const spinnerDiv = spinner.parentNode.parentNode;
+        if(spinner) {
+            spinner.classList.remove('hidden');
+            spinner.style.order = spinnerDiv.parentNode.children.length;
+            spinnerDiv.parentNode.appendChild(spinnerDiv);
+        }
     }
     let chatTextInput = document.getElementById("chatTextInput");
     function sendAIMessage(e) {
