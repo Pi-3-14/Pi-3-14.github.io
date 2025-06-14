@@ -536,7 +536,7 @@
             </div>
             <form autocomplete="off" onsubmit="sendAIMessage(event);" class="bg-[#180016] px-5 py-4 border-t border-red-800 flex flex-col items-stretch">
                 <div class="flex gap-2">
-                    <input type="text" placeholder="Suggestion: Suggest me some wizard names." id="chatTextInput"
+                    <input type="text" placeholder="Suggestion: Tell me some wizard names." id="chatTextInput"
                         class="flex-1 rounded-lg px-3 py-1 md:py-2 bg-black/60 border border-red-800 text-white font-medium shadow-inner outline-none transition disabled:cursor-not-allowed disabled:bg-black/60 disabled:text-gray-500 text-xs md:text-base"/>
                     <button type="submit" id="chatSubmitButton"
                         class="bg-gradient-to-bl from-red-900 via-red-700 to-purple-800 text-red-100 font-semibold px-4 py-2 rounded-lg shadow hover:scale-105 transition disabled:opacity-60 disabled:cursor-not-allowed">
@@ -582,7 +582,8 @@
             </div>`;
         messages.appendChild(msgDiv);
         eoeScrollToBottom();
-
+        
+        const speed = 5;
         while (true) {
             const { done, value } = await reader.read();
             const chunk = decoder.decode(value, { stream: true });
