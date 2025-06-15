@@ -110,20 +110,22 @@ a {
     user-select: none;
     margin: 0
 }
-.eyes {
+.logotext {
     cursor: pointer
 }
-.eye {
-    transform-origin: center center
+.logocursor {
+    transform-origin: center center;
+    
 }
-.eyes:hover .eye {
-    animation: blink .3s
+.logodiv:hover .logocursor {
+    animation: blink .8s infinite;
 }
 @keyframes blink {
-    0%{ transform: scaleY(1); }
-    45% { transform: scaleY(.1); }
-    55% { transform: scaleY(.1); }
-    to { transform: scaleY(1); }
+    0%{ opacity: 1; }
+    20% { opacity: 1; }
+    50% { opacity: 0; }
+    80% { opacity: 0; }
+    to { opacity: 1; }
 }
 .main-section {
     margin-right: 10%;
@@ -134,4 +136,7 @@ a {
 }
 footer {
     box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+}
+.project-card:has(.construction) {
+    filter: brightness(90%);
 }

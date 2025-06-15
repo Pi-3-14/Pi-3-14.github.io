@@ -23,18 +23,13 @@
 <body class="bg-gradient-to-r from-indigo-100 via-gray-100 to-indigo-100 text-gray-800 overflow-x-hidden">
     <a href="#main" onclick="document.getElementById('first-link-in-main-content').focus();" class="sr-only focus:not-sr-only absolute left-4 top-4 bg-white text-black font-bold px-4 py-2 rounded shadow z-50">Skip to main content</a>
     <nav class="bg-white shadow-md p-4 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <div class="logodiv max-w-7xl mx-auto flex justify-between items-center">
             <a href="" class="home-link inline-block hover:border-2 hover:px-3 hover:py-1">
                 <h2 class="logo text-2xl font-bold cursor-pointer">
                     <nobr>
-                        <div class="eyes">
-                            <p class="eye inline-block">
-                                &gt;
-                            </p>
-                            _
-                            <p class="eye inline-block">
-                                &lt;
-                            </p>
+                        <div class="logotext">
+                            &gt;
+                            <div class="logocursor inline">|</div>
                         </div>
                     </nobr>
                 </h2>
@@ -312,7 +307,7 @@
                 icon: "fas fa-lightbulb",
                 color: "bg-gradient-to-r from-blue-500 to-indigo-500",
                 id: "ideaToApp",
-                tags: "<span class='ml-2 text-xs rounded bg-yellow-100 text-yellow-800 font-mono px-2 py-0.5'>🚧 Under Construction</span>"
+                tags: "<span class='construction ml-2 text-xs rounded bg-yellow-100 text-yellow-800 font-mono px-2 py-0.5'>🚧 Under Construction</span>"
             },
             {
                 title: "Eclipse of Eternity",
@@ -343,7 +338,7 @@
                 icon: "fas fa-briefcase",
                 color: "bg-gradient-to-r from-yellow-500 to-orange-500",
                 id: "getACodingJob",
-                tags: "<span class='ml-2 text-xs rounded bg-yellow-100 text-yellow-800 font-mono px-2 py-0.5'>🚧 Under Construction</span>"
+                tags: "<span class='construction ml-2 text-xs rounded bg-yellow-100 text-yellow-800 font-mono px-2 py-0.5'>🚧 Under Construction</span>"
             },
             {
                 title: "Amazon Store",
@@ -353,7 +348,7 @@
                 icon: "fas fa-shopping-cart",
                 color: "bg-gradient-to-r from-red-500 to-pink-500",
                 id: "amazonStore",
-                tags: "<span class='ml-2 text-xs rounded bg-yellow-100 text-yellow-800 font-mono px-2 py-0.5'>🚧 Under Construction</span>"
+                tags: "<span class='construction ml-2 text-xs rounded bg-yellow-100 text-yellow-800 font-mono px-2 py-0.5'>🚧 Under Construction</span>"
             }
         ];
 
@@ -361,7 +356,7 @@
 
         projects.forEach(project => {
             const card = document.createElement("div");
-            card.className = "xl:max-w-[50vw] lg:max-w-[75vw] bg-white shadow-lg rounded-2xl overflow-hidden flex flex-col md:flex-row hover:shadow-xl transition-shadow duration-300";
+            card.className = "project-card xl:max-w-[50vw] lg:max-w-[75vw] bg-white shadow-lg rounded-2xl overflow-hidden flex flex-col md:flex-row hover:shadow-xl transition-shadow duration-300";
 
             card.innerHTML = `<div class="flex flex-col md:flex-row items-center bg-white rounded-xl shadow overflow-hidden">
                     <div class="flex items-center justify-center bg-gray-200 h-full w-full md:w-[400px]">
