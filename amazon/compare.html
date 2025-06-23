@@ -1229,6 +1229,8 @@
             modalCategory.textContent = selectedProduct.original.category;
             modalCategory.className = `category-badge ${getCategoryColor(selectedProduct.original.category)}`;
             modalLink.href = selectedProduct.original.link;
+            modalLink.target = "_blank";
+            modalLink.rel = "sponsored";
             modalDescription.textContent = isEnhanced ? selectedProduct.enhanced.detailedReview : selectedProduct.original.review;
 
             // Handle image
