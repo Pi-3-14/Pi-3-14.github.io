@@ -27,6 +27,17 @@ For Eclipse of Eternity, please consult the asset’s full license for specific 
 AI License
 
 This project includes the Qwen3:30b-a3b model, licensed under the Apache License 2.0.
-
 Model source: https://huggingface.co/Qwen/Qwen3-30B-A3B
+License: https://www.apache.org/licenses/LICENSE-2.0
+
+This project includes the Qwen2.5-7B-Instruct model, licensed under the Apache License 2.0.
+Model source: https://huggingface.co/Qwen/Qwen2.5-7B-Instruct
+License: https://www.apache.org/licenses/LICENSE-2.0
+
+This project includes the Qwen2.5-Coder-32B-Instruct model, licensed under the Apache License 2.0.
+Model source: https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct
+License: https://www.apache.org/licenses/LICENSE-2.0
+
+This project includes the TinyLlama-1.1B-Chat-v1.0 model, licensed under the Apache License 2.0.
+Model source: https://huggingface.co/TinyLlama/TinyLlama-1.1B-Chat-v1.0
 License: https://www.apache.org/licenses/LICENSE-2.0
