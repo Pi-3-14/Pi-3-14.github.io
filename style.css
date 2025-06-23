@@ -20,18 +20,18 @@
     height: 1px;
     transform: scaleX(80) scaleY(40);
     background: transparent;
-    cursor: pointer
+    cursor: pointer;
 }
 .smalltext {
     font-size: 12px;
-    display: inline
+    display: inline;
 }
 aside {
     font-style: italic;
-    font-size: 14px
+    font-size: 14px;
 }
 a {
-    font-weight: 700
+    font-weight: 700;
 }
 .nav-button {
     display: inline-block;
@@ -46,48 +46,48 @@ a {
     white-space: nowrap;
     transition: all .3s ease;
     box-sizing: border-box;
-    transform: scale(.85)
+    transform: scale(.85);
 }
 .home-link,
 .home-link:focus,
 .home-link:hover {
-    text-decoration: none !important
+    text-decoration: none !important;
 }
 .home-link {
     border-radius: 9999px;
     transition: all .3s ease;
-    box-sizing: border-box
+    box-sizing: border-box;
 }
 .home-link:focus,
 .home-link:hover {
-    transform: scale(1.05)
+    transform: scale(1.05);
 }
 .home-link:active {
-    transform: scale(.8)
+    transform: scale(.8);
 }
 .nav-button-usable:active {
-    transform: scale(.75) !important
+    transform: scale(.75) !important;
 }
 .nav-button:focus,
 .nav-button:hover {
     outline: none;
     box-shadow: 0 0 0 3px rgba(0, 0, 0, .2);
-    transform: scale(.9)
+    transform: scale(.9);
 }
 .buy-button:active {
-    transform: scale(.75) !important
+    transform: scale(.75) !important;
 }
 .buy-button:focus,
 .buy-button:hover {
     outline: none;
     box-shadow: 0 0 0 3px rgba(0, 0, 0, .2);
-    transform: scale(.9)
+    transform: scale(.9);
 }
 .buy-button {
-    transition: all .3s ease
+    transition: all .3s ease;
 }
 .shake {
-    animation: shake-animation .25s ease-in-out
+    animation: shake-animation .25s ease-in-out;
 }
 @keyframes shake-animation {
     0% { transform: translateX(0) scale(.9); }
@@ -97,21 +97,21 @@ a {
     to { transform: translateX(0) scale(.9); }
 }
 #popup-message {
-    pointer-events: none
+    pointer-events: none;
 }
 @keyframes floatDownFade {
     0% { opacity: 1; }
     to { transform: translateY(0px) translateX(12px); opacity: 0; }
 }
 .animate-float-down {
-    animation: floatDownFade .7s ease-out forwards
+    animation: floatDownFade .7s ease-out forwards;
 }
 .logo {
     user-select: none;
-    margin: 0
+    margin: 0;
 }
 .logotext {
-    cursor: pointer
+    cursor: pointer;
 }
 .logocursor {
     transform-origin: center center;
