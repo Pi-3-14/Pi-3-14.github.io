@@ -712,7 +712,6 @@
 
         document.addEventListener('wheel', (e) => {
             if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-                e.preventDefault();
                 carousel.scrollLeft += e.deltaY;
             }
         });
