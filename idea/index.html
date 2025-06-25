@@ -13,35 +13,35 @@
         * {
             font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
-        
+
         .hero-gradient {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
-        
+
         .glass-card {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
-        
+
         .feature-card {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        
+
         .feature-card:hover {
             transform: translateY(-4px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
-        
+
         .carousel-container {
             scrollbar-width: none;
             -ms-overflow-style: none;
         }
-        
+
         .carousel-container::-webkit-scrollbar {
             display: none;
         }
-        
+
         .chatbot-button {
             position: fixed;
             bottom: 24px;
@@ -57,12 +57,12 @@
             transition: all 0.3s ease;
             z-index: 1000;
         }
-        
+
         .chatbot-button:hover {
             transform: scale(1.1);
             box-shadow: 0 6px 25px rgba(102, 126, 234, 0.5);
         }
-        
+
         .modal {
             display: none;
             position: fixed;
@@ -73,27 +73,27 @@
             background: rgba(0, 0, 0, 0.5);
             z-index: 2000;
         }
-        
+
         .modal.active {
             display: flex;
             align-items: center;
             justify-content: center;
         }
-        
+
         .faq-item {
             border-bottom: 1px solid #e5e7eb;
         }
-        
+
         .faq-content {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease;
         }
-        
+
         .faq-item.active .faq-content {
             max-height: 200px;
         }
-        
+
         .price-tag {
             background: linear-gradient(135deg, #10b981 0%, #059669 100%);
             color: white;
@@ -191,7 +191,7 @@
                         CodingBlink
                     </a>
                 </div>
-                
+
                 <div class="hidden md:flex items-center space-x-4">
                     <ul class="flex items-center space-x-4">
                         <li><a href="https://codingblink.com/eclipse-of-eternity" class="nav-button nav-button-usable px-4 py-2 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:shadow-lg transition-all duration-200">Eclipse of Eternity</a></li>
@@ -200,7 +200,7 @@
                         <li><a href="../amazon/index.html" class="nav-button nav-button-usable px-4 py-2 rounded-2xl bg-gradient-to-r from-red-500 to-pink-500 text-white hover:shadow-lg transition-all duration-200">Amazon Store</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="flex items-center space-x-4">
                     <div id="login-section" class="flex items-center space-x-3">
                         <button id="login-btn" class="text-gray-700 hover:text-indigo-600 font-medium">Login</button>
@@ -233,6 +233,12 @@
             </div>
         </div>
     </section>
+
+    <!-- Under Construction Banner -->
+    <div class="bg-yellow-100 border-y-4 border-yellow-400 text-yellow-800 px-4 py-2 flex items-center text-sm font-medium">
+        <span class="mr-2">🚧</span>
+        This webpage is under construction — data is subject to change.
+    </div>
 
     <section class="py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -267,7 +273,7 @@
                     Professional development across all major platforms with transparent pricing
                 </p>
             </div>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div class="feature-card bg-white rounded-xl p-8 shadow-sm">
                     <div class="w-16 h-16 bg-indigo-100 rounded-lg flex items-center justify-center mb-6">
@@ -277,7 +283,7 @@
                     <p class="text-gray-600 mb-4">Native iOS & Android apps with modern UI/UX</p>
                     <div class="price-tag inline-block">$500 - $2K</div>
                 </div>
-                
+
                 <div class="feature-card bg-white rounded-xl p-8 shadow-sm">
                     <div class="w-16 h-16 bg-green-100 rounded-lg flex items-center justify-center mb-6">
                         <i class="fas fa-globe text-2xl text-green-600"></i>
@@ -286,7 +292,7 @@
                     <p class="text-gray-600 mb-4">Responsive web applications with modern frameworks</p>
                     <div class="price-tag inline-block">$300 - $1.5K</div>
                 </div>
-                
+
                 <div class="feature-card bg-white rounded-xl p-8 shadow-sm">
                     <div class="w-16 h-16 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
                         <i class="fas fa-cloud text-2xl text-purple-600"></i>
@@ -295,7 +301,7 @@
                     <p class="text-gray-600 mb-4">Complete software-as-a-service solutions</p>
                     <div class="price-tag inline-block">$2K - $8K</div>
                 </div>
-                
+
                 <div class="feature-card bg-white rounded-xl p-8 shadow-sm">
                     <div class="w-16 h-16 bg-red-100 rounded-lg flex items-center justify-center mb-6">
                         <i class="fas fa-server text-2xl text-red-600"></i>
@@ -318,7 +324,7 @@
                     See what we've built for clients like you
                 </p>
             </div>
-            
+
             <div class="carousel-container overflow-x-auto pb-4">
                 <div class="flex space-x-6 w-max">
                     <div class="w-80 bg-white rounded-xl shadow-lg overflow-hidden">
@@ -332,7 +338,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="w-80 bg-white rounded-xl shadow-lg overflow-hidden">
                         <img src="app2.jpg" alt="Fitness Tracker" class="w-full h-48 object-cover">
                         <div class="p-6">
@@ -344,7 +350,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="w-80 bg-white rounded-xl shadow-lg overflow-hidden">
                         <img src="app3.jpg" alt="Task Manager" class="w-full h-48 object-cover">
                         <div class="p-6">
@@ -356,7 +362,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="w-80 bg-white rounded-xl shadow-lg overflow-hidden">
                         <img src="app4.jpg" alt="Social Platform" class="w-full h-48 object-cover">
                         <div class="p-6">
@@ -380,7 +386,7 @@
                     Frequently Asked Questions
                 </h2>
             </div>
-            
+
             <div class="space-y-4">
                 <div class="faq-item bg-white rounded-lg">
                     <button class="faq-toggle w-full px-6 py-4 text-left font-semibold text-lg hover:bg-gray-50 rounded-lg transition-colors">
@@ -482,13 +488,13 @@
             toggle.addEventListener('click', () => {
                 const item = toggle.parentElement;
                 const isActive = item.classList.contains('active');
-                
+
                 document.querySelectorAll('.faq-item').forEach(faqItem => {
                     faqItem.classList.remove('active');
                     faqItem.querySelector('.fas').classList.remove('fa-chevron-up');
                     faqItem.querySelector('.fas').classList.add('fa-chevron-down');
                 });
-                
+
                 if (!isActive) {
                     item.classList.add('active');
                     toggle.querySelector('.fas').classList.remove('fa-chevron-down');
@@ -529,7 +535,7 @@
             } catch (error) {
                 console.error('Logout error:', error);
             }
-            
+
             currentUser = null;
             updateAuthUI();
         });
@@ -556,8 +562,8 @@
         function addMessage(message, isUser = false) {
             const messageDiv = document.createElement('div');
             messageDiv.className = `p-3 rounded-lg mb-4 max-w-xs ${
-                isUser 
-                    ? 'bg-gray-200 text-gray-800 ml-auto' 
+                isUser
+                    ? 'bg-gray-200 text-gray-800 ml-auto'
                     : 'bg-indigo-600 text-white'
             }`;
             messageDiv.textContent = message;
@@ -579,28 +585,28 @@
                 handleError(response);
                 return;
             }
-            
+
             const reader = response.body.getReader();
             const decoder = new TextDecoder();
             let result = '';
             let notRunning = true;
 
             const messageDiv = addStreamingMessage();
-            
+
             const speed = 5;
             let index = 0;
-            
+
             while (true) {
                 const { done, value } = await reader.read();
                 const chunk = decoder.decode(value, { stream: true });
                 result += chunk;
-                
+
                 const typingSpan = messageDiv.querySelector('#streaming-text');
-                
+
                 let typeNext = function() {
                     let partial = result.slice(0, index);
                     typingSpan.textContent = partial;
-                    
+
                     if (index < result.length) {
                         index += 1;
                         setTimeout(typeNext, speed);
@@ -619,7 +625,7 @@
                     }
                     chatMessages.scrollTop = chatMessages.scrollHeight;
                 }
-                
+
                 if (notRunning) typeNext();
                 notRunning = false;
                 if (done) break;
@@ -634,7 +640,7 @@
                     body: JSON.stringify({ t: 'Generic', m: message }),
                     credentials: 'include'
                 });
-                
+
                 if (response.ok) {
                     await typeTextAndStream(response);
                 } else {
@@ -650,7 +656,7 @@
             unauthorized: 0,
             aiNotSubscribed: 1,
             tooManyCCU: 2,
-            unknownCommand: 3,    
+            unknownCommand: 3,
             clearedChatSuccess: 4
         }
 
@@ -658,7 +664,7 @@
             const json = await res.json();
             console.log(json);
             const errorCode = json.e;
-            
+
             let errorMessage = '';
             if (errorCode === aiEnums.unauthorized) {
                 errorMessage = "Sorry, but you need to be signed in to chat with this AI.";
@@ -673,7 +679,7 @@
             } else {
                 errorMessage = "Something went wrong! Try refreshing the page or contact support.";
             }
-            
+
             addMessage(errorMessage);
         }
 
@@ -738,7 +744,7 @@
         });
 
         document.querySelectorAll('button').forEach(button => {
-            if (button.textContent.includes('Start Your Project') || 
+            if (button.textContent.includes('Start Your Project') ||
                 button.textContent.includes('Start Your Project Today')) {
                 button.addEventListener('click', () => {
                     if (currentUser) {
