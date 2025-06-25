@@ -565,6 +565,67 @@
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
 
+        function addStreamingMessage() {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'p-3 rounded-lg mb-4 max-w-xs bg-indigo-600 text-white';
+            messageDiv.innerHTML = '<span id="streaming-text"></span><span class="blink text-indigo-200">|</span>';
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            return messageDiv;
+        }
+
+        async function typeTextAndStream(response) {
+            if (response.status === 201) {
+                handleError(response);
+                return;
+            }
+            
+            const reader = response.body.getReader();
+            const decoder = new TextDecoder();
+            let result = '';
+            let notRunning = true;
+
+            const messageDiv = addStreamingMessage();
+            
+            const speed = 5;
+            let index = 0;
+            
+            while (true) {
+                const { done, value } = await reader.read();
+                const chunk = decoder.decode(value, { stream: true });
+                result += chunk;
+                
+                const typingSpan = messageDiv.querySelector('#streaming-text');
+                
+                let typeNext = function() {
+                    let partial = result.slice(0, index);
+                    typingSpan.textContent = partial;
+                    
+                    if (index < result.length) {
+                        index += 1;
+                        setTimeout(typeNext, speed);
+                    } else {
+                        notRunning = true;
+                        if (done) {
+                            messageDiv.innerHTML = `<span>${result}</span>`;
+                            const submitButton = document.getElementById('chatSubmitButton');
+                            const textInput = document.getElementById('chatTextInput');
+                            if (submitButton) submitButton.disabled = false;
+                            if (textInput) {
+                                textInput.disabled = false;
+                                textInput.focus();
+                            }
+                        }
+                    }
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                }
+                
+                if (notRunning) typeNext();
+                notRunning = false;
+                if (done) break;
+            }
+        }
+
         async function sendChatMessage(message) {
             try {
                 const response = await fetch('https://api.codingblink.com/aichat', {
@@ -575,8 +636,7 @@
                 });
                 
                 if (response.ok) {
-                    const data = await response.json();
-                    addMessage(data.response);
+                    await typeTextAndStream(response);
                 } else {
                     addMessage("Sorry, I'm having trouble connecting right now. Please try again later.");
                 }
@@ -584,6 +644,37 @@
                 console.error('Chat error:', error);
                 addMessage("Sorry, I'm having trouble connecting right now. Please try again later.");
             }
+        }
+
+        const aiEnums = {
+            unauthorized: 0,
+            aiNotSubscribed: 1,
+            tooManyCCU: 2,
+            unknownCommand: 3,    
+            clearedChatSuccess: 4
+        }
+
+        async function handleError(res) {
+            const json = await res.json();
+            console.log(json);
+            const errorCode = json.e;
+            
+            let errorMessage = '';
+            if (errorCode === aiEnums.unauthorized) {
+                errorMessage = "Sorry, but you need to be signed in to chat with this AI.";
+            } else if (errorCode === aiEnums.aiNotSubscribed) {
+                errorMessage = "Sorry, but your CodingBlink account doesn't have access to this AI.";
+            } else if (errorCode === aiEnums.tooManyCCU) {
+                errorMessage = "Sorry, but too many people are using the AI right now. Try again later.";
+            } else if (errorCode === aiEnums.unknownCommand) {
+                errorMessage = "That's not a valid command. Did you mean '/clearchat' to clear the chat? Try typing it again.";
+            } else if (errorCode === aiEnums.clearedChatSuccess) {
+                errorMessage = "I've now forgotten everything we talked about. How can I help you today?";
+            } else {
+                errorMessage = "Something went wrong! Try refreshing the page or contact support.";
+            }
+            
+            addMessage(errorMessage);
         }
 
         sendButton.addEventListener('click', () => {
