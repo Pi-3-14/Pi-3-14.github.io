@@ -380,7 +380,7 @@
                 if (res.ok) {
                     msg.className = 'mt-2 text-green-600 text-sm text-center';
                     msg.innerText = "Login successful! Redirecting...";
-                    window.location.replace('/dashboard');
+                    window.location.replace('/tutoring/dashboard.html');
                     alert("Not publicly available! Check back later!");
                     // login to the tutoring portal, load /dashboard, dashboard sends fetch() to server, syncs user data.
                 } else {
