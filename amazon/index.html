@@ -129,28 +129,75 @@
     </footer>
     <script>
         function resizeAllPlots() {
-            Plotly.Plots.resize('gpu-plot');
             Plotly.Plots.resize('compare-plot');
             Plotly.Plots.resize('build-plot');
         }
 
         window.addEventListener('resize', resizeAllPlots);
         document.addEventListener('DOMContentLoaded', () => setTimeout(resizeAllPlots, 350));
-        Plotly.newPlot('gpu-plot', [{
-            x: ['June', 'July', 'Aug', 'Sept', 'Oct'],
-            y: [699, 650, 630, 580, 620],
-            mode: 'lines+markers',
-            line: {shape: 'spline', color: '#6366F1', width: 4},
-            marker: {size: 7, color: '#6366F1'},
-            name: 'RTX 4090'
-        }], {
-            margin: {l: 30, r: 10, t: 10, b: 30},
-            font: {size: 11},
-            height: 154, width: 264,
-            showlegend: false,
-            xaxis: {fixedrange: true, zeroline: false, showgrid: false, visible: false},
-            yaxis: {fixedrange: true, side: 'right', showticklabels: false, showgrid: false}
-        }, {displayModeBar: false, responsive: true});
+
+        async function renderGPUs() {
+            data = await fetch("https://api.codingblink.com/preview70tier", {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' }
+            });
+            const body = await data.json();
+
+            const container = document.getElementById('gpu-plot');
+
+            function formatLastUpdated(timestamp) {
+                if (!timestamp) return "No update info";
+                const now = new Date();
+                const updated = new Date(timestamp);
+
+                const isToday = now.toDateString() === updated.toDateString();
+
+                if (!isToday) {
+                    return `Last updated on ${updated.toLocaleDateString()}`;
+                }
+
+                const diffMs = now - updated;
+                const diffSeconds = Math.floor(diffMs / 1000);
+                const minutes = Math.floor(diffSeconds / 60);
+                const seconds = diffSeconds % 60;
+
+                if (minutes < 0 || seconds < 0) {
+                    return `Updated just now`;
+                }
+
+                return `Updated ${minutes}m ${seconds.toString().padStart(2, '0')}s ago`;
+            }
+
+            container.innerHTML = ((gpu) => {
+                const chartId = `chart-${gpu.id}`;
+                const stockStatus = gpu.crown === 'diamond2' ? '<span class="bg-blue-500 text-white px-2 py-1 rounded text-xs font-bold ml-2">BELOW MSRP</span>' : (gpu.inStock ?
+                '<span class="bg-green-500 text-black px-2 py-1 rounded text-xs font-bold ml-2">IN STOCK</span>' :
+                '<span class="bg-red-500 text-white px-2 py-1 rounded text-xs font-bold ml-2">OUT OF STOCK</span>');
+
+                return `
+                <div class="gpu-card rounded-xl p-4 sm:p-6 scale-[0.75]" id="gpu-card-${gpu.id}">
+                    <div class="flex justify-between items-start">
+                    <div>
+                        <h2 class="text-3xl font-bold mb-1 tier-badge">${gpu.tier}</h2>
+                    </div>
+                    ${stockStatus}
+                    </div>
+                    <h3 class="text-xl font-bold mb-1">
+                    <span class="tier-badge">${gpu.name}</span>
+                    </h3>
+                    <p class="text-sm text-gray-400 mb-4">${gpu.manufacturer}</p>
+
+                    <div class="mb-4">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-sm text-gray-400">Current Price</span>
+                    </div>
+                    <div class="flex justify-between items-center"><div class="text-2xl font-bold text-black mb-1">${gpu.currentPrice} <span class="text-sm text-gray-500 font-medium">${formatLastUpdated(gpu.lastUpdated)}</span></div></div>
+                    </div>
+                </div>
+                `;
+            })(body["RTX 5070"][0]);
+        }
+        renderGPUs();
 
         Plotly.newPlot('compare-plot', [{
             type: 'bar',
