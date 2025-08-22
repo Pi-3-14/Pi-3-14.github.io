@@ -70,15 +70,23 @@
                 <i class="fas fa-triangle-exclamation mr-2"></i>Error
             </h2>
         </div>
-        <div id="verifyingCard" class="card bg-white shadow-lg rounded-2xl p-8 max-w-lg mt-24 mb-12 max-w-6xl mx-auto text-center">
+        <div id="verifyingCard" class="card hidden bg-white shadow-lg rounded-2xl p-8 max-w-lg mt-24 mb-12 max-w-6xl mx-auto text-center">
             <h2 class="text-3xl md:text-4xl font-semibold text-yellow-500 flex flex-cols-2 mx-6">
                 <i class="far fa-check-circle mr-2 flashing p-0"></i><span>Verifying your email</span><span id="dots">...</span>
             </h2>
         </div>
+        <div id="readyToVerifyCard" class="card bg-white shadow-lg rounded-2xl p-8 max-w-lg mt-24 mb-12 max-w-6xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-semibold text-blue-600 mb-6">
+                <i class="far fa-envelope mr-2"></i>Ready to verify your email
+            </h2>
+            <button id="verifyButton" class="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white font-semibold px-8 py-3 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-200">
+                <i class="fas fa-check mr-2"></i>Verify My Email
+            </button>
+        </div>
         <section class="py-16 px-4 md:px-0 main-section">
             <div class="max-w-6xl mx-auto">
                 <div class="">
-                    <p class="text-gray-500" id="infoText">Your email is currently being verified. Please wait...</p><br><a href="index.html" id="backToHome">Back to homepage</a>
+                    <p class="text-gray-500" id="infoText">Click the button above to verify your email address.</p><br><a href="index.html" id="backToHome">Back to homepage</a>
                 </div>
             </div>
         </section>
@@ -96,11 +104,31 @@
         const success = document.getElementById('successCard');
         const error = document.getElementById('errorCard');
         const verifying = document.getElementById('verifyingCard');
+        const readyToVerify = document.getElementById('readyToVerifyCard');
         const txt = document.getElementById('infoText');
         const homeBtn = document.getElementById('backToHome');
-        const dotsTimer = setInterval(function(){
-            dots.textContent = '.'.repeat(1+Math.floor((Date.now()%900)/300));
-        }, 300);
+        const verifyButton = document.getElementById('verifyButton');
+        let dotsTimer;
+
+        // Add click event to verify button
+        verifyButton.addEventListener('click', function() {
+            startVerification();
+        });
+
+        function startVerification() {
+            // Hide the ready-to-verify card and show the verifying card
+            readyToVerify.classList.add('hidden');
+            verifying.classList.remove('hidden');
+            txt.innerHTML = "Your email is currently being verified. Please wait...";
+            
+            // Start the dots animation
+            dotsTimer = setInterval(function(){
+                dots.textContent = '.'.repeat(1+Math.floor((Date.now()%900)/300));
+            }, 300);
+            
+            // Start the verification process
+            verifyEmail();
+        }
 
         async function verifyEmail() {
             try {
@@ -119,11 +147,11 @@
                     txt.innerHTML = "Congratulations! Your email is now verified and you can now use your account with all CodingBlink software!";
                 } else {
                     error.classList.remove("hidden");
-                    const data = res.json();
-                    const error = data.e;
+                    const data = await res.json();
+                    const errorCode = data.e;
                     txt.innerHTML = `There was an error verifying your email.<br>${
                     (function(){
-                        switch(error) {
+                        switch(errorCode) {
                             case 0:
                                 return "Account not found. It may have been deleted or already verified.";
                             case 3:
@@ -144,8 +172,6 @@
                 txt.innerHTML = "There was an error verifying your email.<br>An unknown error ocurred. Please try again or contact suport if the error persists.";
             }
         }
-
-        verifyEmail();
 
         const MIN_ZOOM = 0.3;
         const ZOOM_STEP = 0.05;
