@@ -21,33 +21,6 @@
 </head>
 
 <body class="bg-gradient-to-r from-indigo-100 via-gray-100 to-indigo-100 text-gray-800 overflow-x-hidden">
-    <a href="#main" onclick="document.getElementById('first-link-in-main-content').focus();" class="sr-only focus:not-sr-only absolute left-4 top-4 bg-white text-black font-bold px-4 py-2 rounded shadow z-50">Skip to main content</a>
-    <nav class="bg-white shadow-md p-4 sticky top-0 z-50">
-        <div class="logodiv max-w-7xl mx-auto flex justify-between items-center">
-            <a href="" class="home-link inline-block hover:border-2 hover:px-3 hover:py-1">
-                <h2 class="logo text-2xl font-bold cursor-pointer">
-                    <nobr>
-                        <div class="logotext">
-                            &gt;
-                            <div class="logocursor inline">|</div>
-                        </div>
-                    </nobr>
-                </h2>
-            </a>
-            <ul id="desktop-nav" class="flex space-x-2 overflow-auto ml-2">
-                <li><a href="idea/index.html" class="nav-button nav-button-usable px-4 py-2 rounded-2xl bg-gradient-to-r from-blue-500 to-indigo-500 text-white">Idea to App</a></li>
-                <li><a href="https://codingblink.com/eclipse-of-eternity" class="nav-button nav-button-usable px-4 py-2 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 text-white">Eclipse of Eternity</a></li>
-                <li><a href="tutoring/index.html" class="nav-button nav-button-usable px-4 py-2 rounded-2xl bg-gradient-to-r from-green-500 to-teal-500 text-white">Coding Tutoring</a></li>
-                <li><a href="job/index.html" class="nav-button nav-button-usable px-4 py-2 rounded-2xl bg-gradient-to-r from-yellow-500 to-orange-500 text-white">Get a Coding Job</a></li>
-                <li><a href="amazon/index.html" class="nav-button nav-button-usable px-4 py-2 rounded-2xl bg-gradient-to-r from-red-500 to-pink-500 text-white">Amazon Store</a></li>
-            </ul>
-            <div id="cb-auth-buttons" class="w-40 mr-2 relative grid grid-cols-2 gap-16 scale-50 md:scale-100">
-                <!-- Filled dynamically (Either account or Sign Up / Login) -->
-            </div>
-        </div>
-    </nav>
-
-
     <div id="custom-tooltip" class="fixed main-section pointer-events-none fixed z-50 px-3 py-1 bg-black text-white border border-white rounded-md text-sm whitespace-nowrap opacity-0 transition-opacity duration-150">
     </div>
 
@@ -78,6 +51,7 @@
                 <div class="flex space-x-4">
                     <a id="first-link-in-main-content" href="https://github.com/Pi-3-14" class="text-blue-600 hover:text-blue-800"><i id="github-link" class="fab fa-github fa-2x"></i></a>
                     <a href="https://youtube.com/@Coding_Blink" class="text-pink-500 hover:text-pink-700"><i id="youtube-link" class="fab fa-youtube fa-2x"></i></a>
+                    <a href="https://tiktok.com/@codingblink" class="text-black hover:text-cyan-600"><i id="tiktok-link" class="fab fa-tiktok fa-2x"></i></a>
                     <a href="mailto:eclipseofeternityofficial@gmail.com" class="text-gray-600 hover:text-gray-800"><i id="mail-link" class="fas fa-envelope fa-2x"></i></a>
                 </div>
                 <div class="card my-4 bg-white shadow-lg rounded-2xl p-4 max-w-lg mx-auto">
@@ -95,29 +69,28 @@
         <!-- About Me Column -->
         <section class="flex flex-col gap-6 md:max-w-[45vw]">
             <div class="card bg-white shadow-lg rounded-2xl p-5">
-                <h2 class="text-lg font-semibold mb-2">👋 About Me</h2>
+                <h2 class="text-lg font-semibold mb-2"><i class="fas fa-info-circle mr-2"></i>About Me</h2>
                 <p class="text-gray-600">
-                    On the internet, I go by Pi. I play a few PC games, mainly Minecraft, World of Warcraft, Valorant, and occasionally Genshin Impact (in the past).
+                    I wrote GPU Sniper. I also play a few PC games, mainly Minecraft, Valorant, occasionally Genshin Impact/similar, and World of Warcraft (in the past).
                 </p>
             </div>
             <div class="card bg-white shadow-lg rounded-2xl p-5">
-                <h2 class="text-lg font-semibold mb-2">🛠️ Skills</h2>
+                <h2 class="text-lg font-semibold mb-2"><i class="fas fa-computer mr-2"></i>Skills</h2>
                 <p class="text-gray-600">
-                    Full-stack web, apps, game development, tutoring, and...
-                    <br>Taekwondo (2nd-degree black belt), Piano (and other instruments too), and cooking!
+                    Full-stack web, entrepreneurship, and more. If you're interested, <a href="mailto:pierreerard@hotmail.com?subject=CodingBlink Business Inquiry">send me an email</a> for a copy of my resume.
                 </p>
             </div>
             <div class="card bg-white shadow-lg rounded-2xl p-5">
-                <h2 class="text-lg font-semibold mb-2">🎮 Fun Facts</h2>
+                <h2 class="text-lg font-semibold mb-2"><i class="fas fa-question-circle mr-2"></i>Fun Facts</h2>
                 <p class="text-gray-600">
                     <ul>
-                        <li><i class="fas fa-star-of-life mr-1 text-gray-600 scale-75"></i><span class="text-gray-600">In high school, I built and CNCed a guitar shaped like an Among Us impostor—yes, it’s playable!</span></li>
-                        <li><i class="fas fa-star-of-life mr-1 text-gray-600 scale-75"></i><span class="text-gray-600">At 15, I coded a WoW addon with AI to predict deaths in raids seconds before they happen (but nearly crashed my computer!).</span></li>
-                        <li><i class="fas fa-star-of-life mr-1 text-gray-600 scale-75"></i><span class="text-gray-600">I switch between Apple and Android daily—can’t pick a side, but love building apps for both.</span></li>
-                        <li><i class="fas fa-star-of-life mr-1 text-gray-600 scale-75"></i><span class="text-gray-600">I’m an anime fan for life—Demon Slayer tops my list. I’m counting down hours for the next movie!</span></li>
-                        <li><i class="fas fa-star-of-life mr-1 text-gray-600 scale-75"></i><span class="text-gray-600">Had a “secret” YouTube channel called HeyItsTedde—my first 100 subs were for World of Warcraft videos!</span></li>
-                        <li><i class="fas fa-star-of-life mr-1 text-gray-600 scale-75"></i><span class="text-gray-600">I’m currently coding and adventuring in Japan at Aoyama Gakuin University—say hi if you visit Tokyo!</span></li>
-                        <li><i class="fas fa-star-of-life mr-1 text-gray-600 scale-75"></i><span class="text-gray-600">My first app? A Japanese reading tool called Furigana Anywhere—ironically, I still use it in class.</span></li>
+                        <li><i class="fas fa-star-of-life mr-1 text-gray-600 scale-75"></i><span class="text-gray-600">I didn't think my GPU price tracker would get popular, but it replaced my old job.</span></li>
+                        <li><i class="fas fa-star-of-life mr-1 text-gray-600 scale-75"></i><span class="text-gray-600">I started coding at age 7. (Not clickbait)</span></li>
+                        <li><i class="fas fa-star-of-life mr-1 text-gray-600 scale-75"></i><span class="text-gray-600">I have a Samsung S23 Ultra and an iPhone SE because I can't pick one over the other; they both have their advantages.</span></li>
+                        <li><i class="fas fa-star-of-life mr-1 text-gray-600 scale-75"></i><span class="text-gray-600">I previously had a "secret" YouTube channel for World of Warcraft videos with 100 subs. (Deleted in 2021)</span></li>
+                        <li><i class="fas fa-star-of-life mr-1 text-gray-600 scale-75"></i><span class="text-gray-600">I accidentally got into Amazon Vine while trying to practice for the AP Lang & Comp exam by writing reviews.</span></li>
+                        <li><i class="fas fa-star-of-life mr-1 text-gray-600 scale-75"></i><span class="text-gray-600">Unpopular opinion: Tailwind & Font Awesome websites look good <a href="#" onclick="document.getElementById('story-section').scrollIntoView({behavior:'smooth'});event.preventDefault();">(no, I don't use AI to write my code)</a></span></li>
+                        <li><i class="fas fa-star-of-life mr-1 text-gray-600 scale-75"></i><span class="text-gray-600">I'm a 2nd-degree Taekwondo black belt with a few medals for competitions, and I also participated in demo team.</span></li>
                     </ul>
                 </p>
             </div>
@@ -129,28 +102,27 @@
             <div id="projectCards" class="flex flex-col gap-8">
                 <!-- JS inserts project cards here -->
             </div>
+            <p class="mt-8">I would add more, but I'm busy and don't have much time to update my portfolio. Maybe someday I'll update this.</p>
         </section>
 
         <!-- Story Section -->
         <section class="bg-white shadow-lg rounded-2xl p-5 col-span-1 md:col-span-2 xl:max-w-[33vw] lg:max-w-[80vw] md:max-w-[90vw] md:mx-auto mt-20" id="story-section">
             <h2 class="text-lg font-semibold mb-2"><i class="fas fa-book-bookmark"></i> My Story</h2>
             <p class="text-gray-600">
-                I'm <span id="years_since_birth"></span> years old, but I've been coding for more than half my life! Though I first started coding in 2013, it wasn't really anything big, just "Hello World" programs and basic math. However, during my middle and high school years, I was given a chromebook from my school district, and this is when things really started up.
-                <br><br>The bus ride to and from my school was agonizingly long. Since it took over an hour both ways, I had to find some way to keep myself entertained without a cell phone, so I decided to make games on Scratch for fun, using the chromebook provided by my school. This led to over 2½ hours of coding practice per day for several years! You can see my Scratch profile <a href="https://scratch.mit.edu/users/videogames102/" target="_blank">here</a>.
-                <br><br>In 7th grade, I took my first high school computer science class about programming, and I took the remaining classes in future grades. By the time I graduated grade school, I was capable of writing apps that college seniors were making! However, college applications didn't go too well. Despite having a 34.25/36 on the ACT and a 4.23 weighted GPA, I ended up getting rejected from every institution I applied to, except for two: Oregon State University, and Hawaii Pacific University. I chose Hawaii Pacific University (HPU) because I didn't want to stay in Oregon anymore, and they also gave me a scholarship.
-                <br><br>In my freshman year of college, I managed to land a job at Outlier AI, which is where I plan on working until I make my own game company, which has been my dream since my first year of programming at 7 years old.
-                <br><br>In my sophomore year, I decided to study abroad in Japan. This was possibly one of the best decisions I made. With my extra 42 credits totaling almost 1.5 years of college, I get to spend 2/5 of my actual college semesters in Japan, add a minor to my degree, learn a new language, and make some new friends who inspired me to add some features to my online game, <a href="eclipse-of-eternity/index.html" target="_blank">Eclipse of Eternity</a>.
-                <br><br>Thank you for reading my story, and I hope you enjoyed it! Check out some of the projects I've made over the time I spent coding!
+                I'm <span id="years_since_birth"></span> years old, but I've been coding for more than half my life! Though I first started coding in 2013, it wasn't really anything big, just "Hello World" programs and basic math. I was coding on a school-issued chromebook, so just basic JavaScript and several Scratch projects.
+                <br><br>When I got my first PC in 2014, I was introduced to World of Warcraft. Back in the day, you could use addons get an overview of player combat and give real-time advice to yourself with code. I enjoyed this aspect of the game and coded my own personal HUD that managed every player and used a combination of AI and hardcoded algorithms to suggest me which players to cast which spells on, but sadly, Blizzard killed addon-assisted combat in 2026, and my addon no longer works.
+                <br><br>By the time I got to college, I was producing about what you'd see entry-level software engineers create. I landed my first job as a student tutor at Hawaii Pacific University because of my expertise, and later during the year, I applied to a remote work position at Scale AI and got accepted.
+                <br><br>In 2024, I decided to study abroad in Japan. My most favorite thing there was the food, but I also went to a few amusement parks (including Universal Studios) and visited both the city and countryside.
+                <br><br>I graduated university in December of 2025 (2 years early!) because I transfered in many AP/DC credits to my university and now have a Bachelor's degree in Computer Science. I'm happy to have my degree, but I found out that you learn a lot more on your own than in school, especially if you tinker on your own or even start your own business (see next paragraph).
+                <br><br>As of now, 2026, I quit developing code for Scale AI because the work environment has significantly degraded, and I am working on <a href="https://gpusniper.com">GPU Sniper</a>, a GPU price tracking website. This project runs on express.js, postgresql, redis, and uses Cloudflare for proxying. Instead of using React or Next.js, I developed my own coding solution for modular HTML files and component imports and use this to "build" my websites.
+                <br><br>I do not use AI to generate code for my websites. Occasionally, skeletons for the website may be produced by AI, but I usually replace more than 80% of it with my own UI due to bugs or lack of instruction following. I usually only ask one prompt but write several paragraphs; I know the AI won't get everything down-to-detail, but I'd rather have a skeleton as a starting point than a blank editor. This actually works out well for me since I'm familiar with fixing bugs in AI-generated code due to my previous job. All server backend code since I migrated servers in January 2026 has been 100% human-written starting from a blank editor.
             </p>
         </section>
     </main>
 
     <!-- Footer -->
     <footer class="bg-gray-200 text-center py-6 mt-10">
-        <p class="text-gray-600">&copy; 2025 codingblink.com. All rights reserved.</p>
-        <div id="pingDisplay" class="relative bottom-20 left-4 text-sm text-gray-600 flex items-center">
-            <span><i class="fas fa-wifi mr-1"></i>Pinging server...</span>
-        </div>
+        <p class="text-gray-600">&copy; <span id="current_year"></span> codingblink.com. All rights reserved.</p>
     </footer>
     <script>
         SERVICE_ID_MAIN = 0; // Replace with actual service ID?
@@ -211,12 +183,10 @@
         const tooltipTextMap = {
             "github-link": generateTooltip("GitHub", "<p class='text-blue-300' style='display: inline;'>@Pi-3-14</p>"),
             "youtube-link": generateTooltip("YouTube", "<p class='text-blue-300' style='display: inline;'>@Coding_Blink</p>"),
+            "tiktok-link": generateTooltip("TikTok", "<p class='text-blue-300' style='display: inline;'>@codingblink</p>"),
             "mail-link": generateTooltip("Email", "<p class='text-blue-300' style='display: inline;'>eclipseofeternityofficial@gmail.com</p>"),
-            "ideaToApp": generateTooltip("Idea to App", "<p class='text-blue-300' style='display: inline;'>On-demand app development is available to anyone. You get a free consultation before starting.</p>"),
-            "eclipseOfEternity": generateTooltip("Eclipse of Eternity", "<p class='text-blue-300' style='display: inline;'>What are you waiting for!? Reserve 1 year of free game time by entering your email at codingblink.com/eclipse-of-eternity !!!</p>"),
-            "codingTutoring": generateTooltip("Coding Tutoring", "<p class='text-blue-300' style='display: inline;'>I'll teach you how to code, from the very basics to application development and beyond!</p>"),
-            "getACodingJob": generateTooltip("Get a Coding Job", "<p class='text-blue-300' style='display: inline;'>I've got 500 referral slots per month!</p>"),
-            "amazonStore": generateTooltip("Amazon Store", "<p class='text-blue-300' style='display: inline;'>Become a pro dev with these products!</p>"),
+            "gpusniper": generateTooltip("GPU Sniper", "<p class='text-blue-300' style='display: inline;'>The best GPU price tracker. +1,000 aura for using</p>"),
+            "ramsniper": generateTooltip("RAM Sniper", "<p class='text-blue-300' style='display: inline;'>A sister site of GPU Sniper specifically made because of RAMageddon.</p>")
         };
 
 
@@ -260,100 +230,26 @@
             tooltip.style.opacity = 0;
         });
 
-        const MIN_ZOOM = 0.3;
-        const ZOOM_STEP = 0.05;
-
-        function applyZoom(zoom) {
-            document.body.style.zoom = zoom;
-        }
-
-        function checkNavOverflow() {
-            const nav = document.getElementById('desktop-nav');
-            return nav.scrollWidth > nav.clientWidth;
-        }
-
-        function zoomOutUntilFits() {
-            if (window.innerWidth < 768) {
-                return;
-            }
-            let currentZoom = Number(document.body.style.zoom) || 1;
-
-            function tryZoomOut() {
-                if (!checkNavOverflow() || currentZoom <= MIN_ZOOM) {
-                    return;
-                }
-
-                currentZoom -= ZOOM_STEP;
-                currentZoom = Math.max(currentZoom, MIN_ZOOM);
-                applyZoom(currentZoom);
-
-                setTimeout(tryZoomOut, 100);
-            }
-
-            tryZoomOut();
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            // Apply zoom only if there's overflow
-            if (checkNavOverflow()) {
-                zoomOutUntilFits();
-            }
-            setTimeout(function() { document.getElementById("realImage").classList.remove("opacity-0"); }, 1000);
-            window.addEventListener('resize', function() { document.body.style.zoom = 1; zoomOutUntilFits(); });
-            pingServer();
-        });
-        zoomOutUntilFits();
         const projects = [
             {
-                title: "Idea to App",
-                description: "Full-stack app development using modern frameworks (C++, Swift, Python, etc). I've helped many bring their ideas to life.",
-                link: "idea/index.html",
-                image: "app-image.jpg",
-                icon: "fas fa-lightbulb",
-                color: "bg-gradient-to-r from-blue-500 to-indigo-500",
-                id: "ideaToApp",
-                tags: "<span class='construction ml-2 text-xs rounded bg-yellow-100 text-yellow-800 font-mono px-2 py-0.5'>🚧 Under Construction</span>"
+                title: "GPU Sniper",
+                description: "A really fast GPU price tracker so you can snipe any GPU for your gaming PC.",
+                link: "https://gpusniper.com/",
+                image: "https://gpusniper.com/favicon-512x512.png",
+                icon: "fas fa-crosshairs",
+                color: "bg-gradient-to-r from-green-500 to-cyan-400",
+                id: "gpusniper",
+                tags: "<span class='ml-2 text-xs rounded bg-red-100 text-red-800 font-mono px-2 py-0.5'><i class='fas fa-gamepad'></i> For Gamers</span> <span class='ml-2 text-xs rounded bg-green-100 text-green-800 font-mono px-2 py-0.5'><i class='fas fa-chart-line'></i> Price Tracker</span>"
             },
             {
-                title: "Eclipse of Eternity",
-                description: "My upcoming open-world RPG, launching Dec 2028. Register an email address early and claim a free year of gameplay!",
-                link: "https://codingblink.com/eclipse-of-eternity",
-                image: "eoe-image.jpg",
-                icon: "fas fa-gamepad",
-                color: "bg-gradient-to-r from-purple-500 to-pink-500",
-                id: "eclipseOfEternity",
-                filters: "brightness(75%)",
-                tags: "<span class='ml-2 text-xs rounded bg-red-100 text-red-800 font-mono px-2 py-0.5'><i class='fas fa-gamepad'></i> Video Game</span> <span class='ml-2 text-xs rounded bg-green-100 text-green-800 font-mono px-2 py-0.5'><i class='fas fa-gift'></i> Free offer!</span>"
-            },
-            {
-                title: "Coding Tutoring",
-                description: "1-on-1 personalized CS tutoring with job referrals. Learn Python, C++, web dev, and more.",
-                link: "tutoring/index.html",
-                image: "tutoring-image.jpg",
-                icon: "fas fa-chalkboard-teacher",
-                color: "bg-gradient-to-r from-green-500 to-teal-500",
-                id: "codingTutoring",
-                tags: "<span class='ml-2 text-xs rounded bg-indigo-100 text-indigo-800 font-mono px-2 py-0.5'><i class='fas fa-graduation-cap'></i> Education</span> <span class='ml-2 text-xs rounded bg-green-100 text-green-800 font-mono px-2 py-0.5'><i class='fas fa-gift'></i> Free offer!</span>"
-            },
-            {
-                title: "Get a Coding Job",
-                description: "Finish my course, build a portfolio, and get referred to AI companies & startups. I have 500 open referral slots per month.",
-                link: "job/index.html",
-                image: "job-image.jpg",
-                icon: "fas fa-briefcase",
-                color: "bg-gradient-to-r from-yellow-500 to-orange-500",
-                id: "getACodingJob",
-                tags: "<span class='construction ml-2 text-xs rounded bg-yellow-100 text-yellow-800 font-mono px-2 py-0.5'>🚧 Under Construction</span>"
-            },
-            {
-                title: "Amazon Store",
-                description: "Handpicked developer gear, tech, and tools I use — all displayed neatly with powerful custom search engines I built using my personal experiences and recommendations.",
-                link: "amazon/index.html",
-                image: "amazon/pc-setup.jpg",
-                icon: "fas fa-shopping-cart",
-                color: "bg-gradient-to-r from-red-500 to-pink-500",
-                id: "amazonStore",
-                tags: "<span class='construction ml-2 text-xs rounded bg-yellow-100 text-yellow-800 font-mono px-2 py-0.5'>🚧 Under Construction</span>"
+                title: "RAM Sniper",
+                description: "A new release for tracking computer memory during the RAM shortage.",
+                link: "https://ramsniper.com/",
+                image: "https://ramsniper.com/favicon-512x512.png",
+                icon: "fas fa-crosshairs",
+                color: "bg-gradient-to-r from-orange-500 to-yellow-400",
+                id: "ramsniper",
+                tags: "<span class='ml-2 text-xs rounded bg-yellow-100 text-yellow-800 font-mono px-2 py-0.5'><i class='fas fa-memory'></i> Your RAM</span> <span class='ml-2 text-xs rounded bg-green-100 text-green-800 font-mono px-2 py-0.5'><i class='fas fa-chart-line'></i> Price Tracker</span>"
             }
         ];
 
@@ -375,7 +271,7 @@
                         </h2>
                         <p class="text-gray-600 mb-4">${project.description}</p>
                     </div>
-                    <a href="${project.link}" class="inline-block w-fit mt-2 px-5 py-2 rounded-xl text-white font-semibold ${project.color} hover:opacity-90 transition-opacity">
+                    <a href="${project.link}" class="inline-block w-fit mt-2 px-5 py-2 rounded-xl text-white font-semibold ${project.color} hover:opacity-90 transition-opacity" target="_blank">
                         View Website
                     </a>
                 </div>
@@ -427,249 +323,12 @@
             bar.innerHTML = 'We\'re moving! The new permanent address is <a href="https://codingblink.com" style="text-decoration: underline !important;">codingblink.com</a>. Please update your bookmark. <a href="https://codingblink.com">Take me to the new page!</a>';
             document.body.prepend(bar);
         }
+        document.getElementById('current_year').textContent = new Date().getFullYear();
         document.getElementById("years_since_2013").textContent = new Date().getFullYear() - 2013;
         document.getElementById("years_since_birth").textContent = Math.floor((new Date() - new Date("2005-07-04")) / (1000 * 60 * 60 * 24 * 365.25));
-        async function pingServer() {
-            const display = document.getElementById('pingDisplay');
-            const sendTime = Date.now();
-
-            try {
-                const response = await fetch('https://api.codingblink.com/ping');
-                const data = await response.json();
-                const t0Millis = sendTime;
-                const t2Millis = Date.now();
-                // Ping API needs to be upgraded due to clock desync
-                const serverTime = new Date(/*data.t*/ (t0Millis + t2Millis)/2).getTime();
-
-                const uploadMs = serverTime - t0Millis;
-                const downloadMs = t2Millis - serverTime;
-                const roundtrip = t2Millis - t0Millis;
-
-                display.innerHTML = `
-                    <span class="mr-1"><i class="fas fa-network-wired mr-1"></i>Connected!</span>
-                    <i class="fas fa-arrow-up text-blue-500 mr-1"></i>${uploadMs}ms<span class="w-[10px]"></span>
-                    <i class="fas fa-arrow-down text-green-500 mr-1"></i>${downloadMs}ms
-                `;
-            } catch (e) {
-                display.innerHTML = `<span class="text-red-500"><i class="fas fa-plug-circle-xmark mr-1"></i>Server offline!</span>`;
-            }
-        }
-
-        let authModal = null;
-        function removeAuthForm() {
-            if (authModal) {
-                authModal.remove();
-                authModal = null;
-            }
-        }
-
-        function showModal(innerHtml, focusSelector) {
-            removeAuthForm();
-            const modal = document.createElement("div");
-            modal.id = "cb-auth-modal";
-            modal.className = `fixed inset-0 z-[100] flex items-center justify-center bg-black/40`;
-            modal.innerHTML = `
-            <div class="relative animate-fadein bg-white rounded-2xl shadow-2xl border w-full max-w-md mx-4 p-7">
-                <button id="cb-modal-close" aria-label="Close" class="absolute top-3 right-3 text-xl text-gray-400 hover:text-red-600 transition-colors">
-                    <i class="fa fa-times"></i>
-                </button>
-                ${innerHtml}
-            </div>
-            `;
-            document.body.appendChild(modal);
-            document.getElementById("cb-modal-close").onclick = removeAuthForm;
-            modal.onclick = (e) => { if (e.target === modal) removeAuthForm(); };
-            authModal = modal;
-            setTimeout(() => {
-                const field = document.querySelector(focusSelector);
-                if (field) field.focus();
-            }, 100);
-        }
-
-        if (!document.getElementById("cb-auth-style")) {
-            const style = document.createElement('style');
-            style.id = "cb-auth-style";
-            style.textContent = `
-            @keyframes fadein { from { opacity:0; transform: scale(0.97) translateY(20px);} to { opacity: 1; transform:none;} }
-            .animate-fadein { animation:fadein .2s cubic-bezier(.4,.2,.1,1);}
-            #cb-auth-modal input:focus { outline: none; border-color: #4f46e5; box-shadow: 0 0 0 2px #3b82f6 !important;}
-            #cb-auth-modal input[type="text"]:hover,
-            #cb-auth-modal input[type="email"]:hover,
-            #cb-auth-modal input[type="password"]:hover { border-color: #0ea5e9; background: #fafdff }
-            #cb-auth-modal button[type="submit"]:hover { filter: brightness(1.13); }
-            `;
-            document.head.appendChild(style);
-        }
-
-        function getErrorMessage(e) {
-            switch(e) {
-                case 0:
-                    return "Email is already in use.";
-                case 1:
-                    return "Username is already taken.";
-                case 2:
-                    return "Password requirements:<br><ul><li>At least one uppercase letter (ABC)</li><li>At least one lowercase letter (abc)</li><li>At least one number (0-9)</li><li>At least one special character (@:!+?)</li><li>Password must be at least 11 characters long.</li></ul>";
-                case 3:
-                    return "Password is not allowed. Choose a more secure one.";
-                case 5:
-                    return "Username may be inappropriate.";
-                default:
-                    return "Error creating account. Try again?";
-            }
-        }
-
-        function signupHandler() {
-            showModal(`
-            <form id="cb-signup-form" class="space-y-5 w-full">
-                <h3 class="text-2xl font-bold text-green-500 flex items-center mb-2">
-                    <i class="fa fa-user-plus mr-2 text-green-500"></i>Sign Up for CodingBlink
-                </h3>
-                <div class="relative">
-                    <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"><i class="fa fa-user"></i></span>
-                    <input autocomplete="username" class="pl-10 pr-3 py-2 rounded border w-full focus:ring-2" type="text" id="cb-signup-username" placeholder="Username" required>
-                </div>
-                <div class="relative">
-                    <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"><i class="fa fa-envelope"></i></span>
-                    <input autocomplete="email" class="pl-10 pr-3 py-2 rounded border w-full focus:ring-2" type="email" id="cb-signup-email" placeholder="Email" required>
-                </div>
-                <div class="relative">
-                    <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"><i class="fa fa-lock"></i></span>
-                    <input autocomplete="new-password" class="pl-10 pr-3 py-2 rounded border w-full focus:ring-2" type="password" id="cb-signup-password" placeholder="Password" required>
-                </div>
-                <button class="w-full mt-2 bg-gradient-to-r from-green-600 to-teal-500 text-white py-2 rounded font-semibold flex items-center justify-center gap-2 transition hover:scale-105 active:scale-95" type="submit">
-                    <i class="fa fa-user-plus"></i> Create Account
-                </button>
-                <div id="cb-signup-message" class="mt-2 text-sm text-center"></div>
-            </form>`,
-            "#cb-signup-username");
-            document.getElementById('cb-signup-form').onsubmit = async (e) => {
-                e.preventDefault();
-                const btn = e.target.querySelector('button[type="submit"]');
-                btn.disabled = true; btn.textContent = "Creating...";
-                const res = await fetch('https://api.codingblink.com:443/newaccount', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        u: document.getElementById('cb-signup-username').value,
-                        e: document.getElementById('cb-signup-email').value,
-                        p: document.getElementById('cb-signup-password').value
-                    })
-                });
-                const data = await (async () => { try { return await res.json(); } catch { return {}; } })();
-                const msg = document.getElementById('cb-signup-message');
-                if (res.ok) {
-                    msg.className = 'mt-2 text-green-600 text-sm text-center';
-                    msg.innerHTML = "Account created! Check your email.";
-                    btn.innerHTML = `<i class="fas fa-check"></i> Account created!`;
-                    // login to CodingBlink, ask user to confirm their email
-                } else {
-                    msg.className = 'mt-2 text-red-600 text-sm text-center';
-                    msg.innerHTML = getErrorMessage(data.e) || "Error creating account.";
-                }
-                btn.disabled = false;
-                btn.innerHTML = `<i class="fa fa-user-plus"></i> Create Account`;
-            };
-        }
-
-        function signinHandler() {
-            showModal(`
-            <form id="cb-signin-form" class="space-y-5 w-full">
-                <h3 class="text-2xl font-bold text-indigo-700 flex items-center mb-2">
-                    <i class="fa fa-sign-in-alt mr-2 text-indigo-500"></i>Sign In to CodingBlink
-                </h3>
-                <div class="relative">
-                    <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"><i class="fa fa-user"></i></span>
-                    <input autocomplete="email" class="pl-10 pr-3 py-2 rounded border w-full focus:ring-2" type="text" id="cb-signin-email" placeholder="Email" required>
-                </div>
-                <div class="relative">
-                    <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"><i class="fa fa-lock"></i></span>
-                    <input autocomplete="current-password" class="pl-10 pr-3 py-2 rounded border w-full focus:ring-2" type="password" id="cb-signin-password" placeholder="Password" required>
-                </div>
-                <button class="w-full mt-2 bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded font-semibold flex items-center justify-center gap-2 transition hover:scale-105 active:scale-95" type="submit">
-                    <i class="fa fa-sign-in-alt"></i> Sign In
-                </button>
-                <div id="cb-signin-message" class="mt-2 text-sm text-center"></div>
-            </form>`,
-            "#cb-signin-email");
-            document.getElementById('cb-signin-form').onsubmit = async (e) => {
-                e.preventDefault();
-                const btn = e.target.querySelector('button[type="submit"]');
-                btn.disabled = true; btn.textContent = "Signing In...";
-                const res = await fetch('https://api.codingblink.com:443/login', {
-                    method: 'POST',
-                    credentials: 'include',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        e: document.getElementById('cb-signin-email').value,
-                        p: document.getElementById('cb-signin-password').value,
-                        i: SERVICE_ID_MAIN
-                    })
-                });
-                const data = await (async () => { try { return await res.json(); } catch { return {}; } })();
-                const msg = document.getElementById('cb-signin-message');
-                if (res.ok) {
-                    msg.className = 'mt-2 text-green-600 text-sm text-center';
-                    msg.innerText = "Login successful! Redirecting...";
-                    window.location.replace('/dashboard');
-                    alert("Not publicly available! Check back later!");
-                    // login to CodingBlink
-                } else {
-                    msg.className = 'mt-2 text-red-600 text-sm text-center';
-                    msg.innerText = data.error || "Invalid login.";
-                }
-                btn.disabled = false; btn.innerHTML = `<i class="fa fa-sign-in-alt"></i> Sign In`;
-            };
-        }
-
-        const authContainer = document.getElementById('cb-auth-buttons');
-
-        async function checkAuthentication() {
-            try {
-                const res = await fetch('https://api.codingblink.com/authenticate', {
-                    method: 'POST',
-                    credentials: 'include'
-                });
-                if (res.ok) {
-                    const user = await res.json();
-                    showUserMenu(user);
-                } else {
-                    showLoginSignupButtons();
-                }
-            } catch {
-                showLoginSignupButtons();
-            }
-        }
-
-        function showLoginSignupButtons() {
-            authContainer.innerHTML = `
-                <button onclick="signinHandler()" class="text-indigo-600 rounded-2xl hover:scale-105 active:scale-95 transition">Login</button>
-                <button onclick="signupHandler()" class="text-green-600 rounded-2xl hover:scale-105 active:scale-95 transition"><nobr>Sign Up</nobr></button>
-            `;
-        }
-
-        function showUserMenu(user) {
-            const name = user.username || "Account";
-            authContainer.innerHTML = `
-                <div class="relative group">
-                    <button class="px-4 py-2 bg-gray-100 text-black rounded-2xl flex items-center gap-2 hover:bg-gray-200">
-                        <i class="fa fa-user-circle text-lg"></i> ${name}
-                        <i class="fa fa-caret-down"></i>
-                    </button>
-                    <div class="absolute right-0 mt-2 w-48 bg-white border rounded shadow-lg hidden group-hover:block z-50">
-                        <a href="/profile" class="block px-4 py-2 hover:bg-gray-100">Profile</a>
-                        <a href="/settings" class="block px-4 py-2 hover:bg-gray-100">Account Settings</a>
-                        <button onclick="signOut()" class="w-full text-left px-4 py-2 hover:bg-gray-100">Sign Out</button>
-                    </div>
-                </div>
-            `;
-        }
-
-        function signOut() {
-            fetch('https://api.codingblink.com/logout', { method: 'POST', credentials: 'include' })
-                .then(() => location.reload());
-        }
-
-        document.addEventListener("DOMContentLoaded", checkAuthentication);
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(function() { document.getElementById("realImage").classList.remove("opacity-0"); }, 1000);
+        });
     </script>
 </body>
 </html>
